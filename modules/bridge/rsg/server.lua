@@ -126,7 +126,7 @@ AddEventHandler('RSGCore:Server:OnGangUpdate', function(source, gang)
 end)
 
 AddEventHandler('onResourceStart', function(resource)
-    if resource ~= 'rsg-weapons' or resource ~= 'rsg-weaponcomp' then return end
+    if resource ~= 'rsg-weapons' or resource ~= 'rsg-weaponcomp' or resource ~= 'rsg-ammo' then return end
     StopResource(resource)
 end)
 
@@ -143,7 +143,6 @@ AddEventHandler('ox_inventory:itemRemoved', function(source, itemName, count)
 end)
 
 AddEventHandler('RSGCore:Server:PlayerLoaded', setupPlayer)
-
 SetTimeout(500, function()
     RSGCore = exports['rsg-core']:GetCoreObject()
     server.GetPlayerFromId = RSGCore.Functions.GetPlayer
@@ -454,6 +453,14 @@ export('rsg-inventory.CreateInventory', function(invId, data)
     if data and data.maxweight and data.slots then
         exports.ox_inventory:RegisterStash(invId, data.label or invId, data.slots, data.maxweight)
     end
+end)
+
+--- Check if a shop exists in the registry.
+--- @param shopName string Name of the shop
+--- @return boolean True if the shop exists, false otherwise
+export('rsg-inventory.DoesShopExist', function(shopName)
+        if type(shopName) ~= "string" then return false end
+    return pendingShops and pendingShops[shopName] ~= nil
 end)
 
 export('rsg-inventory.AddItem', function(invId, itemName, amount, slot, metadata, reason)

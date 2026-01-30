@@ -117,7 +117,8 @@ return {
 		description = "Where did this come from?",
 		degrade = 7000,
 		weight = 10,
-		consume = 1
+		consume = 1,
+        model = 'p_apple01x',
 	},
 	["tomato"] = {
         type = 'Generic',
@@ -468,7 +469,8 @@ return {
 		degrade = 15000,
 		weight = 100,
 		-- image = "water",
-		consume = 1
+		consume = 1,
+        model = 'p_camp_cup_01x',
 	},
 	["blackberry_juice"] = {
         type = 'Generic',

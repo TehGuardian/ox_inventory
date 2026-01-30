@@ -590,8 +590,8 @@ local function useSlot(slot, noAnim)
 
 
 				local clipSize = GetMaxAmmoInClip(playerPed, currentWeapon.hash, true)
-				local currentAmmo = GetPedAmmoByType(playerPed, GetHashKey(data.name))
-				SetAmmoTypeForPedWeapon( playerPed, currentWeapon.hash,  GetHashKey(data.name) )
+				local currentAmmo = GetPedAmmoByType(playerPed, joaat(data.name))
+				SetAmmoTypeForPedWeapon( playerPed, currentWeapon.hash,  joaat(data.name) )
 
 				local _, maxAmmo = GetMaxAmmo(playerPed, currentWeapon.hash)
 
@@ -647,7 +647,7 @@ local function useSlot(slot, noAnim)
 					end
 
 					if not resp or not isSameName then return end
-					currentAmmo = GetPedAmmoByType(playerPed, GetHashKey(resp.name:lower()))
+					currentAmmo = GetPedAmmoByType(playerPed, joaat(resp.name:lower()))
 
 					if isDualWeaponActived and not isABow then
 						clipSize = clipSize * 2
@@ -666,13 +666,13 @@ local function useSlot(slot, noAnim)
 							TaskReloadWeapon(playerPed, true)
 						end
 					else
-						AddAmmoToPedByType( playerPed, GetHashKey(resp.name), addAmmo )
+						AddAmmoToPedByType( playerPed, joaat(resp.name), addAmmo )
 
 						if isABow then
 							SetCurrentPedWeapon(playerPed, currentWeapon.hash, false, 0, false, false)
 						end
 
-						SetAmmoTypeForPedWeapon( playerPed,  currentWeapon.hash,  GetHashKey(resp.name) )
+						SetAmmoTypeForPedWeapon( playerPed,  currentWeapon.hash,  joaat(resp.name) )
 						-- if resp.name ~= currentWeapon?.ammo then
 						-- 	if currentWeapon.metadata.specialAmmo ~= resp.name then
 						-- 		currentWeapon.metadata.specialAmmo = resp.name
@@ -975,7 +975,7 @@ local function registerCommands()
 
 	if IS_RDR3 then
 		local function useHotKeyByControl(key)
-			if not IsEntityDead(PlayerPedId()) and not IsPauseMenuActive() then
+			if not IsEntityDead(cache.ped) and not IsPauseMenuActive() then
 				if not invOpen then
 					CreateThread(function()
 						--[[ useSlot is thread-blocking af. ]]
@@ -985,7 +985,7 @@ local function registerCommands()
 			end
 		end
 
-		Citizen.CreateThread(function()
+		CreateThread(function()
 
 			local HOTKEY_CONTROL_MAPPING =
 			{
@@ -1026,7 +1026,7 @@ local function registerCommands()
 			}
 
 			while true do
-				Citizen.Wait(0)
+				Wait(0)
 
 				if PlayerData then
 
@@ -1112,8 +1112,8 @@ function client.closeInventory(server)
 		defaultInventory.coords = nil
 		TriggerEvent("ox_inventory:closed")
 
-		--[[ Resetar, o inventário foi fechado pelo próprio script. ]]
-		gCanPlayerCloseInventory = true
+		--[[ Reset, the inventory was closed by the script itself. ]]
+		CanPlayerCloseInventory = true
 	end
 end
 
@@ -1155,7 +1155,7 @@ local function updateInventory(data, weight)
 
 			if item?.metadata then
 				if item.metadata?.ammo ~= nil then
-					local weaponHash = GetHashKey( item.name )
+					local weaponHash = joaat( item.name )
 					local clipSize = GetMaxAmmoInClip(cache.ped, weaponHash, true)
 
 					item.metadata.ammoMaxClip = clipSize
@@ -1253,7 +1253,7 @@ local function nearbyDrop(point)
 		end
 
 		if IS_RDR3 then
-			Citizen.InvokeNative(0x2A32FAA57B937173, 0x07DCE236, point.coords.x, point.coords.y, point.coords.z - 0.85, 0,0,0,0,0,0,0.15, 0.15,1.0, 30, 150, 30, 222, 0, 0, 2, 0, 0, 0, 0)
+			DrawMarker(0x07DCE236, point.coords.x, point.coords.y, point.coords.z - 0.85, 0,0,0,0,0,0,0.15, 0.15,1.0, 30, 150, 30, 222, 0, 0, 2, 0, 0, 0, 0)
 		end
 
 
@@ -1287,24 +1287,34 @@ local function onExitDrop(point)
 	end
 end
 
-local function createDrop(dropId, data)
-	local point = lib.points.new({
-		coords = data.coords,
-		distance = 16,
-		invId = dropId,
-		instance = data.instance,
-		model = data.model
-	})
-
-	if point.model or client.dropprops then
-		point.distance = 30
-		point.onEnter = onEnterDrop
-		point.onExit = onExitDrop
-	else
-		point.nearby = nearbyDrop
-	end
-
-	client.drops[dropId] = point
+local function createDrop(dropId, data, dataitem)
+    local tempModel = nil
+    if dataitem then
+        if dataitem.model and not dataitem.hash then
+            tempModel = dataitem.model
+        elseif dataitem.hash and dataitem.props then
+            tempModel = dataitem.props
+        else
+            tempModel = "p_bag01x"
+        end
+    else
+        tempModel = "p_bag01x"
+    end
+    local point = lib.points.new({
+        coords = data.coords,
+        distance = 3,
+        invId = dropId,
+        instance = data.instance,
+        model = tempModel or "p_bag01x",
+    })
+    if point.model or client.dropprops then
+        point.distance = 30
+        point.onEnter = onEnterDrop
+        point.onExit = onExitDrop
+    else
+        point.nearby = nearbyDrop
+    end
+    client.drops[dropId] = point
 end
 
 RegisterNetEvent('ox_inventory:createDrop', function(dropId, data, owner, slot)
@@ -1424,7 +1434,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	setmetatable(PlayerData, {
 		__index = function(self, key)
 			if key == 'ped' then
-				return PlayerPedId()
+				return cache.ped
 			end
 		end
 	})
@@ -1922,8 +1932,8 @@ RegisterNUICallback('removeAmmo', function(slot, cb)
 
 	if success then
 		for ammoType, _ in pairs ( slotData.metadata.customAmmo ) do
-			local ammoTypehash = GetHashKey( ammoType )
-			RemoveAmmoFromPedByType( PlayerPedId(), ammoTypehash, 1000, `REMOVE_REASON_USED`)
+			local ammoTypehash = joaat( ammoType )
+			RemoveAmmoFromPedByType(cache.ped, ammoTypehash, 1000, `REMOVE_REASON_USED`)
 		end
 	end
 end)
@@ -2067,12 +2077,12 @@ local function swapWeaponHotbar(item, data)
 		if string.find(string.lower(item.name), "weapon") then
 			if data.fromType == "player" then
 				if data.fromSlot > 0 and data.fromSlot < 6 then
-					local playerPed = PlayerPedId()
-					local weaponHash = GetHashKey(item.name)
+					local playerPed = cache.ped
+					local weaponHash = joaat(item.name)
 					local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
 					local weaponAmmo = GetAmmoInPedWeapon(playerPed, item.hash)
 
-					Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
+					Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, joaat('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
 					RemoveWeaponFromPed(playerPed, weaponHash)
 				end
 			end
@@ -2182,14 +2192,14 @@ end)
 function actionWeaponToHorse(data, item)
 
 	if IS_RDR3 then
-		local playerPed = PlayerPedId()
+		local playerPed = cache.ped
 
 		local horseEntity = currentInventory.entity
 
 		local horse = horseEntity or Citizen.InvokeNative(0x4C8B59171957BCF7, playerPed) or GetMount(playerPed)
 
 		if string.find(string.lower(item.name), "weapon") then
-			local weaponHash = GetHashKey(item.name)
+			local weaponHash = joaat(item.name)
 
 
 			Wait(100)
@@ -2214,14 +2224,14 @@ function swapWeaponHotbar(item, data)
 		if data.toType == "player" then
 
 			if data.fromSlot > 0 and data.fromSlot < 6 then
-				local playerPed = PlayerPedId()
-				local weaponHash = GetHashKey(item.name)
+				local playerPed = cache.ped
+				local weaponHash = joaat(item.name)
 				local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
 
 				local mountOwnedByPlayer = Citizen.InvokeNative(0xF49F14462F0AE27C, PlayerId()) -- GET_MOUNT_OWNED_BY_PLAYER
 
 				if currentInventory.entity ~= mountOwnedByPlayer or (data.toType == "player" and data.fromType == "player") then
-					Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
+					Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, joaat('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
 					RemoveWeaponFromPed(playerPed, weaponHash)
 				end
 			end
@@ -2265,32 +2275,40 @@ function StartInventoryAction(actionType, data, cb)
 			cb()
 		end
 
-		local playerPed = PlayerPedId()
+		local playerPed = cache.ped
 		local horseEntity = currentInventory.entity
 
-		local closestSaddlebagPoint         = nil
-		local closestSaddlebagPointDistance = nil
-		local closestSaddlebagPointPosition = nil
+        local closestSaddlebagPoint = nil
+        local closestSaddlebagPointDistance = math.huge
+        local closestSaddlebagPointPosition = nil
 
 		local playerPos = GetEntityCoords(playerPed)
 
 		for _, saddlebagPoint in ipairs(SADDLEBAG_POINTS) do
+        -- saddlebagPoint is most likely a bone name (string)
+        local boneName = saddlebagPoint
 
-			local boneName in saddlebagPoint
+        -- If it's actually a table → adjust to: local boneName = saddlebagPoint.bone or saddlebagPoint[1]
 
-			local boneIndex = GetEntityBoneIndexByName(horseEntity, boneName)
+        local boneIndex = GetEntityBoneIndexByName(horseEntity, boneName)
 
-			local bonePos = GetWorldPositionOfEntityBone(horseEntity, boneIndex)
-			-- local bonePos = GetPedBoneCoords(horseEntity, 50064)
+        -- Skip if bone doesn't exist on this horse model
+        if boneIndex == -1 then goto continue end
 
-			local distanceToPlayer = #(playerPos - bonePos)
+        local bonePos = GetWorldPositionOfEntityBone(horseEntity, boneIndex)
+        -- Alternative (sometimes more reliable in older RDR2 builds):
+        -- local bonePos = GetPedBoneCoords(horseEntity, boneIndex)
 
-			if not closestSaddlebagPoint or distanceToPlayer < closestSaddlebagPointDistance then
-				closestSaddlebagPoint         = saddlebagPoint
-				closestSaddlebagPointDistance = distanceToPlayer
-				closestSaddlebagPointPosition = bonePos
-			end
-		end
+        local distanceToPlayer = #(playerPos - bonePos)
+
+        if distanceToPlayer < closestSaddlebagPointDistance then
+            closestSaddlebagPoint         = saddlebagPoint
+            closestSaddlebagPointDistance = distanceToPlayer
+            closestSaddlebagPointPosition = bonePos
+        end
+
+            ::continue::
+        end
 
 		local DICT = closestSaddlebagPoint.lootAnimationDict
 		local ANIM = 'base'
@@ -2298,7 +2316,7 @@ function StartInventoryAction(actionType, data, cb)
 		RequestAnimDict(DICT)
 
 		while not HasAnimDictLoaded(DICT) do
-			Citizen.Wait(0)
+			Wait(0)
 		end
 
 		ClearPedTasks(playerPed, true, false) --[[ Flags de acordo com script da rockstar ]]
@@ -2441,10 +2459,10 @@ end)
 
 
 RegisterNUICallback('updateCurrentAmmo', function(itemName, cb)
-	local playerPed = PlayerPedId()
+	local playerPed = cache.ped
 	local currentAmmo = GetPedAmmoByType(playerPed, itemName)
 
-	local ammoHash = GetHashKey( itemName )
+	local ammoHash = joaat( itemName )
 
 	-- Citizen.InvokeNative(0xCC9C4393523833E2, playerPed, currentWeapon.hash, ammoHash)
 	SetAmmoTypeForPedWeapon(playerPed, currentWeapon.hash, ammoHash)
@@ -2532,7 +2550,7 @@ function setCurrentWeaponGroup()
 
 	local ammoType = ("%s%s"):format( currentWeapon.ammo, groupAmmoTypes[1][1])
 
-	local ammoHash = GetHashKey( ammoType )
+	local ammoHash = joaat( ammoType )
 	local ammoName = GetLabelTextByHash( ammoHash )
 
 	currentWeapon.currentAmmo = ammoType:lower()
@@ -2588,10 +2606,10 @@ function setCurrentAmmo( isRight, selectedIndex )
 
 	local currentAmmoData = groupAmmoTypes[newIndex or 1]
 
-	local playerPed = PlayerPedId()
+	local playerPed = cache.ped
 	local ammoType = ("%s%s"):format( currentWeapon.ammo, currentAmmoData[1] )
 
-	local ammoHash = GetHashKey( ammoType )
+	local ammoHash = joaat( ammoType )
 	local currentAmmo = GetPedAmmoByType(playerPed, ammoHash)
 
 	-- if currentAmmo <= 1 and groupType == 'arrow' then

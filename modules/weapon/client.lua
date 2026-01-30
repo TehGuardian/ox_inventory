@@ -23,8 +23,8 @@ local scopesComps = {
 }
 
 local function removeScopeComponentFromWeapon( playerPed, weaponHash )
-	for _, comp in ipairs( scopesComps ) do 
-		RemoveWeaponComponentFromPed( playerPed, GetHashKey(comp), weaponHash ) 
+	for _, comp in ipairs( scopesComps ) do
+		RemoveWeaponComponentFromPed( playerPed, GetHashKey(comp), weaponHash )
 	end
 end
 
@@ -49,7 +49,7 @@ function sortear_com_tint_no_fim(lista)
 end
 
 local function getSlotHashByComponent( component )
-	local hash 
+	local hash
 
 	if string.find( component, "_GRIP") then
 		hash = GetHashKey("egkzxeea_0x6c331a5f")
@@ -71,7 +71,7 @@ local function getSlotHashByComponent( component )
 		hash = GetHashKey("hapviwga_0x57575690")
 	end
 
-	return hash 
+	return hash
 end
 
 function Weapon.Equip(item, data, noWeaponAnim)
@@ -132,7 +132,7 @@ function Weapon.Equip(item, data, noWeaponAnim)
         while not HasWeaponAssetLoaded(data.hash) do
             Wait(0)
         end
-		
+
 		-- RemoveAmmoFromPed
 		N_0xf4823c813cb8277d(playerPed, data.hash, currentWeaponAmmo, `REMOVE_REASON_DEBUG`)
 
@@ -150,17 +150,17 @@ function Weapon.Equip(item, data, noWeaponAnim)
 		if data.throwable then
     		GiveWeaponToPed_2(playerPed, data.hash, tonumber(item.count), true, false, 0, false, 0.5, 1.0, 0, false, 0.0, false)
 			-- Citizen.InvokeNative(0xB282DC6EBD803C75, playerPed, data.hash, tonumber(item.count), true, 0) -- GIVE_DELAYED_WEAPON_TO_PED
-		else	
+		else
     		GiveWeaponToPed_2(playerPed, data.hash, 0, true, false, 0, false, 0.5, 1.0, 0, false, 0.0, false)
 			SetAmmoTypeForPedWeapon( playerPed,  data.hash,  GetHashKey(item.ammo) )
 		end
 
-		local isSniperRifle = 	data.hash == `WEAPON_SNIPERRIFLE_ROLLINGBLOCK` or 
-								data.hash == `WEAPON_SNIPERRIFLE_ROLLINGBLOCK_EXOTIC` or 
+		local isSniperRifle = 	data.hash == `WEAPON_SNIPERRIFLE_ROLLINGBLOCK` or
+								data.hash == `WEAPON_SNIPERRIFLE_ROLLINGBLOCK_EXOTIC` or
 								data.hash == `WEAPON_SNIPERRIFLE_CARCANO`
 
 		local components = sortear_com_tint_no_fim(item.metadata.components)
-		
+
 		if isSniperRifle then
 			removeScopeComponentFromWeapon( playerPed, data.hash )
 		end
@@ -173,7 +173,7 @@ function Weapon.Equip(item, data, noWeaponAnim)
 			if components[1] then
 				RemoveAllWeaponComponents( data.hash )
 			end
-	
+
 			CreateThread(function()
 				-- Wait(500)
 
@@ -225,44 +225,56 @@ function Weapon.Equip(item, data, noWeaponAnim)
 
 	-- IsWeaponAGun
 	if IsWeaponAGun(data.hash) ~= 0 then
-		Citizen.CreateThreadNow(function()
-			while GetCurrentPedWeaponEntityIndex(playerPed, 0) == 0 do
-				Wait(0)
-			end
+    Citizen.CreateThreadNow(function()
+        -- Wait until the weapon is actually in hand
+        while GetCurrentPedWeaponEntityIndex(playerPed, 0) == 0 do
+            Wait(0)
+        end
 
-			if not item?.slot == data.slot then
-				--[[ Garantir que ainda seja a mesma arma. ]]
-				return
-			end
+        -- Very important safety check: make sure we're still holding the same slot
+        if not item or item.slot ~= data.slot then
+            return
+        end
 
-			local weaponEntityId = GetCurrentPedWeaponEntityIndex(playerPed, 0)
+        local weaponEntityId = GetCurrentPedWeaponEntityIndex(playerPed, 0)
+        if weaponEntityId == 0 then
+            return  -- entity disappeared in the meantime (edge case)
+        end
 
-			local degradation, soot, dirt, damage in item.metadata
-		
-			assert(degradation, 'Cade o degradation?')
+        local degradation = item.metadata?.degradation
+        local soot        = item.metadata?.soot
+        local dirt        = item.metadata?.dirt
+        local damage      = item.metadata?.damage   -- sometimes called wear / muzzleDamage etc.
 
-			-- SetWeaponDegradation
-			Citizen.InvokeNative(0xA7A57E89E965D839, weaponEntityId, degradation + 0.0001)
+        if degradation == nil then
+            -- log error or fallback value
+            print("^1[ox_inventory] Missing 'degradation' in metadata for slot " .. tostring(item.slot))
+            degradation = 0.0
+        end
 
-			assert(soot, 'Cade o soot?')
+        if soot == nil then
+            soot = 0.0
+        end
 
-			-- SetWeaponSoot
-			Citizen.InvokeNative(0xA9EF4AD10BDDDB57, weaponEntityId, soot + 0.0001, false)
+        if dirt == nil then
+            dirt = 0.0
+        end
 
-			assert(dirt, 'Cade o dirt?')
+        if damage == nil then
+            damage = 0.0
+        end
 
-			-- SetWeaponDirt
-			Citizen.InvokeNative(0x812CE61DEBCAB948, weaponEntityId, dirt + 0.0001, false)
+        -- Apply values (removed the suspicious +0.0001 — usually not needed)
+        -- If you added it to force an update/sync, there are better ways
+        Citizen.InvokeNative(0xA7A57E89E965D839,  weaponEntityId, degradation)   -- SetWeaponDegradation
+        Citizen.InvokeNative(0xA9EF4AD10BDDDB57,  weaponEntityId, soot, false)   -- SetWeaponSoot
+        Citizen.InvokeNative(0x812CE61DEBCAB948,  weaponEntityId, dirt, false)   -- SetWeaponDirt
+        Citizen.InvokeNative(0xE22060121602493B,  weaponEntityId, damage, false) -- SetWeaponDamage / muzzle wear
 
-			assert(damage, 'Cade o damage?')
-
-			-- SetWeaponDamage
-			Citizen.InvokeNative(0xE22060121602493B, weaponEntityId, damage + 0.0001, false)
-
-			--[[ Os estados de degradação foram aplicados, notificar os outros scripts... ]]
-			TriggerEvent('ox_inventory:equippedWeaponDegradationIsReady', item.slot)
-		end)
-	end
+        -- Notify other systems that visual/physical weapon state is ready
+        TriggerEvent('ox_inventory:equippedWeaponDegradationIsReady', item.slot)
+    end)
+end
 
 	return item, sleep
 end
@@ -343,7 +355,7 @@ if IS_RDR3 then
 		-- if item.ammo then
 			-- RemoveAmmoFromPedByType()
 	end)
-	
+
 	local attachOriginal = true
 	RegisterNetEvent("ox_inventory:ReplaceAttachPoint", function(item, attachPoint)
 		local id = equippedWeapons[1] and 2 or 1
@@ -362,20 +374,20 @@ if IS_RDR3 then
 	-- 	addWeapon('WEAPON_SHOTGUN_SAWEDOFF', 0, 1)
 	-- 	addWeapon('WEAPON_SHOTGUN_SAWEDOFF', 1, 2)
 	-- end)
-	
-	AddEventHandler("ox_inventory:ReplaceCurrentAttachPoint", function(itemSlot)	
+
+	AddEventHandler("ox_inventory:ReplaceCurrentAttachPoint", function(itemSlot)
 		local weapon = lib.callback.await('ox_inventory:getItemBySlot', nil, itemSlot)
-	
+
 		local attachPoint = 0
-	
+
 		if attachOriginal then
 			attachPoint = 12
 		end
 
 		local weaponHash = GetHashKey(weapon.name)
-	
+
 		Citizen.InvokeNative(0xADF692B254977C0C, PlayerPedId(), weaponHash, true, attachPoint)
-	
+
 		attachOriginal = not attachOriginal
 	end)
 end
