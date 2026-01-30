@@ -79,7 +79,30 @@ return {
 		["exotic_meat_cooked"]                                       = {   type = 'Generic',	 label = "Cooked Pork Ham",                                              description = "Cooked pork ham",                                                                          						degrade = 2880,     weight = 300,           image = "exotic_meat_cooked",          	  consume = 1       },
 		["big_meat_cooked"]                                          = {   type = 'Generic',	 label = "Cooked Big Game Meat",                                         description = "Cooked big game meat",                                                                          						degrade = 2880,     weight = 300,           image = "big_meat_cooked",             	  consume = 1       },
 
-["raptor_meat"] = {
+    ["meat"] = {
+        label = "Raw Meat",
+        weight = 500,
+        stack = true,
+        close = false,
+        description = "Raw meat",
+        client = {
+            image = "meat.png"
+        },
+    },
+
+    ["steak"] = {
+        label = "Fried Steak",
+        weight = 600,
+        stack = true,
+        close = true,
+        description = "Perfectly fried steak",
+        client = {
+            image = "steak.png",
+            usetime = 2500
+        },
+    },
+
+    ["raptor_meat"] = {
         label = "Raptor Meat",
         weight = 300,
         stack = true,

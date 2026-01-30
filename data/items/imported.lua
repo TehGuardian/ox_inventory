@@ -6211,24 +6211,169 @@ return {
             usetime = 2500
         },
     },
-    ["meat"] = {
-        label = "Raw Meat",
-        weight = 500,
-        stack = true,
-        close = false,
-        description = "Raw meat",
+
+    ["outfit_stand"] = {
+        label = "outfit stand",
+        weight = 1,
+        stack = false,
+        close = true,
+        description = "outfit stand",
         client = {
-            image = "meat.png"
+            image = "outfit_stand.png",
+            usetime = 2500
         },
     },
-    ["herb"] = {
-        label = "Herbs",
+    ["thermometer"] = {
+        label = "Thermometer",
+        weight = 75,
+        stack = true,
+        close = true,
+        description = "Mercury thermometer for measuring body temperature",
+        client = {
+            image = "thermometer.png",
+            usetime = 2500
+        },
+    },
+    ["canned_apricots"] = {
+        label = "Canned Apricots",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "Sweet canned apricots",
+        client = {
+            image = "canned_apricots.png",
+            usetime = 2500
+        },
+    },
+    ["portable_locker"] = {
+        label = "portable_locker",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "portable_locker",
+        client = {
+            image = "portable_locker.png",
+            usetime = 2500
+        },
+    },
+    ["bs_handbag_doctor"] = {
+        label = "Doctor Bag",
+        weight = 2000,
+        stack = false,
+        close = true,
+        description = "A leather doctor bag",
+        client = {
+            image = "p_bag_leather_doctor.png",
+            usetime = 2500
+        },
+    },
+    ["moonshinekit"] = {
+        label = "Moonshine Kit",
+        weight = 10000,
+        stack = false,
+        close = true,
+        description = "Kit for making moonshine",
+        client = {
+            image = "moonshinekit.png",
+            usetime = 2500
+        },
+    },
+    ["bs_handbag_cane"] = {
+        label = "Cane Bag",
+        weight = 2000,
+        stack = false,
+        close = true,
+        description = "A leather cane bag",
+        client = {
+            image = "p_cane01x.png",
+            usetime = 2500
+        },
+    },
+    ["smelling_salts"] = {
+        label = "Smelling Salts",
         weight = 50,
         stack = true,
-        close = false,
-        description = "Cooking herbs",
+        close = true,
+        description = "Ammonia compound for reviving unconscious patients",
         client = {
-            image = "herb.png"
+            image = "smelling_salts.png",
+            usetime = 2500
+        },
+    },
+    ["stethoscope"] = {
+        label = "Stethoscope",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "Medical instrument for listening to heart and lung sounds",
+        client = {
+            image = "stethoscope.png",
+            usetime = 2500
+        },
+    },
+    ["field_surgery_kit"] = {
+        label = "Field Surgery Kit",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Emergency surgical tools for critical field operations",
+        client = {
+            image = "field_surgery_kit.png",
+            usetime = 2500
+        },
+    },
+    ["snowball"] = {
+        label = "snowball",
+        weight = 1,
+        stack = false,
+        close = true,
+        description = "snowball",
+        client = {
+            image = "snowball.png",
+            usetime = 2500
+        },
+    },
+    ["joint"] = {
+        label = "Joint",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "A rolled joint",
+        client = {
+            image = "joint.png",
+            usetime = 2500
+        },
+    },
+    ["flour_wheat"] = {
+        label = "Wheat Flour",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Cooking ingredient",
+        client = {
+            image = "flour_wheat.png"
+        },
+    },
+    ["letter"] = {
+        label = "letter",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Bank Letter",
+        client = {
+            image = "letter.png",
+            usetime = 2500
+        },
+    },
+    ["cleaningcloth"] = {
+        label = "cleaningcloth",
+        weight = 1,
+        stack = false,
+        close = true,
+        description = "cleaningcloth!",
+        client = {
+            image = "oldrag.png",
+            usetime = 2500
         },
     },
 }

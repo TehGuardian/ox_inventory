@@ -238,4 +238,14 @@ return {
             usetime = 2500
         },
     },
+    ["herb"] = {
+        label = "Herbs",
+        weight = 50,
+        stack = true,
+        close = false,
+        description = "Cooking herbs",
+        client = {
+            image = "herb.png"
+        },
+    },
 }

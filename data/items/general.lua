@@ -1,5 +1,4 @@
 return {
-
 	['badge_deputy'] = {
 		type = 'Generic',
 		label = 'Deputy Badge',
@@ -465,6 +464,50 @@ return {
         client = {
             usetime = 2500,
             notification = 'Using the hand fan'
+        },
+    },
+    ["tea"] = {
+        label = "Tea",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Hot tea",
+        client = {
+            image = "tea.png",
+            usetime = 2500
+        },
+    },
+    ["grape"] = {
+        label = "Grapes",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "Fresh grapes",
+        client = {
+            image = "grape.png",
+            usetime = 2500
+        },
+    },
+    ["cider"] = {
+        label = "Cider",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Apple cider",
+        client = {
+            image = "cider.png",
+            usetime = 2500
+        },
+    },
+    ["tequila"] = {
+        label = "Tequila",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Mexican tequila",
+        client = {
+            image = "tequila.png",
+            usetime = 2500
         },
     },
 
