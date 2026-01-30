@@ -108,4 +108,15 @@ return {
 		description = "Empty cloth bag",
 		weight = 200,
 	},
+    ["fossil_trilobite_crypto"] = {
+        label = "Trilobite crypto Fossil",
+        weight = 600,
+        stack = true,
+        close = true,
+        description = "Archology Collectible",
+        client = {
+            image = "fossil_cryptolithus_trilobite.png",
+            usetime = 2500
+        },
+    },
 }

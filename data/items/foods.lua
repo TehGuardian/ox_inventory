@@ -92,6 +92,15 @@ return {
 		-- image = "bread",
 		consume = 1
 	},
+    ["bread_sour"] = {
+        type = 'Generic',
+		label = "Bread Sour",
+		description = "The idea came from France",
+		degrade = 7000,
+		weight = 100,
+		-- image = "bread",
+		consume = 1
+	},
 	["oat_bread"] = {
         type = 'Generic',
 		label = "Oat Bread",
@@ -294,7 +303,7 @@ return {
 		weight = 300,
 		consume = 1
 	},
-	
+
 	-- ALCOHOLIC DRINKS
 	["alcohol"] = {
         type = 'Generic',
@@ -506,6 +515,50 @@ return {
 		consume = 1
 	},
 
+    ['raw_fish'] = {
+        type = 'Generic',
+        label = "Raw Fish",
+        description = "Fresh fish, ready for cooking",
+        weight = 500,
+        degrade = 0.002,
+        client = {
+            image = "raw_fish.png"
+        },
+    },
+
+    ['cooked_fish'] = {
+        type = 'Generic',
+        label = "Cooked Fish",
+        description = "Delicious cooked fish, ready to eat",
+        weight = 400,
+        degrade = 0.0015,
+        client = {
+            image = "cooked_fish.png"
+        },
+    },
+
+    ['raw_meat'] = {
+        type = 'Generic',
+        label = "Raw Meat",
+        description = "Fresh meat, ready for cooking",
+        weight = 800,
+        degrade = 0.002,
+        client = {
+            image = "raw_meat.png"
+        },
+    },
+
+    ['cooked_meat'] = {
+        type = 'Generic',
+        label = "Cooked Meat",
+        description = "Delicious cooked meat, ready to eat",
+        weight = 700,
+        degrade = 0.0015,
+        client = {
+            image = "cooked_meat.png"
+        },
+    },
+
 	["grandmasstew"] = {
         type = 'Generic',
 		label = "Grandma's Stew",
@@ -550,4 +603,36 @@ return {
 		weight = 600,
 		consume = 1
 	},
+    ["artichoke"] = {
+        label = "Artichoke",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A farm product",
+        client = {
+            image = "artichoke.png",
+            usetime = 2500
+        },
+    },
+    ["mutton"] = {
+        label = "Mutton",
+        weight = 800,
+        stack = true,
+        close = true,
+        description = "Raw sheep meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_mature.png"
+        },
+    },
+    ["consumable_yeast"] = {
+        label = "Yeast",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "Essential for fermentation",
+        client = {
+            image = "consumable_yeast.png"
+        },
+    },
 }

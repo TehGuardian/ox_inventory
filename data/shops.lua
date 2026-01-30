@@ -16,22 +16,22 @@ return {
 			{name = "compass", price = 0.50},
 			{name = "brush", price = 0.90},
 			{name = "empty_watering_can", price = 1.50},
-			{name = "bottle_empty", price = 0.05},	
-			{name = "axe", price = 2.35}, 
-			{name = "pickaxe", price = 2.35},	
-			{name = "sieve", price = 2.35}, 
-			{name = "campfire", price = 0.15}, 
+			{name = "bottle_empty", price = 0.05},
+			{name = "axe", price = 2.35},
+			{name = "pickaxe", price = 2.35},
+			{name = "sieve", price = 2.35},
+			{name = "campfire", price = 0.15},
 			{name = "emptybag", price = 0.01},
 			-- {name = "pigeon", price = 0.25},
 			-- {name = "scratch_ticket", price = 1.50},
-			-- {name = "dog_food", price = 1.00},	
+			-- {name = "dog_food", price = 1.00},
 		}, locations = {
 
-			vec3(2825.75, -1318.34, 46.76), -- Saint Denis
-			vec3( 1328.48, -1292.83, 77.02), -- Rhodes
-			vec3(-322.39, 803.89, 117.69), -- Valentine
+			-- vec3(2825.75, -1318.34, 46.76), -- Saint Denis
+			-- vec3( 1328.48, -1292.83, 77.02), -- Rhodes
+			-- vec3(-322.39, 803.89, 117.69), -- Valentine
 
-			vec3( 3025.47, 561.33, 44.54 )
+			-- vec3( 3025.47, 561.33, 44.54 )
 
 			-- vec3(-785.20, -1323.84, 43.89), -- BlackWater
 			--vec3(-3685.508, -2623.638, -13.431), -- Armadillo
@@ -48,9 +48,9 @@ return {
 		}, inventory = {
 			{name = "id_card", price = 2.00},
 		}, locations = {
-			vec3(2513.64, -1305.51, 48.77), -- Saint Denis
-			vec3(-279.01, 808.6, 119.19), -- Valentine
-			vec3(2906.2, 1308.63, 44.75), -- Annesburg
+			-- vec3(2513.64, -1305.51, 48.77), -- Saint Denis
+			-- vec3(-279.01, 808.6, 119.19), -- Valentine
+			-- vec3(2906.2, 1308.63, 44.75), -- Annesburg
 
 			-- vec3(-768.12, -1266.33, 43.87), -- Blackwater
 		}
@@ -72,12 +72,12 @@ return {
 			{name = "p_FinisdFishlure01x", price = 0.05},
 			{name = "p_finishdcrawd01x", price = 0.05},
 			{name = "p_finishedragonflylegendary01x", price = 2},
-			{name = "p_finisdfishlurelegendary01x", price = 0.12},						
-			{name = "p_finishdcrawdlegendary01x", price = 0.12},			
+			{name = "p_finisdfishlurelegendary01x", price = 0.12},
+			{name = "p_finishdcrawdlegendary01x", price = 0.12},
 			{name = "p_lgoc_spinner_v4", price = 0.12},
 			{name = "p_lgoc_spinner_v6", price = 0.12},
 		}, locations = {
-			vec3(2662.841, -1505.69, 45.978),  -- saint denis
+			-- vec3(2662.841, -1505.69, 45.978),  -- saint denis
 			-- vec3(-757.3929, -1360.937, 43.737)  -- black water
 		}
 	},
@@ -91,7 +91,7 @@ return {
 			{name = "weapon_melee_lantern", price = 2},
             {name = "weapon_melee_davy_lantern", price = 2},
 
-            {name = "WEAPON_KIT_BINOCULARS", price = 3},			
+            {name = "WEAPON_KIT_BINOCULARS", price = 3},
             {name = "WEAPON_LASSO", price = 2.50},
             {name = "WEAPON_MELEE_KNIFE", price = 2.50},
             {name = "WEAPON_BOW", price = 20},
@@ -106,7 +106,7 @@ return {
             {name = "WEAPON_PISTOL_MAUSER", price = 30, currency = "gold"},
 			{name = "WEAPON_REPEATER_EVANS", price = 40},
             {name = "WEAPON_RIFLE_VARMINT", price = 10},
-            {name = "WEAPON_REPEATER_CARBINE", price = 20},	
+            {name = "WEAPON_REPEATER_CARBINE", price = 20},
 
             {name = "ammo_22", price = 0.01},
             {name = "ammo_revolver", price = 0.04},
@@ -118,10 +118,10 @@ return {
 
 			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, locations = {
-			vec3(2715.9, -1285.04, 49.63), -- Saint Denis
-			vec3(1323.09, -1321.63, 77.8), -- Rhodes
-			vec3(2946.47, 1319.74, 44.88), -- Annesburg
-			vec3(-281.26, 780.72, 119.49), -- Valentine
+			-- vec3(2715.9, -1285.04, 49.63), -- Saint Denis
+			-- vec3(1323.09, -1321.63, 77.8), -- Rhodes
+			-- vec3(2946.47, 1319.74, 44.88), -- Annesburg
+			-- vec3(-281.26, 780.72, 119.49), -- Valentine
 			--vec3(-5508.22, -2964.26, -0.62), -- Tumb
 		}
 	},
@@ -136,10 +136,10 @@ return {
 			{name = "newspaper", price = 0.45},
 			{ name = 'weapon_kit_camera', price = 10},
 		}, locations = {
-			vec3(2696.89, -1385.2, 46.02), -- Saint Denis
-			vec3(-791.61, -1289.63, 43.44), -- BlackWater
-			vec3(1239.38, -1287.44, 76.73), -- Rhodes
-			vec3(-1837.3, -423.0, 160.63), -- Strawberry
+			-- vec3(2696.89, -1385.2, 46.02), -- Saint Denis
+			-- vec3(-791.61, -1289.63, 43.44), -- BlackWater
+			-- vec3(1239.38, -1287.44, 76.73), -- Rhodes
+			-- vec3(-1837.3, -423.0, 160.63), -- Strawberry
 			--vec3(-3642.41, -2618.9, -13.94), -- Armadillo
 		}
 	},
@@ -155,12 +155,12 @@ return {
 			{name = "tonic_horse_stimulant", price = 1.50},
 			{name = "tonic_horse_potent_cure", price = 1.50},
 		}, locations = {
-			vec3(2510.71, -1456.25, 46.13), -- saint denis
-			vector3(-365.05, 791.96, 116.15), -- valentine
+			-- vec3(2510.71, -1456.25, 46.13), -- saint denis
+			-- vector3(-365.05, 791.96, 116.15), -- valentine
 			-- vec3(-878.33, -1367.98, 43.34), -- blackwater
 		}
 	},
-	
+
 	Farmacia = {
 		name = 'Farmacia',
 		prompt = false,
@@ -181,7 +181,7 @@ return {
 		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
-		}, 
+		},
 		inventory = {
 			{name = "lockpick", price = 2 },
 			{name = "lockpickr", price = 5 },
@@ -190,8 +190,8 @@ return {
 			{ name = 'handcuffs', price = 5 },
 			{ name = 'handcuffs_keys', price = 1 },
 		}, locations = {
-			vec3(2831.45, -1054.33, 43.78), -- saint dennis
-			vec3(2955.12, 1419.45, 44.87), -- Van Horn
+			-- vec3(2831.45, -1054.33, 43.78), -- saint dennis
+			-- vec3(2955.12, 1419.45, 44.87), -- Van Horn
 
 		}
 	},
@@ -202,7 +202,7 @@ return {
 		groups = shared.police,
 		blip = {
 			id = 110, colour = 84, scale = 0.8
-		}, 
+		},
 		inventory = {
 			{ name = 'badge_officer', price = 0, grade = nil },
 			{ name = 'badge_texas_ranger', price = 0, grade = nil },
@@ -212,10 +212,10 @@ return {
 
 			{ name = 'handcuffs', price = 0 },
 			{ name = 'handcuffs_keys', price = 0 },
-			-- {name = "pigeon", price = 0.15},	
+			-- {name = "pigeon", price = 0.15},
 
 			{ name = 'weapon_kit_camera', price = 5, grade = nil },
-			{ name = "weapon_kit_binoculars", price = 0.80},		
+			{ name = "weapon_kit_binoculars", price = 0.80},
 			{ name = 'weapon_melee_knife', price = 0.30 },
 			{ name = 'weapon_lasso', price = 0.20 },
 
@@ -239,14 +239,14 @@ return {
 			{ name = 'weapon_rifle_springfield', price = 20, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_rifle_boltaction', price = 28, metadata = { registered = true, serial = 'OFICIAL' } },
 		}, locations = {
-			vec3(2494.307, -1304.298, 48.953), -- saint dennis
-			vec3(1361.17, -1305.839, 77.760), -- rhodes			
-			vec3(2906.925, 1315.27, 44.938), -- annesburg
-			vec3(-278.4373, 805.3104, 119.38), -- valentine
-			vec3(-1814.101, -354.86, 164.64), -- Strawberry
-			vec3(-764.753, -1272.402, 44.0413), -- blackwater
-			vec3(-3623.315, -2602.468, -13.342), -- armadillo
-			vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
+			-- vec3(2494.307, -1304.298, 48.953), -- saint dennis
+			-- vec3(1361.17, -1305.839, 77.760), -- rhodes
+			-- vec3(2906.925, 1315.27, 44.938), -- annesburg
+			-- vec3(-278.4373, 805.3104, 119.38), -- valentine
+			-- vec3(-1814.101, -354.86, 164.64), -- Strawberry
+			-- vec3(-764.753, -1272.402, 44.0413), -- blackwater
+			-- vec3(-3623.315, -2602.468, -13.342), -- armadillo
+			-- vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
 		}
 	},
 
@@ -259,7 +259,7 @@ return {
 			{ name = 'axe',  price = 5 },
 		}
 	},
-	
+
 	MineShop = {
 		name = 'Minerador',
 		prompt = false,
@@ -301,9 +301,9 @@ return {
 			{name = "weed_seed", price = 0.05},
 
 		}, locations = {
-			vec3(2587.82, -1010.6, 44.05), -- Saint Denis
-			vec3(-965.36, -1252.72, 53.78), -- BlackWater
-			vec3(-404.62, 662.44, 115.37), -- Valentine
+			-- vec3(2587.82, -1010.6, 44.05), -- Saint Denis
+			-- vec3(-965.36, -1252.72, 53.78), -- BlackWater
+			-- vec3(-404.62, 662.44, 115.37), -- Valentine
 		}
 	},
 }

@@ -210,4 +210,249 @@ return {
 		description = "Used to manufacture opium",
 		weight = 4500,
 	},
+
+        ["seed_tex"] = {
+        label = "New Austin Haze Seed",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "Seed for New Austin Haze strain.",
+        client = {
+            image = "seed_tex.png",
+            usetime = 2500
+        },
+    },
+    ["dried_tex"] = {
+        label = "Dried New Austin Haze",
+        weight = 3,
+        stack = true,
+        close = true,
+        description = "Dried New Austin Haze buds.",
+        client = {
+            image = "dried_tex.png"
+        },
+    },
+    ["loaded_pipe_kalka"] = {
+        label = "Pipe (Guarma Gold)",
+        weight = 250,
+        stack = false,
+        close = true,
+        description = "A pipe loaded with Guarma Gold bud.",
+        client = {
+            image = "smoking_pipe.png",
+            usetime = 2500
+        },
+    },
+    ["joint_kalka"] = {
+        label = "Guarma Gold Joint",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "A rolled Guarma Gold joint.",
+        client = {
+            image = "joint_kalka.png",
+            usetime = 2500
+        },
+    },
+    ["dried_kalka"] = {
+        label = "Dried Guarma Gold",
+        weight = 3,
+        stack = true,
+        close = true,
+        description = "Dried Guarma Gold buds.",
+        client = {
+            image = "dried_kalka.png"
+        },
+    },
+    ["leaf_tex"] = {
+        label = "New Austin Haze Leaf",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Freshly harvested New Austin Haze leaves.",
+        client = {
+            image = "leaf_tex.png"
+        },
+    },
+    ["trimmed_tex"] = {
+        label = "New Austin Haze Bud",
+        weight = 2,
+        stack = true,
+        close = true,
+        description = "Processed New Austin Haze weed, ready to roll.",
+        client = {
+            image = "trimmed_tex.png",
+            usetime = 2500
+        },
+    },
+    ["smoking_pipe"] = {
+        label = "Smoking Pipe",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A pipe for smoking herbs.",
+        client = {
+            image = "smoking_pipe.png",
+            usetime = 2500
+        },
+    },
+    ["trimmed_kalka"] = {
+        label = "Guarma Gold Bud",
+        weight = 2,
+        stack = true,
+        close = true,
+        description = "Processed Guarma Gold weed, ready to roll.",
+        client = {
+            image = "trimmed_kalka.png",
+            usetime = 2500
+        },
+    },
+    ["loaded_pipe_purp"] = {
+        label = "Pipe (Ambarino Frost)",
+        weight = 250,
+        stack = false,
+        close = true,
+        description = "A pipe loaded with Ambarino Frost bud.",
+        client = {
+            image = "smoking_pipe.png",
+            usetime = 2500
+        },
+    },
+    ["leaf_kalka"] = {
+        label = "Guarma Gold Leaf",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Freshly harvested Guarma Gold leaves.",
+        client = {
+            image = "leaf_kalka.png"
+        },
+    },
+    ["joint_purp"] = {
+        label = "Ambarino Frost Joint",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "A rolled Ambarino Frost joint.",
+        client = {
+            image = "joint_purp.png",
+            usetime = 2500
+        },
+    },
+    ["washed_purp"] = {
+        label = "Washed Ambarino Frost",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Cleaned Ambarino Frost leaves.",
+        client = {
+            image = "washed_purp.png"
+        },
+    },
+    ["loaded_pipe_tex"] = {
+        label = "Pipe (New Austin Haze)",
+        weight = 250,
+        stack = false,
+        close = true,
+        description = "A pipe loaded with New Austin Haze bud.",
+        client = {
+            image = "smoking_pipe.png",
+            usetime = 2500
+        },
+    },
+    ["seed_kalka"] = {
+        label = "Guarma Gold Seed",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "Seed for Guarma Gold strain.",
+        client = {
+            image = "seed_kalka.png",
+            usetime = 2500
+        },
+    },
+    ["seed_purp"] = {
+        label = "Ambarino Frost Seed",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "Seed for Ambarino Frost strain.",
+        client = {
+            image = "seed_purp.png",
+            usetime = 2500
+        },
+    },
+    ["washed_tex"] = {
+        label = "Washed New Austin Haze",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Cleaned New Austin Haze leaves.",
+        client = {
+            image = "washed_tex.png"
+        },
+    },
+    ["joint_tex"] = {
+        label = "New Austin Haze Joint",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "A rolled New Austin Haze joint.",
+        client = {
+            image = "joint_tex.png",
+            usetime = 2500
+        },
+    },
+    ["dried_purp"] = {
+        label = "Dried Ambarino Frost",
+        weight = 3,
+        stack = true,
+        close = true,
+        description = "Dried Ambarino Frost buds.",
+        client = {
+            image = "dried_purp.png"
+        },
+    },
+    ["processing_table"] = {
+        label = "Drying Rack",
+        weight = 5000,
+        stack = true,
+        close = true,
+        description = "A rack for drying and trimming herbs.",
+        client = {
+            image = "processing_table.png",
+            usetime = 2500
+        },
+    },
+    ["washed_kalka"] = {
+        label = "Washed Guarma Gold",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Cleaned Guarma Gold leaves.",
+        client = {
+            image = "washed_kalka.png"
+        },
+    },
+    ["leaf_purp"] = {
+        label = "Ambarino Frost Leaf",
+        weight = 5,
+        stack = true,
+        close = true,
+        description = "Freshly harvested Ambarino Frost leaves.",
+        client = {
+            image = "leaf_purp.png"
+        },
+    },
+    ["trimmed_purp"] = {
+        label = "Ambarino Frost Bud",
+        weight = 2,
+        stack = true,
+        close = true,
+        description = "Processed Ambarino Frost weed, ready to roll.",
+        client = {
+            image = "trimmed_purp.png",
+            usetime = 2500
+        },
+    },
 }

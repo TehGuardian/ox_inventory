@@ -79,5 +79,224 @@ return {
 		["exotic_meat_cooked"]                                       = {   type = 'Generic',	 label = "Cooked Pork Ham",                                              description = "Cooked pork ham",                                                                          						degrade = 2880,     weight = 300,           image = "exotic_meat_cooked",          	  consume = 1       },
 		["big_meat_cooked"]                                          = {   type = 'Generic',	 label = "Cooked Big Game Meat",                                         description = "Cooked big game meat",                                                                          						degrade = 2880,     weight = 300,           image = "big_meat_cooked",             	  consume = 1       },
 
+["raptor_meat"] = {
+        label = "Raptor Meat",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "Raw hawk meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_bird.png"
+        },
+    },
+    ["rabbit_meat"] = {
+        label = "Rabbit Meat",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "Raw rabbit meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_exotic.png"
+        },
+    },
+    ["carrion_bird_meat"] = {
+        label = "Carrion Bird Meat",
+        weight = 400,
+        stack = true,
+        close = true,
+        description = "Raw vulture meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_bird.png"
+        },
+    },
+    ["bear_meat"] = {
+        label = "Bear Meat",
+        weight = 2000,
+        stack = true,
+        close = true,
+        description = "Raw bear meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_mature.png"
+        },
+    },
+    ["cougar_claws"] = {
+        label = "Cougar Claws",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "Sharp cougar claws",
+        client = {
+            image = "claw.png"
+        },
+    },
+    ["iguana_meat"] = {
+        label = "Iguana Meat",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "Raw iguana meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_exotic.png"
+        },
+    },
+    ["fox_meat"] = {
+        label = "Fox Meat",
+        weight = 400,
+        stack = true,
+        close = true,
+        description = "Raw fox meat",
+        degrade = 0.0033333333333333,
+        client = {
+            image = "provision_meat_mature.png"
+        },
+    },
 
+    ["provision_goose_egg"] = {
+        label = "Goose Egg",
+        weight = 0.05,
+        stack = true,
+        close = true,
+        description = "Goose Egg",
+        client = {
+            image = "provision_goose_egg.png",
+            usetime = 2500
+        },
+    },
+    ["perfect_alligator_pelt"] = {
+        label = "Alligator Pelt",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Perfect (* * *)",
+        client = {
+            image = "pelt_alligator3.png",
+            usetime = 2500
+        },
+    },
+    ["tail_beaver"] = {
+        label = "Beaver tail",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Tail.",
+        client = {
+            image = "tail_beaver.png",
+            usetime = 2500
+        },
+    },
+    ["prime_hunt_bait"] = {
+        label = "Prime Hunting Bait",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Prime Bait for Hunting",
+        client = {
+            image = "prime_hunt_bait.png",
+            usetime = 2500
+        },
+    },
+    ["poor_bull_pelt"] = {
+        label = "Bull Pelt",
+        weight = 1500,
+        stack = true,
+        close = true,
+        description = "Poor (*)",
+        client = {
+            image = "pelt_bull.png",
+            usetime = 2500
+        },
+    },
+    ["good_bull_pelt"] = {
+        label = "Bull Pelt",
+        weight = 1500,
+        stack = true,
+        close = true,
+        description = "Good (* *)",
+        client = {
+            image = "pelt_bull2.png",
+            usetime = 2500
+        },
+    },
+    ["good_moose_pelt"] = {
+        label = "Moose Pelt",
+        weight = 1500,
+        stack = true,
+        close = true,
+        description = "Good (* *)",
+        client = {
+            image = "pelt_moose2.png",
+            usetime = 2500
+        },
+    },
+    ["good_boar_pelt"] = {
+        label = "Boar Pelt",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Good (* *)",
+        client = {
+            image = "pelt_boar_skin2.png",
+            usetime = 2500
+        },
+    },
+    ["good_goat_pelt"] = {
+        label = "Goat Pelt",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Good (* *)",
+        client = {
+            image = "pelt_goat2.png",
+            usetime = 2500
+        },
+    },
+    ["poor_elk_pelt"] = {
+        label = "Elk Pelt",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Poor (*)",
+        client = {
+            image = "pelt_elk.png",
+            usetime = 2500
+        },
+    },
+    ["tooth_snaket"] = {
+        label = "Snake tooth",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Snake tooth.",
+        client = {
+            image = "tooth_snaket.png",
+            usetime = 2500
+        },
+    },
+    ["perfect_cow_pelt"] = {
+        label = "Cow Pelt",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Perfect (* * *)",
+        client = {
+            image = "pelt_cow3.png",
+            usetime = 2500
+        },
+    },
+    ["perfect_boar_pelt"] = {
+        label = "Boar Pelt",
+        weight = 500,
+        stack = true,
+        close = true,
+        description = "Perfect (* * *)",
+        client = {
+            image = "pelt_boar_skin3.png",
+            usetime = 2500
+        },
+    },
 }

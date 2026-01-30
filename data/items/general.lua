@@ -336,4 +336,136 @@ return {
 		consume = 0
 	},
 
+    ["canteen50"] = {
+        label = "Canteen",
+        weight = 300,
+        stack = false,
+        close = true,
+        description = "Canteen 50% Full",
+        client = {
+            image = "canteen50.png",
+            usetime = 2500
+        },
+    },
+
+    ['ammo_box_revolver'] = {
+        type = 'Generic',
+        label = 'Revolver Ammo Box',
+        description = 'A box containing various revolver ammunition.',
+        weight = 1000,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_repeater'] = {
+        type = 'Generic',
+        label = 'Repeater Ammo Box',
+        description = 'A box containing various repeater ammunition.',
+        weight = 1500,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_rifle'] = {
+        type = 'Generic',
+        label = 'Rifle Ammo Box',
+        description = 'A box containing various rifle ammunition.',
+        weight = 2000,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_shotgun'] = {
+        type = 'Generic',
+        label = 'Shotgun Ammo Box',
+        description = 'A box containing various shotgun ammunition.',
+        weight = 2500,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_bow'] = {
+        type = 'Generic',
+        label = 'Bow Ammo Box',
+        description = 'A box containing various bow ammunition.',
+        weight = 500,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_pistol'] = {
+        type = 'Generic',
+        label = 'Pistol Ammo Box',
+        description = 'A box containing various pistol ammunition.',
+        weight = 800,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['ammo_box_rifle_elephant'] = {
+        type = 'Generic',
+        label = 'Elephant Rifle Ammo Box',
+        description = 'A box containing various elephant rifle ammunition.',
+        weight = 3000,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the ammo box'
+        },
+    },
+
+    ['notebook'] = {
+        type = 'Generic',
+        label = 'Notebook',
+        description = 'A small notebook for jotting down notes or sketches.',
+        weight = 200,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Opening the notebook'
+        },
+    },
+
+    ['pomade'] = {
+        type = 'Generic',
+        label = 'Pomade',
+        description = 'A small tin of pomade for styling hair.',
+        weight = 100,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Using the pomade'
+        },
+    },
+
+    ['fan'] = {
+        type = 'Generic',
+        label = 'Hand Fan',
+        description = 'A decorative hand fan to keep cool.',
+        weight = 150,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Using the hand fan'
+        },
+    },
+
 }

@@ -160,4 +160,83 @@ return {
 		description = "Manual farming tool used to level the ground",
 		weight = 400,
 	},
+    ["wash_barrel"] = {
+        label = "Wash Bucket",
+        weight = 5000,
+        stack = true,
+        close = true,
+        description = "A barrel for washing herbs.",
+        client = {
+            image = "wash_barrel.png",
+            usetime = 2500
+        },
+    },
+    ["injection_saline"] = {
+        label = "Rope Tourniquet",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "Hydration and blood volume replacement - safe basic treatment",
+        client = {
+            image = "rope_tourniquet.png",
+            usetime = 2500
+        },
+    },
+    ["cotton_band"] = {
+        label = "Cotton Bandage",
+        weight = 0,
+        stack = true,
+        close = true,
+        description = "A medical bandage for treating wounds",
+        client = {
+            image = "cotton_band.png",
+            usetime = 2500
+        },
+    },
+    ["goldpan"] = {
+        label = "Gold Pan",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "equipment for gold panning",
+        client = {
+            image = "goldpan.png",
+            usetime = 2500
+        },
+    },
+
+    ['torch'] = {
+        type = 'Generic',
+        label = 'Torch',
+        description = 'A wooden torch to light your way in the dark.',
+        weight = 500,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Lighting the torch'
+        },
+    },
+
+    ['bedroll'] = {
+        type = 'Generic',
+        label = 'Bedroll',
+        description = 'A bedroll to set up a temporary camp.',
+        weight = 3000,
+        stack = false,
+        client = {
+            usetime = 2500,
+            notification = 'Setting up the bedroll'
+        },
+    },
+
+    ['goldsmelt'] = {
+        type = 'Generic',
+        label = 'Goldsmelt',
+        description = 'Refined gold ready for crafting.',
+        weight = 15000,
+        stack = false,
+        client = {
+            usetime = 2500,
+        },
+    },
 }

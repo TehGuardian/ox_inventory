@@ -216,5 +216,26 @@ return {
         consume = 1,
     },
 
-
+    ["provision_ro_flower_dragons"] = {
+        label = "Dragons Flower",
+        weight = 0.05,
+        stack = true,
+        close = true,
+        description = "Dragons Flower",
+        client = {
+            image = "provision_ro_flower_dragons.png",
+            usetime = 2500
+        },
+    },
+    ["consumable_herb_parasol_mushroom"] = {
+        label = "Parasol Mushroom",
+        weight = 0.4,
+        stack = true,
+        close = true,
+        description = "Parasol Mushroom",
+        client = {
+            image = "consumable_herb_parasol_mushroom.png",
+            usetime = 2500
+        },
+    },
 }
