@@ -4,13 +4,16 @@ local shopTypes = {}
 local shops = {}
 local createBlip = require 'modules.utils.client'.CreateBlip
 
-for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<string, OxShop>]]) do
+local prompt__Open
+
+for shopType, shopData in pairs(lib.load('data.shops') --[[@as table<string, OxShop>]]) do
 	local shop = {
 		name = shopData.name,
 		groups = shopData.groups or shopData.jobs,
 		blip = shopData.blip,
 		label = shopData.label,
-        icon = shopData.icon
+        icon = shopData.icon,
+		prompt = shopData.prompt,
 	}
 
 	if shared.target then
@@ -27,6 +30,32 @@ for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<strin
 		blip.name = ('ox_shop_%s'):format(shopType)
 		AddTextEntry(blip.name, shop.name or shopType)
 	end
+end
+
+---@param point CPoint
+local function nearbyShop(point)
+	---@diagnostic disable-next-line: param-type-mismatch
+	if IS_GTAV then
+		DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 150, 30, 222, false, false, 0, true, false, false, false)
+	end
+
+	if IS_RDR3 and not point.prompt then
+		Citizen.InvokeNative(0x2A32FAA57B937173, 0x07DCE236, point.coords.x, point.coords.y, point.coords.z, 0,0,0,0,0,0,0.15, 0.15,1.0, 30, 150, 30, 222, 0, 0, 2, 0, 0, 0, 0)
+	end
+
+	if IS_RDR3 and point.prompt then
+		if promptHelper:hasPromptHoldModeCompleted(prompt__Open) then
+			client.openInventory('shop', { id = point.invId, type = point.type })
+		end
+
+		goto continue
+	end
+
+	if point.isClosest and point.currentDistance < 1.2 and IsControlJustReleased(0, 38) then
+		client.openInventory('shop', { id = point.invId, type = point.type })
+	end
+
+	::continue::
 end
 
 ---@param point CPoint
@@ -102,6 +131,24 @@ local function wipeShops()
 	table.wipe(shops)
 end
 
+local function createShopPrompt(point)
+	if point.prompt then
+		prompt__Open = PromptBuilder:new()
+			:setControl(`INPUT_QUICK_USE_ITEM`)
+			:setText(('Abrir %s'):format(point.label))
+			:setMode('Hold', 500)
+			:setPoint(vector3(point.coords.x, point.coords.y, point.coords.z))
+			:setRadius(2.0)
+			:build()
+	end
+end
+
+local function deleteShopPrompt(point)
+	if prompt__Open then
+		prompt__Open = PromptDelete(prompt__Open)
+	end
+end
+
 local function refreshShops()
 	wipeShops()
 
@@ -147,7 +194,7 @@ local function refreshShops()
 							scenario = target.scenario,
 							label = label,
 							groups = shop.groups,
-							icon = shop.icon or 'fas fa-shopping-basket',
+							icon = shop.icon,
 							iconColor = target.iconColor,
 							onEnter = onEnterShop,
 							onExit = onExitShop,
@@ -162,14 +209,13 @@ local function refreshShops()
 							zoneId = Utils.CreateBoxZone(target, {
                                 {
                                     name = shopid,
-                                    icon = shop.icon or 'fas fa-shopping-basket',
+                                    icon = 'fas fa-shopping-basket',
                                     label = label,
                                     groups = shop.groups,
                                     onSelect = function()
                                         client.openInventory('shop', { id = i, type = type })
                                     end,
                                     iconColor = target.iconColor,
-                                    distance = target.distance
                                 }
                             }),
 							blip = blip and createBlip(blip, target.coords)
@@ -181,7 +227,6 @@ local function refreshShops()
 			end
 		elseif shop.locations then
 			if not hasShopAccess(shop) then goto skipLoop end
-            local shopPrompt = { icon = 'fas fa-shopping-basket' }
 
 			for i = 1, #shop.locations do
 				local coords = shop.locations[i]
@@ -189,16 +234,15 @@ local function refreshShops()
 
 				shops[id] = lib.points.new(coords, 16, {
 					coords = coords,
-					distance = 16,
+					distance = 2.0,
 					inv = 'shop',
 					invId = i,
 					type = type,
-                    marker = client.shopmarker,
-                    prompt = {
-                        options = shop.icon and { icon = shop.icon } or shopPrompt,
-                        message = ('**%s**  \n%s'):format(label, locale('interact_prompt', GetControlInstructionalButton(0, 38, true):sub(3)))
-                    },
-					nearby = Utils.nearbyMarker,
+					onEnter = createShopPrompt,
+					onExit = deleteShopPrompt,
+					label = shop.name,
+					prompt = shop.prompt,
+					nearby = nearbyShop,
 					blip = blip and createBlip(blip, coords)
 				})
 			end
@@ -208,7 +252,12 @@ local function refreshShops()
 	end
 end
 
+AddEventHandler('ox_inventory:openShop', function(data)
+	client.openInventory('shop', data)
+end)
+
 return {
 	refreshShops = refreshShops,
 	wipeShops = wipeShops,
 }
+
