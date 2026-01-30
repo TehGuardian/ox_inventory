@@ -1,4 +1,4 @@
-# 📦 QC_OX_Inventory
+# 📦 OX_Inventory RSG Branch
 
 A complete inventory system for RedM, implementing items, weapons, shops, stashes, and advanced features with multi-framework support.
 
@@ -72,17 +72,13 @@ A complete inventory system for RedM, implementing items, weapons, shops, stashe
    ```
    Download the latest release and extract to your resources folder
    ```
-2. **Rename Script**
-   ```
-    Rename QC_OX_Inventory to be ox_inventory
-   ```
-
-3. **Database Setup**
+   
+2. **Database Setup**
    ```sql
    -- Import the provided SQL file (see INSTALLATION folder)
    ```
 
-4. **RSG Core Money Items Fix** (RSG Framework Only)
+3. **RSG Core Money Items Fix** (RSG Framework Only)
 
    ⚠️ **CRITICAL**: If using RSG Core, you MUST replace the `moneyitems.lua` file for proper functionality.
 
@@ -206,6 +202,7 @@ This is a RedM-focused fork with the following changes:
 
 **RedM Adaptation**:
 - Quantum Projects Development Team
+- TehGuardian
 - Community contributors
 
 ---
@@ -223,7 +220,6 @@ You should have received a copy of the GNU General Public License along with thi
 ## 🐛 Support
 
 This is an unofficial RedM adaptation. For support:
-- **Quantum Projects Discord**: https://discord.gg/kJ8ZrGM8TS
 - Check inline code documentation
 - Review data file examples
 - Understand that this is work-in-progress
