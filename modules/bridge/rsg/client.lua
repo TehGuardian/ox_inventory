@@ -67,14 +67,7 @@ end)
 
 RegisterNetEvent('rsg-inventory:client:ItemBox')
 AddEventHandler('rsg-inventory:client:ItemBox', function(item, action, amount)
---[[     local actionType = action == 'remove' and 'Removed' or 'Added'
-    local itemLabel = item.label or item.name
-    -- Display a notification to the player
-    lib.notify({
-        title = actionType .. " Item",
-        description = string.format("%s x%d", itemLabel, amount),
-        type = action == 'remove' and 'error' or 'success'
-    }) ]]
+    print('rsg-inventory:client:ItemBox', 'is deprecated')
 end)
 
 local function export(exportName, func)

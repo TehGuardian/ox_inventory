@@ -492,48 +492,24 @@ local function conversionScript()
 	conversionScript = func()
 end
 
--- RegisterCommand('convertinventory', function(source, args)
--- 	if source ~= 0 then return warn('This command can only be executed with the server console.') end
--- 	if type(conversionScript) == 'function' then conversionScript() end
--- 	local arg = args[1]
+RegisterCommand('convertinventory', function(source, args)
+	if source ~= 0 then return warn('This command can only be executed with the server console.') end
+	if type(conversionScript) == 'function' then conversionScript() end
+	local arg = args[1]
 
--- 	local convert = arg and conversionScript[arg]
+	local convert = arg and conversionScript[arg]
 
--- 	if not convert then
--- 		return warn('Invalid conversion argument. Valid options: esx, esxproperty, qb, linden')
--- 	end
+	if not convert then
+		return warn('Invalid conversion argument. Valid options: esx, esxproperty, qb, qbx, linden, rsg')
+	end
 
--- 	CreateThread(convert)
--- end, true)
-
-
-local discordWebHook = "DISCORD_WEBHOOK_TO_LOG"
-
-function logs(playerId, message)
-	local playerDiscord = GetPlayerIdentifierByType( playerId, "discord")
-
-    local embedData = {
-        {
-            ["title"] = "Staff Give Item",
-            ["color"] = 4777493,
-            ['type'] = "rich",
-            ["footer"] = {
-                ["text"] = os.date("%c"),
-            },
-            ["description"] = ("%s \n <@%s>"):format(message, playerDiscord:gsub('discord:', '')),
-            ["author"] = {
-                ["name"] = 'Valiria Logs',
-            },
-        }
-    }
-
-    PerformHttpRequest(discordWebHook, function(err, text, headers) end, 'POST', json.encode({ username = "Fiscal", embeds = embedData}), { ['Content-Type'] = 'application/json' })
-end
+	CreateThread(convert)
+end, true)
 
 lib.addCommand({'additem', 'giveitem'}, {
 	help = 'Gives an item to a player with the given id',
 	params = {
-		{ name = 'target', type = 'number', help = 'The player to receive the item' },
+		{ name = 'target', type = 'playerId', help = 'The player to receive the item' },
 		{ name = 'item', type = 'string', help = 'The name of the item' },
 		{ name = 'count', type = 'number', help = 'The amount of the item to give', optional = true },
 		{ name = 'type', help = 'Sets the "type" metadata to the value', optional = true },
@@ -543,45 +519,19 @@ lib.addCommand({'additem', 'giveitem'}, {
 	local item = Items(args.item)
 
 	if item then
-		local User = API.GetUserFromUserId( tonumber( args.target ) )
-
-		if not User then
-			return Citizen.Trace(('Invalid user %s'):format(args.target))
-		end
-
-		local reason
-
-		if source > 0 then
-			reason = print("Reason to give ")
-			if not reason or reason == '' then
-				if string.len( reason ) < 15 then
-					print("Needs to be more explanatory")
-					return
-				end
-				print("It is mandatory to provide a reason")
-				return
-			end
-		else
-			reason = "Givaldo via the TXAdmin Console"
-		end
-
-		local targetSource = User:GetSource()
-
-		local inventory = Inventory(targetSource) --[[@as OxInventory]]
-		local count = args.count or 1
+		local inventory = Inventory(args.target) --[[@as OxInventory]]
+		local count = args.count and math.max(args.count, 1) or 1
 
 		local success, response = Inventory.AddItem(inventory, item.name, count, args.type and { type = tonumber(args.type) or args.type })
 
 		if not success then
-			return Citizen.Trace(('Failed to give %sx %s to player %s (%s)'):format(count, item.name, targetSource, response))
+			return Citizen.Trace(('Failed to give %sx %s to player %s (%s)'):format(count, item.name, args.target, response))
 		end
 
 		source = Inventory(source) or { label = 'console', owner = 'console' }
 
 		if server.loglevel > 0 then
-			local msg = ('"%s" deu %sx %s (%s) para "%s"'):format(source.label, count, item.name, reason, inventory.label)
-			lib.logger(source.source, 'admin', msg)
-			logs(source.source, msg )
+			lib.logger(source.owner, 'admin', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label))
 		end
 	end
 end)
@@ -590,75 +540,62 @@ end)
 lib.addCommand('removeitem', {
 	help = 'Removes an item to a player with the given id',
 	params = {
-		{ name = 'target', type = 'number', help = 'The player to remove the item from' },
+		{ name = 'target', type = 'playerId', help = 'The player to remove the item from' },
 		{ name = 'item', type = 'string', help = 'The name of the item' },
-		{ name = 'count', type = 'number', help = 'The amount of the item to take' },
+		{ name = 'count', type = 'number', help = 'The amount of the item to take', optional = true },
 		{ name = 'type', help = 'Only remove items with a matching metadata "type"', optional = true },
 	},
 	restricted = 'group.admin',
 }, function(source, args)
 	local item = Items(args.item)
 
-	if item and args.count > 0 then
+	if item then
+		local inventory = Inventory(args.target) --[[@as OxInventory]]
+		local count = args.count and math.max(args.count, 1) or 1
 
-		local User = API.GetUserFromUserId( tonumber( args.target ) )
-
-		if not User then
-			return Citizen.Trace(('Usuário inválido %s'):format(args.target))
-		end
-
-		local targetSource = User:GetSource()
-
-		local inventory = Inventory( targetSource ) --[[@as OxInventory]]
-		local success, response = Inventory.RemoveItem(inventory, item.name, args.count, args.type and { type = tonumber(args.type) or args.type }, nil, true)
+		local success, response = Inventory.RemoveItem(inventory, item.name, count, args.type and { type = tonumber(args.type) or args.type }, nil, true)
 
 		if not success then
-			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(args.count, item.name, args.target, response))
+			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(count, item.name, args.target, response))
 		end
 
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
-			lib.logger(source.source, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label))
+			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, count, item.name, inventory.label))
 		end
 	end
 end)
 
--- lib.addCommand('setitem', {
--- 	help = 'Sets the item count for a player, removing or adding as needed',
--- 	params = {
--- 		{ name = 'target', type = 'number', help = 'The player to set the items for' },
--- 		{ name = 'item', type = 'string', help = 'The name of the item' },
--- 		{ name = 'count', type = 'number', help = 'The amount of items to set', optional = true },
--- 		{ name = 'type', help = 'Add or remove items with the metadata "type"', optional = true },
--- 	},
--- 	restricted = 'group.admin',
--- }, function(source, args)
--- 	local item = Items(args.item)
+lib.addCommand('setitem', {
+	help = 'Sets the item count for a player, removing or adding as needed',
+	params = {
+		{ name = 'target', type = 'playerId', help = 'The player to set the items for' },
+		{ name = 'item', type = 'string', help = 'The name of the item' },
+		{ name = 'count', type = 'number', help = 'The amount of items to set', optional = true },
+		{ name = 'type', help = 'Add or remove items with the metadata "type"', optional = true },
+	},
+	restricted = 'group.admin',
+}, function(source, args)
+	local item = Items(args.item)
 
--- 	if item then
--- 		local User = API.GetUserFromUserId(  args.target  )
+	if item then
+		local inventory = Inventory(args.target) --[[@as OxInventory]]
+		local count = args.count and math.max(args.count, 0) or 0
 
--- 		if not User then
--- 			return Citizen.Trace(('Usuário inválido %s'):format(args.target))
--- 		end
+		local success, response = Inventory.SetItem(inventory, item.name, count or 0, args.type and { type = tonumber(args.type) or args.type })
 
--- 		local targetSource = User:GetSource()
+		if not success then
+			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, count, args.target, response))
+		end
 
--- 		local inventory = Inventory( targetSource ) --[[@as OxInventory]]
--- 		local success, response = Inventory.SetItem(inventory, item.name, args.count or 0, args.type and { type = tonumber(args.type) or args.type })
+		source = Inventory(source) or {label = 'console', owner = 'console'}
 
--- 		if not success then
--- 			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, args.count, args.target, response))
--- 		end
-
--- 		source = Inventory(source) or {label = 'console', owner = 'console'}
-
--- 		if server.loglevel > 0 then
--- 			lib.logger(source.source, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count))
--- 		end
--- 	end
--- end)
+		if server.loglevel > 0 then
+			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, count))
+		end
+	end
+end)
 
 lib.addCommand('clearevidence', {
 	help = 'Clears a police evidence locker with the given id',
@@ -669,6 +606,8 @@ lib.addCommand('clearevidence', {
 	if not server.isPlayerBoss then return end
 
 	local inventory = Inventory(source)
+	if not inventory then return end
+
 	local group, grade = server.hasGroup(inventory, shared.police)
 	local hasPermission = group and server.isPlayerBoss(source, group, grade)
 
@@ -680,55 +619,31 @@ end)
 lib.addCommand('takeinv', {
 	help = 'Confiscates the target inventory, to restore with /restoreinv',
 	params = {
-		{ name = 'target', type = 'number', help = 'The player to confiscate items from' },
+		{ name = 'target', type = 'playerId', help = 'The player to confiscate items from' },
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-	local User = API.GetUserFromUserId( tonumber( args.target ) )
-
-	if not User then
-		return Citizen.Trace(('Usuário inválido %s'):format(args.target))
-	end
-
-	local targetSource = User:GetSource()
-
-	Inventory.Confiscate( targetSource )
+	Inventory.Confiscate(args.target)
 end)
 
 lib.addCommand({'restoreinv', 'returninv'}, {
 	help = 'Restores a previously confiscated inventory for the target',
 	params = {
-		{ name = 'target', type = 'number', help = 'The player to restore items to' },
+		{ name = 'target', type = 'playerId', help = 'The player to restore items to' },
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-	local User = API.GetUserFromUserId( tonumber( args.target ) )
-
-	if not User then
-		return Citizen.Trace(('Usuário inválido %s'):format(args.target))
-	end
-
-	local targetSource = User:GetSource()
-
-	Inventory.Return(targetSource)
+	Inventory.Return(args.target)
 end)
 
 lib.addCommand('clearinv', {
 	help = 'Wipes all items from the target inventory',
 	params = {
-		{ name = 'target', type = "number", help = 'The inventory to wipe items from' },
+		{ name = 'invId', help = 'The inventory to wipe items from' },
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-	local User = API.GetUserFromUserId( tonumber( args.target ) or source )
-
-	if not User then
-		return Citizen.Trace(('Usuário inválido %s'):format(args.target))
-	end
-
-	local targetSource = User:GetSource()
-
-	Inventory.Clear(targetSource)
+	Inventory.Clear(tonumber(args.invId) or args.invId == 'me' and source or args.invId)
 end)
 
 lib.addCommand('saveinv', {
@@ -748,17 +663,7 @@ lib.addCommand('viewinv', {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-
-
-	local User = API.GetUserFromUserId( tonumber( args.target ) )
-
-	if not User then
-		return Citizen.Trace(('Usuário inválido %s'):format(args.target))
-	end
-
-	local targetSource = User:GetSource()
-
-	Inventory.InspectInventory(source, targetSource)
+	Inventory.InspectInventory(source, tonumber(args.invId) or args.invId)
 end)
 
 RegisterNetEvent("inventory:server:forceRemoveItemWithNoDurability", function( slotId, itemName )
@@ -838,87 +743,6 @@ RegisterServerEvent('inventory:addWeaponFromPickup', function(pickupHash)
 	end
 end)
 
-RegisterNetEvent("inventory:tryPileMoney", function()
-	local playerId = source
-	local amountPerPack = 10
-
-	local itemName = "money_clip"
-
-	local amount = Inventory.GetItem( playerId, itemName, nil, true)
-
-	if amount >= amountPerPack then
-		Inventory.AddItem(playerId, "money_stack", 1)
-		Inventory.RemoveItem(playerId, itemName, amountPerPack)
-		return true
-	else
-		TriggerClientEvent("texas:notify:native", playerId, "Preciso ter 10 para fazer uma pilha")
-		return false
-	end
-end)
-
-RegisterNetEvent("inventory:removeOilGun", function()
-	local playerId = source
-
-    local Item = exports.ox_inventory:GetItem(playerId, 'oil_gun')
-
-    if Item.count < 1 then
-        Item = exports.ox_inventory:GetItem(playerId, 'oil_gun')
-        if Item.count < 1 then
-            return
-        end
-    end
-
-    return exports.ox_inventory:RemoveItem(playerId, Item.name, 1)
-end)
-
-
-RegisterNetEvent("inventory:tryHoneycombs", function()
-	local playerId = source
-	local amountPerPack = 10
-
-	local itemName = "honeycombs"
-	local amount = Inventory.GetItem( playerId, itemName, nil, true)
-
-	if amount >= amountPerPack then
-		local honeyMaxAmount = 5
-		local totalAmount = 5
-
-		Inventory.AddItem(playerId, "honey", totalAmount)
-		Inventory.AddItem(playerId, "honey_wax", honeyMaxAmount)
-
-		Inventory.RemoveItem(playerId, itemName, amountPerPack)
-		return true
-	else
-		TriggerClientEvent("texas:notify:native", playerId, "Preciso ter 10 para fazer mel")
-		return false
-	end
-end)
-
-RegisterNetEvent("inventory:tryCoalBox", function()
-	local playerId = source
-	local amountPerPack = 10
-
-	local itemName = "ore_coal_nugget"
-	local amount = Inventory.GetItem( playerId, itemName, nil, true)
-	local boxAmount = Inventory.GetItem( playerId, "container_box", nil, true)
-
-	if boxAmount < 1 then
-		TriggerClientEvent("texas:notify:native", playerId, "Preciso ter uma caixa de madeira")
-		return false
-	end
-
-	if amount >= amountPerPack then
-		Inventory.AddItem(playerId, "ore_coal_box", 1)
-
-		Inventory.RemoveItem(playerId, "container_box", 1)
-		Inventory.RemoveItem(playerId, itemName, amountPerPack)
-		return true
-	else
-		TriggerClientEvent("texas:notify:native", playerId, "Preciso ter 50 para fazer uma caixa")
-		return false
-	end
-end)
-
 local function reloadPlayerInventory (User, charId)
 	server.playerDropped( User:GetSource() )
 	Wait(1000)
@@ -954,7 +778,7 @@ AddEventHandler('ox_inventory:addAdditionalSlots', function( playerId, character
 
 	if res ~= nil then
 		Inventory.RemoveItem(playerId, "bag_container", 1)
-		local User = API.GetUserFromSource( playerId )
+		local User = Inventory( playerId )
 		reloadPlayerInventory( User, characterId )
 		TriggerClientEvent("texas:notify:simple", playerId, "Aumentei os espaços na minha bolsa")
 	else
@@ -966,7 +790,7 @@ AddEventHandler('ox_inventory:removeAdditionalSlots', function( playerId, charac
 	local res = MySQL.update.await('UPDATE character_inventory SET weight = 0, slots = 0 WHERE charId = ? ', { characterId })
 
 	if res ~= nil then
-		local User = API.GetUserFromSource( playerId )
+		local User = Inventory( playerId )
 
 		reloadPlayerInventory( User, characterId )
 

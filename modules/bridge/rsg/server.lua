@@ -85,10 +85,6 @@ local function setupPlayer(Player)
     -- NOW set up the inventory after methods are available
     server.setPlayerInventory(Player.PlayerData)
 
-    -- Add starter items and money items
-    Inventory.SetItem(Player.PlayerData.source, 'bread', 5)
-    Inventory.SetItem(Player.PlayerData.source, 'water', 5)
-
     -- Convert money to items if money items are enabled
     local cashDollars, cashCents = getParts(Player.PlayerData.money.cash)
     local bloodDollars, bloodCents = getParts(Player.PlayerData.money.bloodmoney)
