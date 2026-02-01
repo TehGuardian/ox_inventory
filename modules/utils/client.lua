@@ -121,14 +121,14 @@ exports('weaponWheel', Utils.WeaponWheel)
 
 function Utils.CreateBlip(settings, coords)
 	local blip
-		blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, coords.x, coords.y, coords.z)
+		blip = BlipAddForCoords(1664425300, coords.x, coords.y, coords.z)
 		SetBlipSprite(blip, settings.id, 1);
 
-		local blipColor = settings.colour and GetHashKey(settings.colour) or `BLIP_MODIFIER_MP_COLOR_32`
-		Citizen.InvokeNative(0x662D364ABF16DE2F, blip, blipColor);
+		local blipColor = settings.colour and joaat(settings.colour) or `BLIP_MODIFIER_MP_COLOR_32`
+		BlipAddModifier(blip, blipColor);
 
 		local varString = CreateVarString(10, 'LITERAL_STRING', settings.name);
-		Citizen.InvokeNative(0x9CB1A1623062F402, blip, varString)
+		SetBlipName(blip, varString)
 	return blip
 end
 

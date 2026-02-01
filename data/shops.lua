@@ -12,7 +12,7 @@ return {
 	General = {
 		name = 'General Store',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{name = "water", price = 0.05},
 			{name = "apple", price = 0.05},
@@ -31,7 +31,17 @@ return {
 			{name = "sieve", price = 2.35},
 			{name = "campfire", price = 0.15},
 			{name = "emptybag", price = 0.01},
-		}, targets = {
+		},
+        locations = {
+			vec3(1328.09, -1293.74, 77.02), -- Rhodes
+			vec3(-322.36, 803.84, 117.88), -- Valentine
+			vec3(-1791.22, -387.08, 160.33), -- Strawberry
+			vec3(2825.59, -1318.19, 46.76), -- Saint Denis
+			vec3(-5487.24, -2938.99, -0.39), -- Tumbleweed
+			vec3(-785.11, -1323.83, 43.86), -- Blackwater
+			vec3(3027.29, 562.30, 44.72), -- Van Horn
+		},
+        targets = {
 			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(1330.36 , -1292.74, 77.02)  , heading = 65.0, distance = 2.0 }, -- Rhodes
 			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(2824.44 , -1319.39, 46.75)  , heading = 320.0, distance = 2.0 }, -- Saint Denis
 			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-785.80 , -1322.13, 43.88)  , heading = 182.0, distance = 2.0 }, -- Blackwater
@@ -46,7 +56,7 @@ return {
 	Pexeiro = {
 		name = 'Acessorios de Pesca',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{name = "WEAPON_FISHINGROD", price = 0.5},
 			{name = "p_baitBread01x", price = 0.02},
@@ -63,7 +73,7 @@ return {
 			{name = "p_lgoc_spinner_v4", price = 0.12},
 			{name = "p_lgoc_spinner_v6", price = 0.12},
 		}, locations = {
-			-- vec3(2662.841, -1505.69, 45.978),  -- saint denis
+			-- vec3(2662.841, -1505.`BLIP_MODIFIER_MP_COLOR_32`, 45.978),  -- saint denis
 			-- vec3(-757.3929, -1360.937, 43.737)  -- black water
 		}
 	},
@@ -71,7 +81,7 @@ return {
 	Ammunation = {
 		name = 'Loja de Armas',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{name = "weapon_melee_lantern", price = 2},
             {name = "weapon_melee_davy_lantern", price = 2},
@@ -111,7 +121,7 @@ return {
 	Jornaleiro = {
 		name = 'Jornaleiro',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "newspaper", price = 0.45},
@@ -128,7 +138,7 @@ return {
 	Estabulo = {
 		name = 'Estabulo',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tonic_horse_reviver", price = 0.50},
@@ -144,7 +154,7 @@ return {
 	Farmacia = {
 		name = 'Farmacia',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tonic_potent_cure", price = 3.0},
@@ -158,7 +168,7 @@ return {
 	MercadoClandestino = {
 		name = 'Vendedor Klandestino',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "lockpick", price = 2 },
@@ -178,7 +188,7 @@ return {
 		name = 'Armário de Sheriff',
 		groups = shared.police,
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{ name = 'badge_officer', price = 0, grade = nil },
@@ -230,7 +240,7 @@ return {
 	LumberShop = {
 		name = 'Lenhador',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'axe',  price = 5 },
 		}
@@ -239,7 +249,7 @@ return {
 	MineShop = {
 		name = 'Minerador',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'pickaxe',  price = 5 },
 			{ name = 'weapon_melee_lantern',  price = 3 },
@@ -249,7 +259,7 @@ return {
 	IllegalShop = {
 		name = 'Vendedor Clandestino',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'distiller',  price = 250, count = 1 },
 			{ name = 'opiumtable', price = 200, count = 1 },
@@ -259,7 +269,7 @@ return {
 	Fazenda = {
 		name = 'Fazenda',
 		blip = {
-			id = 1475879922, colour = 69, scale = 0.8
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tobacco_seed", price = 0.05},
