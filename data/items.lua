@@ -27,6 +27,12 @@ return {
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
 		prop = "p_bread01x",
+        client = {
+			status = { hunger = 10 },
+			anim = 'eating',
+			prop = 'bread',
+			usetime = 5000,
+		},
 	},
 	water = {
 		label = "Water",
@@ -37,6 +43,12 @@ return {
 		degrade = 4320, -- Minutes
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
+        client = {
+			status = { thirst = 20 },
+			anim = 'drinking',
+			prop = 'bottle',
+			usetime = 5000,
+		},
 	},
 
 	p_baitcheese01x = {
@@ -908,7 +920,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_night_scented"] = {
+	provision_ro_flower_night_scented = {
 		label = "Night Scented Flower",
 		weight = 0.05,
 		stack = true,
@@ -919,7 +931,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_lady_slipper"] = {
+	provision_ro_flower_lady_slipper = {
 		label = "Lady Slipper Flower",
 		weight = 0.05,
 		stack = true,
@@ -930,7 +942,7 @@ return {
 		}
 	},
 
-	["consumable_herb_alaskan_ginseng"] = {
+	consumable_herb_alaskan_ginseng = {
 		label = "Alaskan Ginseng",
 		weight = 0.3,
 		stack = true,
@@ -941,7 +953,7 @@ return {
 		}
 	},
 
-	["consumable_herb_wintergreen_berry"] = {
+	consumable_herb_wintergreen_berry = {
 		label = "Wintergreen Berry",
 		weight = 0.3,
 		stack = true,
@@ -952,7 +964,7 @@ return {
 		}
 	},
 
-	["wheat"] = {
+	wheat = {
 		label = "Wheat",
 		weight = 100,
 		stack = true,
@@ -963,7 +975,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_bitterweed"] = {
+	provision_wldflwr_bitterweed = {
 		label = "Bitterweed",
 		weight = 0.3,
 		stack = true,
@@ -974,7 +986,7 @@ return {
 		}
 	},
 
-	["perfect_panther_pelt"] = {
+	perfect_panther_pelt = {
 		label = "Panther Pelt",
 		weight = 500,
 		stack = true,
@@ -985,7 +997,7 @@ return {
 		}
 	},
 
-	["good_cow_pelt"] = {
+	good_cow_pelt = {
 		label = "Cow Pelt",
 		weight = 500,
 		stack = true,
@@ -996,7 +1008,7 @@ return {
 		}
 	},
 
-	["opal_uncut"] = {
+	opal_uncut = {
 		label = "Uncut Opal",
 		weight = 100,
 		stack = true,
@@ -1007,7 +1019,7 @@ return {
 		}
 	},
 
-	["feathers"] = {
+	feathers = {
 		label = "Feathers",
 		weight = 500,
 		stack = true,
@@ -1018,7 +1030,7 @@ return {
 		}
 	},
 
-	["beak_duckf"] = {
+	beak_duckf = {
 		label = "Duck beak",
 		weight = 100,
 		stack = true,
@@ -1029,7 +1041,7 @@ return {
 		}
 	},
 
-	["claws_hawkt"] = {
+	claws_hawkt = {
 		label = "Hawk claws",
 		weight = 100,
 		stack = true,
@@ -1040,7 +1052,7 @@ return {
 		}
 	},
 
-	["provision_loon_egg"] = {
+	provision_loon_egg = {
 		label = "Loon Egg",
 		weight = 0.05,
 		stack = true,
@@ -1051,7 +1063,7 @@ return {
 		}
 	},
 
-	["perfect_javelina_pelt"] = {
+	perfect_javelina_pelt = {
 		label = "Javelina Pelt",
 		weight = 100,
 		stack = true,
@@ -1062,7 +1074,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_rat_tail"] = {
+	provision_ro_flower_rat_tail = {
 		label = "Rat Tail Flower",
 		weight = 0.05,
 		stack = true,
@@ -1073,7 +1085,7 @@ return {
 		}
 	},
 
-	["perfect_wolf_pelt"] = {
+	perfect_wolf_pelt = {
 		label = "Wolf Pelt",
 		weight = 500,
 		stack = true,
@@ -1084,7 +1096,7 @@ return {
 		}
 	},
 
-	["perfect_alligator_pelt"] = {
+	perfect_alligator_pelt = {
 		label = "Alligator Pelt",
 		weight = 500,
 		stack = true,
@@ -1095,7 +1107,7 @@ return {
 		}
 	},
 
-	["cigarette6"] = {
+	cigarette6 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -1106,7 +1118,7 @@ return {
 		}
 	},
 
-	["sapkit"] = {
+	sapkit = {
 		label = "Sap Tap",
 		weight = 100,
 		stack = true,
@@ -1117,7 +1129,7 @@ return {
 		}
 	},
 
-	["poor_elk_pelt"] = {
+	poor_elk_pelt = {
 		label = "Elk Pelt",
 		weight = 1000,
 		stack = true,
@@ -1128,7 +1140,7 @@ return {
 		}
 	},
 
-	["good_buffalo_pelt"] = {
+	good_buffalo_pelt = {
 		label = "Buffalo Pelt",
 		weight = 500,
 		stack = true,
@@ -1139,7 +1151,7 @@ return {
 		}
 	},
 
-	["beak_seagullf"] = {
+	beak_seagullf = {
 		label = "Seagull beak",
 		weight = 100,
 		stack = true,
@@ -1150,7 +1162,7 @@ return {
 		}
 	},
 
-	["consumable_herb_yarrow"] = {
+	consumable_herb_yarrow = {
 		label = "Yarrow",
 		weight = 0.3,
 		stack = true,
@@ -1161,7 +1173,7 @@ return {
 		}
 	},
 
-	["guitar"] = {
+	guitar = {
 		label = "guitar",
 		weight = 1,
 		stack = true,
@@ -1172,7 +1184,7 @@ return {
 		}
 	},
 
-	["marriage_license"] = {
+	marriage_license = {
 		label = "Marriage License",
 		weight = 1,
 		stack = false,
@@ -1183,7 +1195,7 @@ return {
 		}
 	},
 
-	["zinc_bar"] = {
+	zinc_bar = {
 		label = "Zinc Bar",
 		weight = 1000,
 		stack = true,
@@ -1194,7 +1206,7 @@ return {
 		}
 	},
 
-	["lead_bar"] = {
+	lead_bar = {
 		label = "Lead Bar",
 		weight = 1000,
 		stack = true,
@@ -1205,7 +1217,7 @@ return {
 		}
 	},
 
-	["prime_hunt_bait"] = {
+	prime_hunt_bait = {
 		label = "Prime Hunting Bait",
 		weight = 100,
 		stack = true,
@@ -1216,7 +1228,7 @@ return {
 		}
 	},
 
-	["beak_hawkf"] = {
+	beak_hawkf = {
 		label = "Hawk beak",
 		weight = 100,
 		stack = true,
@@ -1227,7 +1239,7 @@ return {
 		}
 	},
 
-	["gunhandle"] = {
+	gunhandle = {
 		label = "Gun Handle",
 		weight = 100,
 		stack = true,
@@ -1238,7 +1250,7 @@ return {
 		}
 	},
 
-	["revolverhandle"] = {
+	revolverhandle = {
 		label = "Revolver Handle",
 		weight = 100,
 		stack = true,
@@ -1249,7 +1261,7 @@ return {
 		}
 	},
 
-	["tooth_raccoont"] = {
+	tooth_raccoont = {
 		label = "Raccoon tooth",
 		weight = 100,
 		stack = true,
@@ -1260,7 +1272,7 @@ return {
 		}
 	},
 
-	["sapphire_uncut"] = {
+	sapphire_uncut = {
 		label = "Uncut Sapphire",
 		weight = 100,
 		stack = true,
@@ -1271,7 +1283,7 @@ return {
 		}
 	},
 
-	["trainer_feed"] = {
+	trainer_feed = {
 		label = "Trainer Feed",
 		weight = 100,
 		stack = true,
@@ -1282,7 +1294,7 @@ return {
 		}
 	},
 
-	["perfect_pronghorn_pelt"] = {
+	perfect_pronghorn_pelt = {
 		label = "Pronghorn Pelt",
 		weight = 800,
 		stack = true,
@@ -1293,7 +1305,7 @@ return {
 		}
 	},
 
-	["bpc_pickaxe"] = {
+	bpc_pickaxe = {
 		label = "BPC Pickaxe",
 		weight = 100,
 		stack = true,
@@ -1304,7 +1316,7 @@ return {
 		}
 	},
 
-	["horsemeal"] = {
+	horsemeal = {
 		label = "Horse Meal",
 		weight = 100,
 		stack = true,
@@ -1315,7 +1327,7 @@ return {
 		}
 	},
 
-	["hopseed"] = {
+	hopseed = {
 		label = "Hop Seed",
 		weight = 0,
 		stack = true,
@@ -1326,7 +1338,7 @@ return {
 		}
 	},
 
-	["horn_bull"] = {
+	horn_bull = {
 		label = "Bull horn",
 		weight = 100,
 		stack = true,
@@ -1337,7 +1349,7 @@ return {
 		}
 	},
 
-	["sulfur"] = {
+	sulfur = {
 		label = "Sulfur",
 		weight = 100,
 		stack = true,
@@ -1348,7 +1360,7 @@ return {
 		}
 	},
 
-	["consumable_herb_saltbush"] = {
+	consumable_herb_saltbush = {
 		label = "Crown Garlic",
 		weight = 0.05,
 		stack = true,
@@ -1359,7 +1371,7 @@ return {
 		}
 	},
 
-	["bpo_axe"] = {
+	bpo_axe = {
 		label = "BPO Axe",
 		weight = 100,
 		stack = true,
@@ -1370,7 +1382,7 @@ return {
 		}
 	},
 
-	["bpc_shovel"] = {
+	bpc_shovel = {
 		label = "BPC Shovel",
 		weight = 100,
 		stack = true,
@@ -1381,7 +1393,7 @@ return {
 		}
 	},
 
-	["consumable_herb_english_mace"] = {
+	consumable_herb_english_mace = {
 		label = "English Mace",
 		weight = 0.3,
 		stack = true,
@@ -1392,7 +1404,7 @@ return {
 		}
 	},
 
-	["gunforend"] = {
+	gunforend = {
 		label = "Gun Forend",
 		weight = 100,
 		stack = true,
@@ -1403,7 +1415,7 @@ return {
 		}
 	},
 
-	["legendary_panther_pelt"] = {
+	legendary_panther_pelt = {
 		label = "Leg Panther Pelt",
 		weight = 500,
 		stack = true,
@@ -1414,7 +1426,7 @@ return {
 		}
 	},
 
-	["nitrite"] = {
+	nitrite = {
 		label = "Nitrite",
 		weight = 100,
 		stack = true,
@@ -1425,7 +1437,7 @@ return {
 		}
 	},
 
-	["large_bird_meat"] = {
+	large_bird_meat = {
 		label = "Large Bird Meat",
 		weight = 50,
 		stack = true,
@@ -1436,7 +1448,7 @@ return {
 		}
 	},
 
-	["tomatoseed"] = {
+	tomatoseed = {
 		label = "Tomato Seed",
 		weight = 100,
 		stack = true,
@@ -1447,7 +1459,7 @@ return {
 		}
 	},
 
-	["tooth_wolftooth"] = {
+	tooth_wolftooth = {
 		label = "Wolf tooth",
 		weight = 100,
 		stack = true,
@@ -1458,7 +1470,7 @@ return {
 		}
 	},
 
-	["horn_prong"] = {
+	horn_prong = {
 		label = "Pronghorn horn",
 		weight = 100,
 		stack = true,
@@ -1469,7 +1481,7 @@ return {
 		}
 	},
 
-	["legendary_wolf_pelt"] = {
+	legendary_wolf_pelt = {
 		label = "Leg Wolf Pelt",
 		weight = 500,
 		stack = true,
@@ -1480,7 +1492,7 @@ return {
 		}
 	},
 
-	["crab"] = {
+	crab = {
 		label = "Crab",
 		weight = 100,
 		stack = true,
@@ -1491,7 +1503,7 @@ return {
 		}
 	},
 
-	["perfect_moose_pelt"] = {
+	perfect_moose_pelt = {
 		label = "Moose Pelt",
 		weight = 1500,
 		stack = true,
@@ -1502,7 +1514,7 @@ return {
 		}
 	},
 
-	["horn_cowh"] = {
+	horn_cowh = {
 		label = "Cow horn",
 		weight = 100,
 		stack = true,
@@ -1513,7 +1525,7 @@ return {
 		}
 	},
 
-	["riflereceiver"] = {
+	riflereceiver = {
 		label = "Rifle Reciever",
 		weight = 100,
 		stack = true,
@@ -1524,7 +1536,7 @@ return {
 		}
 	},
 
-	["perfect_elk_pelt"] = {
+	perfect_elk_pelt = {
 		label = "Elk Pelt",
 		weight = 1000,
 		stack = true,
@@ -1535,7 +1547,7 @@ return {
 		}
 	},
 
-	["bird_meat"] = {
+	bird_meat = {
 		label = "Raw Bird Meat",
 		weight = 50,
 		stack = true,
@@ -1546,7 +1558,7 @@ return {
 		}
 	},
 
-	["consumable_herb_black_currant"] = {
+	consumable_herb_black_currant = {
 		label = "Black Currant",
 		weight = 0.4,
 		stack = true,
@@ -1557,7 +1569,7 @@ return {
 		}
 	},
 
-	["bpc_axe"] = {
+	bpc_axe = {
 		label = "BPC Axe",
 		weight = 100,
 		stack = true,
@@ -1568,7 +1580,7 @@ return {
 		}
 	},
 
-	["claws_opossumc"] = {
+	claws_opossumc = {
 		label = "Opossumc claws",
 		weight = 100,
 		stack = true,
@@ -1579,7 +1591,7 @@ return {
 		}
 	},
 
-	["consumable_herb_rams_head"] = {
+	consumable_herb_rams_head = {
 		label = "Rams Head",
 		weight = 0.4,
 		stack = true,
@@ -1590,7 +1602,7 @@ return {
 		}
 	},
 
-	["beak_peasantf"] = {
+	beak_peasantf = {
 		label = "Peasant beak",
 		weight = 100,
 		stack = true,
@@ -1601,7 +1613,7 @@ return {
 		}
 	},
 
-	["cigarette9"] = {
+	cigarette9 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -1612,7 +1624,7 @@ return {
 		}
 	},
 
-	["loveenvelope"] = {
+	loveenvelope = {
 		label = "Love Envelope",
 		weight = 100,
 		stack = false,
@@ -1623,7 +1635,7 @@ return {
 		}
 	},
 
-	["lead"] = {
+	lead = {
 		label = "Lead",
 		weight = 100,
 		stack = true,
@@ -1634,7 +1646,7 @@ return {
 		}
 	},
 
-	["smallpresent"] = {
+	smallpresent = {
 		label = "Small Gift",
 		weight = 100,
 		stack = false,
@@ -1645,7 +1657,7 @@ return {
 		}
 	},
 
-	["zinc"] = {
+	zinc = {
 		label = "Zinc",
 		weight = 100,
 		stack = true,
@@ -1656,7 +1668,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_spider"] = {
+	provision_ro_flower_spider = {
 		label = "Spider Flower",
 		weight = 0.05,
 		stack = true,
@@ -1667,7 +1679,7 @@ return {
 		}
 	},
 
-	["poor_panther_pelt"] = {
+	poor_panther_pelt = {
 		label = "Panther Pelt",
 		weight = 500,
 		stack = true,
@@ -1678,7 +1690,7 @@ return {
 		}
 	},
 
-	["emerald_uncut"] = {
+	emerald_uncut = {
 		label = "Uncut Emerald",
 		weight = 100,
 		stack = true,
@@ -1689,7 +1701,7 @@ return {
 		}
 	},
 
-	["pocket_2"] = {
+	pocket_2 = {
 		label = "Satchel",
 		weight = 100,
 		stack = false,
@@ -1700,7 +1712,7 @@ return {
 		}
 	},
 
-	["perfect_buffalo_pelt"] = {
+	perfect_buffalo_pelt = {
 		label = "Buffalo Pelt",
 		weight = 500,
 		stack = true,
@@ -1711,7 +1723,7 @@ return {
 		}
 	},
 
-	["pickaxe"] = {
+	pickaxe = {
 		label = "Pickaxe",
 		weight = 100,
 		stack = true,
@@ -1722,7 +1734,7 @@ return {
 		}
 	},
 
-	["consumable_herb_milkweed"] = {
+	consumable_herb_milkweed = {
 		label = "Milkweed",
 		weight = 0.3,
 		stack = true,
@@ -1733,7 +1745,7 @@ return {
 		}
 	},
 
-	["good_moose_pelt"] = {
+	good_moose_pelt = {
 		label = "Moose Pelt",
 		weight = 1500,
 		stack = true,
@@ -1744,7 +1756,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_agarita"] = {
+	provision_wldflwr_agarita = {
 		label = "Agarita",
 		weight = 0.3,
 		stack = true,
@@ -1755,7 +1767,7 @@ return {
 		}
 	},
 
-	["claws_eaglet"] = {
+	claws_eaglet = {
 		label = "Eagle claws",
 		weight = 100,
 		stack = true,
@@ -1766,7 +1778,7 @@ return {
 		}
 	},
 
-	["consumable_herb_black_berry"] = {
+	consumable_herb_black_berry = {
 		label = "Black Berry",
 		weight = 0.05,
 		stack = true,
@@ -1777,7 +1789,7 @@ return {
 		}
 	},
 
-	["diamond_uncut"] = {
+	diamond_uncut = {
 		label = "Uncut Diamond",
 		weight = 100,
 		stack = true,
@@ -1788,7 +1800,7 @@ return {
 		}
 	},
 
-	["cigarette5"] = {
+	cigarette5 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -1799,7 +1811,7 @@ return {
 		}
 	},
 
-	["tooth_turtlet"] = {
+	tooth_turtlet = {
 		label = "Turtle tooth",
 		weight = 100,
 		stack = true,
@@ -1810,7 +1822,7 @@ return {
 		}
 	},
 
-	["sapphire"] = {
+	sapphire = {
 		label = "Sapphire",
 		weight = 100,
 		stack = true,
@@ -1821,7 +1833,7 @@ return {
 		}
 	},
 
-	["pipe"] = {
+	pipe = {
 		label = "Pipe",
 		weight = 100,
 		stack = false,
@@ -1832,7 +1844,7 @@ return {
 		}
 	},
 
-	["consumable_herb_hummingbird_sage"] = {
+	consumable_herb_hummingbird_sage = {
 		label = "Humingbird Sage",
 		weight = 0.3,
 		stack = true,
@@ -1843,7 +1855,7 @@ return {
 		}
 	},
 
-	["tooth_beart"] = {
+	tooth_beart = {
 		label = "Bear tooth",
 		weight = 100,
 		stack = true,
@@ -1854,7 +1866,7 @@ return {
 		}
 	},
 
-	["shotgunstock"] = {
+	shotgunstock = {
 		label = "Shotgun Stock",
 		weight = 100,
 		stack = true,
@@ -1865,7 +1877,7 @@ return {
 		}
 	},
 
-	["perfect_raccoon_pelt"] = {
+	perfect_raccoon_pelt = {
 		label = "Raccoon Pelt",
 		weight = 500,
 		stack = true,
@@ -1876,7 +1888,7 @@ return {
 		}
 	},
 
-	["consumable_herb_american_ginseng"] = {
+	consumable_herb_american_ginseng = {
 		label = "American Ginseng",
 		weight = 0.3,
 		stack = true,
@@ -1887,7 +1899,7 @@ return {
 		}
 	},
 
-	["lemoynemember"] = {
+	lemoynemember = {
 		label = "Membership",
 		weight = 100,
 		stack = true,
@@ -1898,7 +1910,7 @@ return {
 		}
 	},
 
-	["poor_raccoon_pelt"] = {
+	poor_raccoon_pelt = {
 		label = "Raccoon Pelt",
 		weight = 500,
 		stack = true,
@@ -1909,7 +1921,7 @@ return {
 		}
 	},
 
-	["consumable_herb_vanilla_flower"] = {
+	consumable_herb_vanilla_flower = {
 		label = "Vanilla Flower",
 		weight = 0.3,
 		stack = true,
@@ -1920,7 +1932,7 @@ return {
 		}
 	},
 
-	["horn_ram"] = {
+	horn_ram = {
 		label = "Ram horn",
 		weight = 100,
 		stack = true,
@@ -1931,7 +1943,7 @@ return {
 		}
 	},
 
-	["perfect_black_bear_pelt"] = {
+	perfect_black_bear_pelt = {
 		label = "Black Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -1942,7 +1954,7 @@ return {
 		}
 	},
 
-	["beak_bparrotf"] = {
+	beak_bparrotf = {
 		label = "Parrot beak",
 		weight = 100,
 		stack = true,
@@ -1953,7 +1965,7 @@ return {
 		}
 	},
 
-	["beak_owlf"] = {
+	beak_owlf = {
 		label = "Owl beak",
 		weight = 100,
 		stack = true,
@@ -1964,7 +1976,7 @@ return {
 		}
 	},
 
-	["waterbucket2"] = {
+	waterbucket2 = {
 		label = "Water Bucket",
 		weight = 100,
 		stack = false,
@@ -1975,7 +1987,7 @@ return {
 		}
 	},
 
-	["wool"] = {
+	wool = {
 		label = "Wool",
 		weight = 500,
 		stack = true,
@@ -1986,7 +1998,7 @@ return {
 		}
 	},
 
-	["coffin"] = {
+	coffin = {
 		label = "coffin",
 		weight = 1,
 		stack = true,
@@ -1997,7 +2009,7 @@ return {
 		}
 	},
 
-	["waterbucket0"] = {
+	waterbucket0 = {
 		label = "Empty Water Bucket",
 		weight = 100,
 		stack = false,
@@ -2008,7 +2020,7 @@ return {
 		}
 	},
 
-	["trapbait"] = {
+	trapbait = {
 		label = "Trap Bait",
 		weight = 100,
 		stack = true,
@@ -2019,7 +2031,7 @@ return {
 		}
 	},
 
-	["silver_bar"] = {
+	silver_bar = {
 		label = "Silver Bar",
 		weight = 1000,
 		stack = true,
@@ -2030,7 +2042,7 @@ return {
 		}
 	},
 
-	["fishtrap"] = {
+	fishtrap = {
 		label = "Fish Trap",
 		weight = 1000,
 		stack = true,
@@ -2041,7 +2053,7 @@ return {
 		}
 	},
 
-	["moonshine30"] = {
+	moonshine30 = {
 		label = "Moonshine 30 Proof",
 		weight = 100,
 		stack = true,
@@ -2052,7 +2064,7 @@ return {
 		}
 	},
 
-	["tail_bull"] = {
+	tail_bull = {
 		label = "Bull Tail",
 		weight = 500,
 		stack = true,
@@ -2063,7 +2075,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_wisteria"] = {
+	provision_wldflwr_wisteria = {
 		label = "Wisteria",
 		weight = 0.3,
 		stack = true,
@@ -2074,7 +2086,7 @@ return {
 		}
 	},
 
-	["wagonwheel"] = {
+	wagonwheel = {
 		label = "Wagon Wheel",
 		weight = 1000,
 		stack = true,
@@ -2085,7 +2097,7 @@ return {
 		}
 	},
 
-	["consumable_herb_indian_tobacco"] = {
+	consumable_herb_indian_tobacco = {
 		label = "Indian Tobacco",
 		weight = 0.3,
 		stack = true,
@@ -2096,7 +2108,7 @@ return {
 		}
 	},
 
-	["tooth_coyotef"] = {
+	tooth_coyotef = {
 		label = "Coyote tooth",
 		weight = 100,
 		stack = true,
@@ -2107,7 +2119,7 @@ return {
 		}
 	},
 
-	["weed"] = {
+	weed = {
 		label = "Weed",
 		weight = 100,
 		stack = true,
@@ -2118,7 +2130,7 @@ return {
 		}
 	},
 
-	["consumable_herb_oleander_sage"] = {
+	consumable_herb_oleander_sage = {
 		label = "Oleander Sage",
 		weight = 0.3,
 		stack = true,
@@ -2129,7 +2141,7 @@ return {
 		}
 	},
 
-	["consumable_herb_bay_bolete"] = {
+	consumable_herb_bay_bolete = {
 		label = "Bay Bolete",
 		weight = 0.3,
 		stack = true,
@@ -2140,7 +2152,7 @@ return {
 		}
 	},
 
-	["trainer_brush"] = {
+	trainer_brush = {
 		label = "Trainer Brush",
 		weight = 100,
 		stack = false,
@@ -2151,7 +2163,7 @@ return {
 		}
 	},
 
-	["legendary_boar_pelt"] = {
+	legendary_boar_pelt = {
 		label = "Leg Boar Pelt",
 		weight = 500,
 		stack = true,
@@ -2162,7 +2174,7 @@ return {
 		}
 	},
 
-	["moonshine"] = {
+	moonshine = {
 		label = "Moonshine",
 		weight = 300,
 		stack = true,
@@ -2173,7 +2185,7 @@ return {
 		}
 	},
 
-	["ammo_box_varmint_tranquilizer"] = {
+	ammo_box_varmint_tranquilizer = {
 		label = "Ammo Box Varmint Tranquilizer (N)",
 		weight = 60,
 		stack = true,
@@ -2184,7 +2196,7 @@ return {
 		}
 	},
 
-	["consumable_herb_golden_currant"] = {
+	consumable_herb_golden_currant = {
 		label = "Golden Currant",
 		weight = 0.3,
 		stack = true,
@@ -2195,7 +2207,7 @@ return {
 		}
 	},
 
-	["consumable_herb_common_bulrush"] = {
+	consumable_herb_common_bulrush = {
 		label = "Bulrush",
 		weight = 0.4,
 		stack = true,
@@ -2206,7 +2218,7 @@ return {
 		}
 	},
 
-	["beak_vulturef"] = {
+	beak_vulturef = {
 		label = "Vulture beak",
 		weight = 100,
 		stack = true,
@@ -2217,7 +2229,7 @@ return {
 		}
 	},
 
-	["perfect_deer_pelt"] = {
+	perfect_deer_pelt = {
 		label = "Deer Pelt",
 		weight = 500,
 		stack = true,
@@ -2228,7 +2240,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_clamshell"] = {
+	provision_ro_flower_clamshell = {
 		label = "Clamshell Flower",
 		weight = 0.05,
 		stack = true,
@@ -2239,7 +2251,7 @@ return {
 		}
 	},
 
-	["good_bull_pelt"] = {
+	good_bull_pelt = {
 		label = "Bull Pelt",
 		weight = 1500,
 		stack = true,
@@ -2250,7 +2262,7 @@ return {
 		}
 	},
 
-	["bluecrab"] = {
+	bluecrab = {
 		label = "Blue Crab",
 		weight = 100,
 		stack = true,
@@ -2261,7 +2273,7 @@ return {
 		}
 	},
 
-	["basic_hunt_bait"] = {
+	basic_hunt_bait = {
 		label = "Basic Hunting Bait",
 		weight = 100,
 		stack = true,
@@ -2272,7 +2284,7 @@ return {
 		}
 	},
 
-	["beak_kbirdf"] = {
+	beak_kbirdf = {
 		label = "Blue Heron beak",
 		weight = 100,
 		stack = true,
@@ -2283,7 +2295,7 @@ return {
 		}
 	},
 
-	["perfect_bear_pelt"] = {
+	perfect_bear_pelt = {
 		label = "Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -2294,7 +2306,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_wild_rhubarb"] = {
+	provision_wldflwr_wild_rhubarb = {
 		label = "Wild Rhubarb",
 		weight = 0.3,
 		stack = true,
@@ -2305,7 +2317,7 @@ return {
 		}
 	},
 
-	["lobster"] = {
+	lobster = {
 		label = "Lobster",
 		weight = 100,
 		stack = true,
@@ -2316,7 +2328,7 @@ return {
 		}
 	},
 
-	["repeaterreceiver"] = {
+	repeaterreceiver = {
 		label = "Repeater Reciever",
 		weight = 100,
 		stack = true,
@@ -2327,7 +2339,7 @@ return {
 		}
 	},
 
-	["provision_goose_egg"] = {
+	provision_goose_egg = {
 		label = "Goose Egg",
 		weight = 0.05,
 		stack = true,
@@ -2338,7 +2350,7 @@ return {
 		}
 	},
 
-	["poor_fox_pelt"] = {
+	poor_fox_pelt = {
 		label = "Redfox Pelt",
 		weight = 100,
 		stack = true,
@@ -2349,7 +2361,7 @@ return {
 		}
 	},
 
-	["good_cougar_pelt"] = {
+	good_cougar_pelt = {
 		label = "Cougar Pelt",
 		weight = 500,
 		stack = true,
@@ -2360,7 +2372,7 @@ return {
 		}
 	},
 
-	["beak_ravenf"] = {
+	beak_ravenf = {
 		label = "Raven beak",
 		weight = 100,
 		stack = true,
@@ -2371,7 +2383,7 @@ return {
 		}
 	},
 
-	["emerald"] = {
+	emerald = {
 		label = "Emerald",
 		weight = 100,
 		stack = true,
@@ -2382,7 +2394,7 @@ return {
 		}
 	},
 
-	["blood_dollar"] = {
+	blood_dollar = {
 		label = "Bloodstained Dollars",
 		weight = 1,
 		stack = true,
@@ -2393,7 +2405,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_moccasin"] = {
+	provision_ro_flower_moccasin = {
 		label = "Moccasin Flower",
 		weight = 0.05,
 		stack = true,
@@ -2404,7 +2416,7 @@ return {
 		}
 	},
 
-	["horse_apple"] = {
+	horse_apple = {
 		label = "Horse Apple",
 		weight = 100,
 		stack = true,
@@ -2415,7 +2427,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_lady_of_night"] = {
+	provision_ro_flower_lady_of_night = {
 		label = "Lady Of The Night Flower",
 		weight = 0.05,
 		stack = true,
@@ -2426,7 +2438,7 @@ return {
 		}
 	},
 
-	["cottonseed"] = {
+	cottonseed = {
 		label = "Cotton Seed",
 		weight = 100,
 		stack = true,
@@ -2437,7 +2449,7 @@ return {
 		}
 	},
 
-	["hanovermember"] = {
+	hanovermember = {
 		label = "Membership",
 		weight = 100,
 		stack = true,
@@ -2448,7 +2460,7 @@ return {
 		}
 	},
 
-	["good_pronghorn_pelt"] = {
+	good_pronghorn_pelt = {
 		label = "Pronghorn Pelt",
 		weight = 800,
 		stack = true,
@@ -2459,7 +2471,7 @@ return {
 		}
 	},
 
-	["tail_chipmunk_c"] = {
+	tail_chipmunk_c = {
 		label = "Chipmunk tail",
 		weight = 100,
 		stack = true,
@@ -2470,7 +2482,7 @@ return {
 		}
 	},
 
-	["salt"] = {
+	salt = {
 		label = "Salt",
 		weight = 100,
 		stack = true,
@@ -2481,7 +2493,7 @@ return {
 		}
 	},
 
-	["backpacks_20"] = {
+	backpacks_20 = {
 		label = "Backpack",
 		weight = 100,
 		stack = false,
@@ -2492,7 +2504,7 @@ return {
 		}
 	},
 
-	["consumable_herb_wild_carrots"] = {
+	consumable_herb_wild_carrots = {
 		label = "Wild Carrots",
 		weight = 0.4,
 		stack = true,
@@ -2503,7 +2515,7 @@ return {
 		}
 	},
 
-	["mash"] = {
+	mash = {
 		label = "Mash",
 		weight = 1000,
 		stack = true,
@@ -2514,7 +2526,7 @@ return {
 		}
 	},
 
-	["claws_ravenc"] = {
+	claws_ravenc = {
 		label = "Raven claws",
 		weight = 100,
 		stack = true,
@@ -2525,7 +2537,7 @@ return {
 		}
 	},
 
-	["cooked_fish"] = {
+	cooked_fish = {
 		label = "Cooked Fish",
 		weight = 50,
 		stack = true,
@@ -2536,7 +2548,7 @@ return {
 		}
 	},
 
-	["moonshine20"] = {
+	moonshine20 = {
 		label = "Moonshine 20 Proof",
 		weight = 100,
 		stack = true,
@@ -2547,7 +2559,7 @@ return {
 		}
 	},
 
-	["steel_bar"] = {
+	steel_bar = {
 		label = "Steel Bar",
 		weight = 1000,
 		stack = true,
@@ -2558,7 +2570,7 @@ return {
 		}
 	},
 
-	["cigarette7"] = {
+	cigarette7 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -2569,7 +2581,7 @@ return {
 		}
 	},
 
-	["consumable_herb_wild_feverfew"] = {
+	consumable_herb_wild_feverfew = {
 		label = "Wild Feverfew",
 		weight = 0.4,
 		stack = true,
@@ -2580,7 +2592,7 @@ return {
 		}
 	},
 
-	["jug"] = {
+	jug = {
 		label = "Jug",
 		weight = 300,
 		stack = true,
@@ -2591,7 +2603,7 @@ return {
 		}
 	},
 
-	["axehandle"] = {
+	axehandle = {
 		label = "Axe Handle",
 		weight = 100,
 		stack = true,
@@ -2602,7 +2614,7 @@ return {
 		}
 	},
 
-	["ruby_uncut"] = {
+	ruby_uncut = {
 		label = "Uncut Ruby",
 		weight = 100,
 		stack = true,
@@ -2613,7 +2625,7 @@ return {
 		}
 	},
 
-	["copper"] = {
+	copper = {
 		label = "Copper",
 		weight = 100,
 		stack = true,
@@ -2624,7 +2636,7 @@ return {
 		}
 	},
 
-	["perfect_cow_pelt"] = {
+	perfect_cow_pelt = {
 		label = "Cow Pelt",
 		weight = 500,
 		stack = true,
@@ -2635,7 +2647,7 @@ return {
 		}
 	},
 
-	["consumable_herb_evergreen_huckleberry"] = {
+	consumable_herb_evergreen_huckleberry = {
 		label = "Evergreen Huckleberry",
 		weight = 0.3,
 		stack = true,
@@ -2646,7 +2658,7 @@ return {
 		}
 	},
 
-	["waterbucket1"] = {
+	waterbucket1 = {
 		label = "Water Bucket",
 		weight = 100,
 		stack = false,
@@ -2657,7 +2669,7 @@ return {
 		}
 	},
 
-	["moonshine80"] = {
+	moonshine80 = {
 		label = "Moonshine 80 Proof",
 		weight = 100,
 		stack = true,
@@ -2668,7 +2680,7 @@ return {
 		}
 	},
 
-	["pistolbarrel"] = {
+	pistolbarrel = {
 		label = "Pistol Barrel",
 		weight = 100,
 		stack = true,
@@ -2679,7 +2691,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_chocolate_daisy"] = {
+	provision_wldflwr_chocolate_daisy = {
 		label = "Chocolate Daisy",
 		weight = 0.3,
 		stack = true,
@@ -2690,7 +2702,7 @@ return {
 		}
 	},
 
-	["gunstalk"] = {
+	gunstalk = {
 		label = "Gun Stalk",
 		weight = 100,
 		stack = true,
@@ -2701,7 +2713,7 @@ return {
 		}
 	},
 
-	["shovelhandle"] = {
+	shovelhandle = {
 		label = "Shovel Handle",
 		weight = 200,
 		stack = true,
@@ -2712,7 +2724,7 @@ return {
 		}
 	},
 
-	["nails"] = {
+	nails = {
 		label = "Nails",
 		weight = 100,
 		stack = true,
@@ -2723,7 +2735,7 @@ return {
 		}
 	},
 
-	["boat_ticket"] = {
+	boat_ticket = {
 		label = "Boat Ticket",
 		weight = 100,
 		stack = true,
@@ -2734,7 +2746,7 @@ return {
 		}
 	},
 
-	["camptent"] = {
+	camptent = {
 		label = "Campiing Tent",
 		weight = 1000,
 		stack = true,
@@ -2745,7 +2757,7 @@ return {
 		}
 	},
 
-	["claws_beartc"] = {
+	claws_beartc = {
 		label = "Bear Claw",
 		weight = 500,
 		stack = true,
@@ -2756,7 +2768,7 @@ return {
 		}
 	},
 
-	["consumable_herb_red_sage"] = {
+	consumable_herb_red_sage = {
 		label = "Red Sage",
 		weight = 0.3,
 		stack = true,
@@ -2767,7 +2779,7 @@ return {
 		}
 	},
 
-	["potatoseed"] = {
+	potatoseed = {
 		label = "Potato Seed",
 		weight = 100,
 		stack = true,
@@ -2778,7 +2790,7 @@ return {
 		}
 	},
 
-	["consumable_herb_harrietum"] = {
+	consumable_herb_harrietum = {
 		label = "Harrietum",
 		weight = 0.3,
 		stack = true,
@@ -2789,7 +2801,7 @@ return {
 		}
 	},
 
-	["silver"] = {
+	silver = {
 		label = "Lead",
 		weight = 100,
 		stack = true,
@@ -2800,7 +2812,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_queens"] = {
+	provision_ro_flower_queens = {
 		label = "Queens Flower",
 		weight = 0.05,
 		stack = true,
@@ -2811,7 +2823,7 @@ return {
 		}
 	},
 
-	["legendary_alligator_pelt"] = {
+	legendary_alligator_pelt = {
 		label = "Leg Alligator Pelt",
 		weight = 500,
 		stack = true,
@@ -2822,7 +2834,7 @@ return {
 		}
 	},
 
-	["legendary_coyote_pelt"] = {
+	legendary_coyote_pelt = {
 		label = "Leg Coyote Pelt",
 		weight = 500,
 		stack = true,
@@ -2833,7 +2845,7 @@ return {
 		}
 	},
 
-	["consumable_herb_red_raspberry"] = {
+	consumable_herb_red_raspberry = {
 		label = "Red Raspberry",
 		weight = 0.05,
 		stack = true,
@@ -2844,7 +2856,7 @@ return {
 		}
 	},
 
-	["beak_prairif"] = {
+	beak_prairif = {
 		label = "Prairie Chicken beak",
 		weight = 100,
 		stack = true,
@@ -2855,7 +2867,7 @@ return {
 		}
 	},
 
-	["goldring"] = {
+	goldring = {
 		label = "Gold Ring",
 		weight = 100,
 		stack = true,
@@ -2866,7 +2878,7 @@ return {
 		}
 	},
 
-	["tooth_foxt"] = {
+	tooth_foxt = {
 		label = "Fox tooth",
 		weight = 100,
 		stack = true,
@@ -2877,7 +2889,7 @@ return {
 		}
 	},
 
-	["matches"] = {
+	matches = {
 		label = "Matches",
 		weight = 100,
 		stack = true,
@@ -2888,7 +2900,7 @@ return {
 		}
 	},
 
-	["beak_pelicanf"] = {
+	beak_pelicanf = {
 		label = "Pelican beak",
 		weight = 100,
 		stack = true,
@@ -2899,7 +2911,7 @@ return {
 		}
 	},
 
-	["pistolreceiver"] = {
+	pistolreceiver = {
 		label = "Pistol Reciever",
 		weight = 100,
 		stack = true,
@@ -2910,7 +2922,7 @@ return {
 		}
 	},
 
-	["poor_deer_pelt"] = {
+	poor_deer_pelt = {
 		label = "Deer Pelt",
 		weight = 500,
 		stack = true,
@@ -2921,7 +2933,7 @@ return {
 		}
 	},
 
-	["animal_feed"] = {
+	animal_feed = {
 		label = "Animal Feed",
 		weight = 1000,
 		stack = true,
@@ -2932,7 +2944,7 @@ return {
 		}
 	},
 
-	["dollar"] = {
+	dollar = {
 		label = "Dollars",
 		weight = 1,
 		stack = true,
@@ -2943,7 +2955,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_ghost"] = {
+	provision_ro_flower_ghost = {
 		label = "Ghost Flower",
 		weight = 0.05,
 		stack = true,
@@ -2954,7 +2966,7 @@ return {
 		}
 	},
 
-	["idcard"] = {
+	idcard = {
 		label = "Id Card",
 		weight = 50.0,
 		stack = true,
@@ -2965,7 +2977,7 @@ return {
 		}
 	},
 
-	["poor_alligator_pelt"] = {
+	poor_alligator_pelt = {
 		label = "Alligator Pelt",
 		weight = 500,
 		stack = true,
@@ -2976,7 +2988,7 @@ return {
 		}
 	},
 
-	["coach_license"] = {
+	coach_license = {
 		label = "Coach License",
 		weight = 1,
 		stack = false,
@@ -2987,7 +2999,7 @@ return {
 		}
 	},
 
-	["good_raccoon_pelt"] = {
+	good_raccoon_pelt = {
 		label = "Raccoon Pelt",
 		weight = 500,
 		stack = true,
@@ -2998,7 +3010,7 @@ return {
 		}
 	},
 
-	["cigarette4"] = {
+	cigarette4 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -3009,7 +3021,7 @@ return {
 		}
 	},
 
-	["coal"] = {
+	coal = {
 		label = "Coal",
 		weight = 100,
 		stack = true,
@@ -3020,7 +3032,7 @@ return {
 		}
 	},
 
-	["cigarette2"] = {
+	cigarette2 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -3031,7 +3043,7 @@ return {
 		}
 	},
 
-	["horn_buckantler"] = {
+	horn_buckantler = {
 		label = "Buck Antlers",
 		weight = 100,
 		stack = true,
@@ -3042,7 +3054,7 @@ return {
 		}
 	},
 
-	["poor_pronghorn_pelt"] = {
+	poor_pronghorn_pelt = {
 		label = "Pronghorn Pelt",
 		weight = 800,
 		stack = true,
@@ -3053,7 +3065,7 @@ return {
 		}
 	},
 
-	["tooth_boarmusk"] = {
+	tooth_boarmusk = {
 		label = "Boar tusk",
 		weight = 100,
 		stack = true,
@@ -3064,7 +3076,7 @@ return {
 		}
 	},
 
-	["opal"] = {
+	opal = {
 		label = "Opal",
 		weight = 100,
 		stack = true,
@@ -3075,7 +3087,7 @@ return {
 		}
 	},
 
-	["pocket_1"] = {
+	pocket_1 = {
 		label = "Satchel",
 		weight = 100,
 		stack = false,
@@ -3086,7 +3098,7 @@ return {
 		}
 	},
 
-	["beer"] = {
+	beer = {
 		label = "Beer",
 		weight = 100,
 		stack = true,
@@ -3097,7 +3109,7 @@ return {
 		}
 	},
 
-	["smallnugget"] = {
+	smallnugget = {
 		label = "Small Nugget",
 		weight = 100,
 		stack = true,
@@ -3108,7 +3120,7 @@ return {
 		}
 	},
 
-	["water_bucket"] = {
+	water_bucket = {
 		label = "Water Bucket",
 		weight = 1000,
 		stack = false,
@@ -3119,7 +3131,7 @@ return {
 		}
 	},
 
-	["package"] = {
+	package = {
 		label = "Package",
 		weight = 1,
 		stack = false,
@@ -3130,7 +3142,7 @@ return {
 		}
 	},
 
-	["bplank"] = {
+	bplank = {
 		label = "Mid Grade Wood Plank",
 		weight = 200,
 		stack = true,
@@ -3141,7 +3153,7 @@ return {
 		}
 	},
 
-	["aplank"] = {
+	aplank = {
 		label = "Low Grade Wood Plank",
 		weight = 100,
 		stack = true,
@@ -3152,7 +3164,7 @@ return {
 		}
 	},
 
-	["gold"] = {
+	gold = {
 		label = "Gold",
 		weight = 100,
 		stack = true,
@@ -3163,7 +3175,7 @@ return {
 		}
 	},
 
-	["milk"] = {
+	milk = {
 		label = "Fresh Milk",
 		weight = 500,
 		stack = true,
@@ -3174,7 +3186,7 @@ return {
 		}
 	},
 
-	["moonshine100"] = {
+	moonshine100 = {
 		label = "Moonshine 99 Proof",
 		weight = 100,
 		stack = true,
@@ -3185,7 +3197,7 @@ return {
 		}
 	},
 
-	["perfect_buck_pelt"] = {
+	perfect_buck_pelt = {
 		label = "Buck Pelt",
 		weight = 500,
 		stack = true,
@@ -3196,7 +3208,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_texas_blue_bonnet"] = {
+	provision_wldflwr_texas_blue_bonnet = {
 		label = "Texas Blue Bonnet",
 		weight = 0.3,
 		stack = true,
@@ -3207,7 +3219,7 @@ return {
 		}
 	},
 
-	["sugar"] = {
+	sugar = {
 		label = "Sugar",
 		weight = 100,
 		stack = true,
@@ -3218,7 +3230,7 @@ return {
 		}
 	},
 
-	["pocketwatch7"] = {
+	pocketwatch7 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -3229,7 +3241,7 @@ return {
 		}
 	},
 
-	["crayfish"] = {
+	crayfish = {
 		label = "Crayfish",
 		weight = 100,
 		stack = true,
@@ -3240,7 +3252,7 @@ return {
 		}
 	},
 
-	["moneybox"] = {
+	moneybox = {
 		label = "Money Box",
 		weight = 1000,
 		stack = true,
@@ -3251,7 +3263,7 @@ return {
 		}
 	},
 
-	["saltrock"] = {
+	saltrock = {
 		label = "Salt Rock",
 		weight = 1000,
 		stack = true,
@@ -3262,7 +3274,7 @@ return {
 		}
 	},
 
-	["perfect_bull_pelt"] = {
+	perfect_bull_pelt = {
 		label = "Bull Pelt",
 		weight = 1500,
 		stack = true,
@@ -3273,7 +3285,7 @@ return {
 		}
 	},
 
-	["perfect_goat_pelt"] = {
+	perfect_goat_pelt = {
 		label = "Goat Pelt",
 		weight = 100,
 		stack = true,
@@ -3284,7 +3296,7 @@ return {
 		}
 	},
 
-	["shovel"] = {
+	shovel = {
 		label = "Shovel",
 		weight = 100,
 		stack = true,
@@ -3295,7 +3307,7 @@ return {
 		}
 	},
 
-	["consumable_herb_burdock_root"] = {
+	consumable_herb_burdock_root = {
 		label = "Burdock Root",
 		weight = 0.4,
 		stack = true,
@@ -3306,7 +3318,7 @@ return {
 		}
 	},
 
-	["beak_boobyf"] = {
+	beak_boobyf = {
 		label = "Red-footed beak",
 		weight = 100,
 		stack = true,
@@ -3317,7 +3329,7 @@ return {
 		}
 	},
 
-	["poor_black_bear_pelt"] = {
+	poor_black_bear_pelt = {
 		label = "Black Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -3328,7 +3340,7 @@ return {
 		}
 	},
 
-	["sugarcane"] = {
+	sugarcane = {
 		label = "Sugarcane",
 		weight = 100,
 		stack = true,
@@ -3339,7 +3351,7 @@ return {
 		}
 	},
 
-	["waterbucket3"] = {
+	waterbucket3 = {
 		label = "Water Bucket",
 		weight = 100,
 		stack = false,
@@ -3350,7 +3362,7 @@ return {
 		}
 	},
 
-	["perfect_coyote_pelt"] = {
+	perfect_coyote_pelt = {
 		label = "Coyote Pelt",
 		weight = 500,
 		stack = true,
@@ -3361,7 +3373,7 @@ return {
 		}
 	},
 
-	["goldpan"] = {
+	goldpan = {
 		label = "Gold Pan",
 		weight = 100,
 		stack = true,
@@ -3372,7 +3384,7 @@ return {
 		}
 	},
 
-	["good_buck_pelt"] = {
+	good_buck_pelt = {
 		label = "Buck Pelt",
 		weight = 500,
 		stack = true,
@@ -3383,7 +3395,7 @@ return {
 		}
 	},
 
-	["tail_beaver"] = {
+	tail_beaver = {
 		label = "Beaver tail",
 		weight = 100,
 		stack = true,
@@ -3394,7 +3406,7 @@ return {
 		}
 	},
 
-	["repeaterbarrel"] = {
+	repeaterbarrel = {
 		label = "Repeater Barrel",
 		weight = 100,
 		stack = true,
@@ -3405,7 +3417,7 @@ return {
 		}
 	},
 
-	["good_ox_pelt"] = {
+	good_ox_pelt = {
 		label = "Ox Pelt",
 		weight = 1500,
 		stack = true,
@@ -3416,7 +3428,7 @@ return {
 		}
 	},
 
-	["good_bighornram_pelt"] = {
+	good_bighornram_pelt = {
 		label = "Bighornram Pelt",
 		weight = 800,
 		stack = true,
@@ -3427,7 +3439,7 @@ return {
 		}
 	},
 
-	["campfire"] = {
+	campfire = {
 		label = "Camp Fire",
 		weight = 500,
 		stack = true,
@@ -3438,7 +3450,7 @@ return {
 		}
 	},
 
-	["bpc_waterbucket0"] = {
+	bpc_waterbucket0 = {
 		label = "BPC Water Bucket",
 		weight = 100,
 		stack = true,
@@ -3449,7 +3461,7 @@ return {
 		}
 	},
 
-	["revolverbarrel"] = {
+	revolverbarrel = {
 		label = "Revolver Barrel",
 		weight = 100,
 		stack = true,
@@ -3460,7 +3472,7 @@ return {
 		}
 	},
 
-	["good_boar_pelt"] = {
+	good_boar_pelt = {
 		label = "Boar Pelt",
 		weight = 500,
 		stack = true,
@@ -3471,7 +3483,7 @@ return {
 		}
 	},
 
-	["haysnack"] = {
+	haysnack = {
 		label = "Hay Snack",
 		weight = 100,
 		stack = true,
@@ -3482,7 +3494,7 @@ return {
 		}
 	},
 
-	["brass_bar"] = {
+	brass_bar = {
 		label = "Brass Bar",
 		weight = 1000,
 		stack = true,
@@ -3493,7 +3505,7 @@ return {
 		}
 	},
 
-	["cooked_meat"] = {
+	cooked_meat = {
 		label = "Cooked Meat",
 		weight = 50,
 		stack = true,
@@ -3504,7 +3516,7 @@ return {
 		}
 	},
 
-	["cattailmember"] = {
+	cattailmember = {
 		label = "Membership",
 		weight = 100,
 		stack = true,
@@ -3515,7 +3527,7 @@ return {
 		}
 	},
 
-	["raw_fish"] = {
+	raw_fish = {
 		label = "Raw Fish",
 		weight = 50,
 		stack = true,
@@ -3526,7 +3538,7 @@ return {
 		}
 	},
 
-	["tail_panthere"] = {
+	tail_panthere = {
 		label = "Panther eyes",
 		weight = 100,
 		stack = true,
@@ -3537,7 +3549,7 @@ return {
 		}
 	},
 
-	["pipetobacco"] = {
+	pipetobacco = {
 		label = "Pipe Tobacco",
 		weight = 100,
 		stack = true,
@@ -3548,7 +3560,7 @@ return {
 		}
 	},
 
-	["poor_bear_pelt"] = {
+	poor_bear_pelt = {
 		label = "Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -3559,7 +3571,7 @@ return {
 		}
 	},
 
-	["small_bird_meat"] = {
+	small_bird_meat = {
 		label = "Small Bird Meat",
 		weight = 50,
 		stack = true,
@@ -3570,7 +3582,7 @@ return {
 		}
 	},
 
-	["claws_armadilloc"] = {
+	claws_armadilloc = {
 		label = "Armadillo claws",
 		weight = 100,
 		stack = true,
@@ -3581,7 +3593,7 @@ return {
 		}
 	},
 
-	["beak_rspoonf"] = {
+	beak_rspoonf = {
 		label = "Spoonbill beak",
 		weight = 100,
 		stack = true,
@@ -3592,7 +3604,7 @@ return {
 		}
 	},
 
-	["poor_sheep_pelt"] = {
+	poor_sheep_pelt = {
 		label = "Sheep Pelt",
 		weight = 300,
 		stack = true,
@@ -3603,7 +3615,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_dragons"] = {
+	provision_ro_flower_dragons = {
 		label = "Dragons Flower",
 		weight = 0.05,
 		stack = true,
@@ -3614,7 +3626,7 @@ return {
 		}
 	},
 
-	["provision_duck_egg"] = {
+	provision_duck_egg = {
 		label = "Duck Egg",
 		weight = 0.05,
 		stack = true,
@@ -3625,7 +3637,7 @@ return {
 		}
 	},
 
-	["diamond"] = {
+	diamond = {
 		label = "Diamond",
 		weight = 100,
 		stack = true,
@@ -3636,7 +3648,7 @@ return {
 		}
 	},
 
-	["firework_big"] = {
+	firework_big = {
 		label = "Big Firework",
 		weight = 1000,
 		stack = true,
@@ -3647,7 +3659,7 @@ return {
 		}
 	},
 
-	["broccoli"] = {
+	broccoli = {
 		label = "Broccoli",
 		weight = 100,
 		stack = true,
@@ -3658,7 +3670,7 @@ return {
 		}
 	},
 
-	["poor_coyote_pelt"] = {
+	poor_coyote_pelt = {
 		label = "Coyote Pelt",
 		weight = 500,
 		stack = true,
@@ -3669,7 +3681,7 @@ return {
 		}
 	},
 
-	["good_wolf_pelt"] = {
+	good_wolf_pelt = {
 		label = "Wolf Pelt",
 		weight = 500,
 		stack = true,
@@ -3680,7 +3692,7 @@ return {
 		}
 	},
 
-	["claws_cockc"] = {
+	claws_cockc = {
 		label = "Rooster claws",
 		weight = 100,
 		stack = true,
@@ -3691,7 +3703,7 @@ return {
 		}
 	},
 
-	["newaustinmember"] = {
+	newaustinmember = {
 		label = "Membership",
 		weight = 100,
 		stack = true,
@@ -3702,7 +3714,7 @@ return {
 		}
 	},
 
-	["tooth_cougarf"] = {
+	tooth_cougarf = {
 		label = "Cougar tooth",
 		weight = 100,
 		stack = true,
@@ -3713,7 +3725,7 @@ return {
 		}
 	},
 
-	["consumable_herb_parasol_mushroom"] = {
+	consumable_herb_parasol_mushroom = {
 		label = "Parasol Mushroom",
 		weight = 0.4,
 		stack = true,
@@ -3724,7 +3736,7 @@ return {
 		}
 	},
 
-	["bandana"] = {
+	bandana = {
 		label = "Bandana",
 		weight = 1000,
 		stack = true,
@@ -3735,7 +3747,7 @@ return {
 		}
 	},
 
-	["weedseed"] = {
+	weedseed = {
 		label = "Weed Seed",
 		weight = 100,
 		stack = true,
@@ -3746,7 +3758,7 @@ return {
 		}
 	},
 
-	["cornseed"] = {
+	cornseed = {
 		label = "Corn Seed",
 		weight = 100,
 		stack = true,
@@ -3757,7 +3769,7 @@ return {
 		}
 	},
 
-	["clay"] = {
+	clay = {
 		label = "Clay",
 		weight = 100,
 		stack = true,
@@ -3768,7 +3780,7 @@ return {
 		}
 	},
 
-	["gunsmith"] = {
+	gunsmith = {
 		label = "Gun craft",
 		weight = 12000,
 		stack = true,
@@ -3779,7 +3791,7 @@ return {
 		}
 	},
 
-	["good_sheep_pelt"] = {
+	good_sheep_pelt = {
 		label = "Sheep Pelt",
 		weight = 300,
 		stack = true,
@@ -3790,7 +3802,7 @@ return {
 		}
 	},
 
-	["poor_boar_pelt"] = {
+	poor_boar_pelt = {
 		label = "Boar Pelt",
 		weight = 500,
 		stack = true,
@@ -3801,7 +3813,7 @@ return {
 		}
 	},
 
-	["coffee"] = {
+	coffee = {
 		label = "Coffee",
 		weight = 500,
 		stack = true,
@@ -3812,7 +3824,7 @@ return {
 		}
 	},
 
-	["cookedbird_meat"] = {
+	cookedbird_meat = {
 		label = "Chicken Wings",
 		weight = 50,
 		stack = true,
@@ -3823,7 +3835,7 @@ return {
 		}
 	},
 
-	["cigarette8"] = {
+	cigarette8 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -3834,7 +3846,7 @@ return {
 		}
 	},
 
-	["firework_small"] = {
+	firework_small = {
 		label = "Small Firework",
 		weight = 500,
 		stack = true,
@@ -3845,7 +3857,7 @@ return {
 		}
 	},
 
-	["legendary_cougar_pelt"] = {
+	legendary_cougar_pelt = {
 		label = "Leg Cougar Pelt",
 		weight = 500,
 		stack = true,
@@ -3856,7 +3868,7 @@ return {
 		}
 	},
 
-	["riflestock"] = {
+	riflestock = {
 		label = "Rifle Stock",
 		weight = 100,
 		stack = true,
@@ -3867,7 +3879,7 @@ return {
 		}
 	},
 
-	["pocketwatch6"] = {
+	pocketwatch6 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -3878,7 +3890,7 @@ return {
 		}
 	},
 
-	["poor_buffalo_pelt"] = {
+	poor_buffalo_pelt = {
 		label = "Buffalo Pelt",
 		weight = 500,
 		stack = true,
@@ -3889,7 +3901,7 @@ return {
 		}
 	},
 
-	["good_panther_pelt"] = {
+	good_panther_pelt = {
 		label = "Panther Pelt",
 		weight = 500,
 		stack = true,
@@ -3900,7 +3912,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_acunas_star"] = {
+	provision_ro_flower_acunas_star = {
 		label = "Acunas Star",
 		weight = 0.05,
 		stack = true,
@@ -3911,7 +3923,7 @@ return {
 		}
 	},
 
-	["pocketwatch3"] = {
+	pocketwatch3 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -3922,7 +3934,7 @@ return {
 		}
 	},
 
-	["riflebarrel"] = {
+	riflebarrel = {
 		label = "Rifle Barrel",
 		weight = 100,
 		stack = true,
@@ -3933,7 +3945,7 @@ return {
 		}
 	},
 
-	["good_coyote_pelt"] = {
+	good_coyote_pelt = {
 		label = "Coyote Pelt",
 		weight = 500,
 		stack = true,
@@ -3944,7 +3956,7 @@ return {
 		}
 	},
 
-	["shotgunbarrel"] = {
+	shotgunbarrel = {
 		label = "Shotgun Barrel",
 		weight = 100,
 		stack = true,
@@ -3955,7 +3967,7 @@ return {
 		}
 	},
 
-	["beak_chickenf"] = {
+	beak_chickenf = {
 		label = "Chicken beak",
 		weight = 100,
 		stack = true,
@@ -3966,7 +3978,7 @@ return {
 		}
 	},
 
-	["mediumnugget"] = {
+	mediumnugget = {
 		label = "Medium Nugget",
 		weight = 100,
 		stack = true,
@@ -3977,7 +3989,7 @@ return {
 		}
 	},
 
-	["marketstall"] = {
+	marketstall = {
 		label = "Market Stall",
 		weight = 1000,
 		stack = false,
@@ -3988,7 +4000,7 @@ return {
 		}
 	},
 
-	["legendary_beaver_pelt"] = {
+	legendary_beaver_pelt = {
 		label = "Leg Beaver Pelt",
 		weight = 500,
 		stack = true,
@@ -3999,7 +4011,7 @@ return {
 		}
 	},
 
-	["sugarcaneseed"] = {
+	sugarcaneseed = {
 		label = "Sugarcane Seed",
 		weight = 100,
 		stack = true,
@@ -4010,7 +4022,7 @@ return {
 		}
 	},
 
-	["good_deer_pelt"] = {
+	good_deer_pelt = {
 		label = "Deer Pelt",
 		weight = 500,
 		stack = true,
@@ -4021,7 +4033,7 @@ return {
 		}
 	},
 
-	["lawbook"] = {
+	lawbook = {
 		label = "LawBook",
 		weight = 500,
 		stack = true,
@@ -4032,7 +4044,7 @@ return {
 		}
 	},
 
-	["wood"] = {
+	wood = {
 		label = "Wood",
 		weight = 100,
 		stack = true,
@@ -4043,7 +4055,7 @@ return {
 		}
 	},
 
-	["fiber_woolblack"] = {
+	fiber_woolblack = {
 		label = "Black Yarn Fibre",
 		weight = 500,
 		stack = true,
@@ -4054,7 +4066,7 @@ return {
 		}
 	},
 
-	["good_elk_pelt"] = {
+	good_elk_pelt = {
 		label = "Elk Pelt",
 		weight = 1000,
 		stack = true,
@@ -4065,7 +4077,7 @@ return {
 		}
 	},
 
-	["good_bear_pelt"] = {
+	good_bear_pelt = {
 		label = "Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -4076,7 +4088,7 @@ return {
 		}
 	},
 
-	["large_raw_meat"] = {
+	large_raw_meat = {
 		label = "Large Raw Meat",
 		weight = 50,
 		stack = true,
@@ -4087,7 +4099,7 @@ return {
 		}
 	},
 
-	["lockpick"] = {
+	lockpick = {
 		label = "Lockpick",
 		weight = 100,
 		stack = false,
@@ -4098,7 +4110,7 @@ return {
 		}
 	},
 
-	["bpo_shovel"] = {
+	bpo_shovel = {
 		label = "BPO Shovel",
 		weight = 100,
 		stack = true,
@@ -4109,7 +4121,7 @@ return {
 		}
 	},
 
-	["rock"] = {
+	rock = {
 		label = "Rock",
 		weight = 1000,
 		stack = true,
@@ -4120,7 +4132,7 @@ return {
 		}
 	},
 
-	["consumable_herb_wild_mint"] = {
+	consumable_herb_wild_mint = {
 		label = "Wild Mint",
 		weight = 0.4,
 		stack = true,
@@ -4131,7 +4143,7 @@ return {
 		}
 	},
 
-	["tail_fox"] = {
+	tail_fox = {
 		label = "Fox tail",
 		weight = 100,
 		stack = true,
@@ -4142,7 +4154,7 @@ return {
 		}
 	},
 
-	["poor_cow_pelt"] = {
+	poor_cow_pelt = {
 		label = "Cow Pelt",
 		weight = 500,
 		stack = true,
@@ -4153,7 +4165,7 @@ return {
 		}
 	},
 
-	["trainer_certificate"] = {
+	trainer_certificate = {
 		label = "Trainer Certificate",
 		weight = 100,
 		stack = false,
@@ -4164,7 +4176,7 @@ return {
 		}
 	},
 
-	["pocketwatch5"] = {
+	pocketwatch5 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -4175,7 +4187,7 @@ return {
 		}
 	},
 
-	["consumable_herb_oregano"] = {
+	consumable_herb_oregano = {
 		label = "Oregano",
 		weight = 0.6,
 		stack = true,
@@ -4186,7 +4198,7 @@ return {
 		}
 	},
 
-	["gold_bar"] = {
+	gold_bar = {
 		label = "Gold Bar",
 		weight = 1000,
 		stack = true,
@@ -4197,7 +4209,7 @@ return {
 		}
 	},
 
-	["bpo_waterbucket0"] = {
+	bpo_waterbucket0 = {
 		label = "BPO Water Bucket",
 		weight = 100,
 		stack = true,
@@ -4208,7 +4220,7 @@ return {
 		}
 	},
 
-	["malt"] = {
+	malt = {
 		label = "Malt",
 		weight = 100,
 		stack = true,
@@ -4219,7 +4231,7 @@ return {
 		}
 	},
 
-	["consumable_herb_prairie_poppy"] = {
+	consumable_herb_prairie_poppy = {
 		label = "Prairie Poppy",
 		weight = 0.4,
 		stack = true,
@@ -4230,7 +4242,7 @@ return {
 		}
 	},
 
-	["revolvercylinder"] = {
+	revolvercylinder = {
 		label = "Revolver Cylinder",
 		weight = 100,
 		stack = true,
@@ -4241,7 +4253,7 @@ return {
 		}
 	},
 
-	["ammo_box_varmint"] = {
+	ammo_box_varmint = {
 		label = "Ammo Box Varmint Rifle (N)",
 		weight = 50,
 		stack = true,
@@ -4252,7 +4264,7 @@ return {
 		}
 	},
 
-	["beak_bbirdf"] = {
+	beak_bbirdf = {
 		label = "Cormorant beak",
 		weight = 100,
 		stack = true,
@@ -4263,7 +4275,7 @@ return {
 		}
 	},
 
-	["manzanitamember"] = {
+	manzanitamember = {
 		label = "Membership",
 		weight = 100,
 		stack = true,
@@ -4274,7 +4286,7 @@ return {
 		}
 	},
 
-	["poor_buck_pelt"] = {
+	poor_buck_pelt = {
 		label = "Buck Pelt",
 		weight = 500,
 		stack = true,
@@ -4285,7 +4297,7 @@ return {
 		}
 	},
 
-	["provision_vulture_egg"] = {
+	provision_vulture_egg = {
 		label = "Vulture Egg",
 		weight = 0.05,
 		stack = true,
@@ -4296,7 +4308,7 @@ return {
 		}
 	},
 
-	["lovewheelspin"] = {
+	lovewheelspin = {
 		label = "Love Wheelspin",
 		weight = 100,
 		stack = false,
@@ -4307,7 +4319,7 @@ return {
 		}
 	},
 
-	["poor_bighornram_pelt"] = {
+	poor_bighornram_pelt = {
 		label = "Bighornram Pelt",
 		weight = 800,
 		stack = true,
@@ -4318,7 +4330,7 @@ return {
 		}
 	},
 
-	["carrotseed"] = {
+	carrotseed = {
 		label = "Carrot Seed",
 		weight = 100,
 		stack = true,
@@ -4329,7 +4341,7 @@ return {
 		}
 	},
 
-	["saddlebag"] = {
+	saddlebag = {
 		label = "Saddle Wild Horse",
 		weight = 650,
 		stack = true,
@@ -4340,7 +4352,7 @@ return {
 		}
 	},
 
-	["poor_wolf_pelt"] = {
+	poor_wolf_pelt = {
 		label = "Wolf Pelt",
 		weight = 500,
 		stack = true,
@@ -4351,7 +4363,7 @@ return {
 		}
 	},
 
-	["cent"] = {
+	cent = {
 		label = "Cents",
 		weight = 3,
 		stack = true,
@@ -4362,7 +4374,7 @@ return {
 		}
 	},
 
-	["weaponsmithlicence"] = {
+	weaponsmithlicence = {
 		label = "Weaponsmith Licence",
 		weight = 100,
 		stack = true,
@@ -4373,7 +4385,7 @@ return {
 		}
 	},
 
-	["horn_bison"] = {
+	horn_bison = {
 		label = "Bison horn",
 		weight = 100,
 		stack = true,
@@ -4384,7 +4396,7 @@ return {
 		}
 	},
 
-	["largepresent"] = {
+	largepresent = {
 		label = "Large Gift",
 		weight = 100,
 		stack = false,
@@ -4395,7 +4407,7 @@ return {
 		}
 	},
 
-	["fertilizer"] = {
+	fertilizer = {
 		label = "Fertilizer",
 		weight = 500,
 		stack = true,
@@ -4406,7 +4418,7 @@ return {
 		}
 	},
 
-	["corn"] = {
+	corn = {
 		label = "Corn",
 		weight = 100,
 		stack = true,
@@ -4417,7 +4429,7 @@ return {
 		}
 	},
 
-	["perfect_fox_pelt"] = {
+	perfect_fox_pelt = {
 		label = "Redfox Pelt",
 		weight = 100,
 		stack = true,
@@ -4428,7 +4440,7 @@ return {
 		}
 	},
 
-	["hops"] = {
+	hops = {
 		label = "Hops",
 		weight = 100,
 		stack = true,
@@ -4439,7 +4451,7 @@ return {
 		}
 	},
 
-	["good_pig_pelt"] = {
+	good_pig_pelt = {
 		label = "Pig Pelt",
 		weight = 300,
 		stack = true,
@@ -4450,7 +4462,7 @@ return {
 		}
 	},
 
-	["consumable_herb_violet_snowdrop"] = {
+	consumable_herb_violet_snowdrop = {
 		label = "Violet Snowdrop",
 		weight = 0.3,
 		stack = true,
@@ -4461,7 +4473,7 @@ return {
 		}
 	},
 
-	["pocketwatch1"] = {
+	pocketwatch1 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -4472,7 +4484,7 @@ return {
 		}
 	},
 
-	["cookedsmall_bird_meat"] = {
+	cookedsmall_bird_meat = {
 		label = "Chick Drum Sticks",
 		weight = 50,
 		stack = true,
@@ -4483,7 +4495,7 @@ return {
 		}
 	},
 
-	["beak_eaglef"] = {
+	beak_eaglef = {
 		label = "Eagle beak",
 		weight = 100,
 		stack = true,
@@ -4494,7 +4506,7 @@ return {
 		}
 	},
 
-	["cigarette3"] = {
+	cigarette3 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -4505,7 +4517,7 @@ return {
 		}
 	},
 
-	["perfect_bighornram_pelt"] = {
+	perfect_bighornram_pelt = {
 		label = "Bighornram Pelt",
 		weight = 800,
 		stack = true,
@@ -4516,7 +4528,7 @@ return {
 		}
 	},
 
-	["beak_goosef"] = {
+	beak_goosef = {
 		label = "Goose beak",
 		weight = 100,
 		stack = true,
@@ -4527,7 +4539,7 @@ return {
 		}
 	},
 
-	["cigar"] = {
+	cigar = {
 		label = "Cigar",
 		weight = 100,
 		stack = true,
@@ -4538,7 +4550,7 @@ return {
 		}
 	},
 
-	["beak_turkeyf"] = {
+	beak_turkeyf = {
 		label = "Turkey beak",
 		weight = 100,
 		stack = true,
@@ -4549,7 +4561,7 @@ return {
 		}
 	},
 
-	["vodka"] = {
+	vodka = {
 		label = "Vodka",
 		weight = 500,
 		stack = true,
@@ -4560,7 +4572,7 @@ return {
 		}
 	},
 
-	["perfect_pig_pelt"] = {
+	perfect_pig_pelt = {
 		label = "Pig Pelt",
 		weight = 300,
 		stack = true,
@@ -4571,7 +4583,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_blood_flower"] = {
+	provision_wldflwr_blood_flower = {
 		label = "Blood Flower",
 		weight = 0.3,
 		stack = true,
@@ -4582,7 +4594,7 @@ return {
 		}
 	},
 
-	["yeast"] = {
+	yeast = {
 		label = "Yeast",
 		weight = 100,
 		stack = true,
@@ -4593,7 +4605,7 @@ return {
 		}
 	},
 
-	["beak_quailb"] = {
+	beak_quailb = {
 		label = "Quail beak",
 		weight = 100,
 		stack = true,
@@ -4604,7 +4616,7 @@ return {
 		}
 	},
 
-	["pocketwatch4"] = {
+	pocketwatch4 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -4615,7 +4627,7 @@ return {
 		}
 	},
 
-	["axe"] = {
+	axe = {
 		label = "Axe",
 		weight = 100,
 		stack = true,
@@ -4626,7 +4638,7 @@ return {
 		}
 	},
 
-	["provision_disco_gator_egg"] = {
+	provision_disco_gator_egg = {
 		label = "Disco Gator Egg",
 		weight = 0.05,
 		stack = true,
@@ -4637,7 +4649,7 @@ return {
 		}
 	},
 
-	["whiskey"] = {
+	whiskey = {
 		label = "Whiskey",
 		weight = 500,
 		stack = true,
@@ -4648,7 +4660,7 @@ return {
 		}
 	},
 
-	["iron_bar"] = {
+	iron_bar = {
 		label = "Iron Bar",
 		weight = 1000,
 		stack = true,
@@ -4659,7 +4671,7 @@ return {
 		}
 	},
 
-	["cigarette1"] = {
+	cigarette1 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -4670,7 +4682,7 @@ return {
 		}
 	},
 
-	["cotton"] = {
+	cotton = {
 		label = "Cotton",
 		weight = 100,
 		stack = true,
@@ -4681,7 +4693,7 @@ return {
 		}
 	},
 
-	["blacksmithlicence"] = {
+	blacksmithlicence = {
 		label = "Blacksmith Licence",
 		weight = 100,
 		stack = true,
@@ -4692,7 +4704,7 @@ return {
 		}
 	},
 
-	["horn_elkantler"] = {
+	horn_elkantler = {
 		label = "Elk antler",
 		weight = 100,
 		stack = true,
@@ -4703,7 +4715,7 @@ return {
 		}
 	},
 
-	["small_cooked_meat"] = {
+	small_cooked_meat = {
 		label = "Small Steak",
 		weight = 50,
 		stack = true,
@@ -4714,7 +4726,7 @@ return {
 		}
 	},
 
-	["fiber"] = {
+	fiber = {
 		label = "Fiber",
 		weight = 1000,
 		stack = true,
@@ -4725,7 +4737,7 @@ return {
 		}
 	},
 
-	["beak_egretf"] = {
+	beak_egretf = {
 		label = "Snowy Egret beak",
 		weight = 100,
 		stack = true,
@@ -4736,7 +4748,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_cigar"] = {
+	provision_ro_flower_cigar = {
 		label = "Cigar Flower",
 		weight = 0.05,
 		stack = true,
@@ -4747,7 +4759,7 @@ return {
 		}
 	},
 
-	["goldtooth"] = {
+	goldtooth = {
 		label = "Gold Tooth",
 		weight = 100,
 		stack = true,
@@ -4758,7 +4770,7 @@ return {
 		}
 	},
 
-	["blood_cent"] = {
+	blood_cent = {
 		label = "Bloodstained Cents",
 		weight = 3,
 		stack = true,
@@ -4769,7 +4781,7 @@ return {
 		}
 	},
 
-	["nitrate"] = {
+	nitrate = {
 		label = "Nitrate",
 		weight = 100,
 		stack = true,
@@ -4780,7 +4792,7 @@ return {
 		}
 	},
 
-	["tooth_snaket"] = {
+	tooth_snaket = {
 		label = "Snake tooth",
 		weight = 100,
 		stack = true,
@@ -4791,7 +4803,7 @@ return {
 		}
 	},
 
-	["iron"] = {
+	iron = {
 		label = "Iron",
 		weight = 100,
 		stack = true,
@@ -4802,7 +4814,7 @@ return {
 		}
 	},
 
-	["waterbucket5"] = {
+	waterbucket5 = {
 		label = "Water Bucket",
 		weight = 100,
 		stack = false,
@@ -4813,7 +4825,7 @@ return {
 		}
 	},
 
-	["tooth_aligatorto"] = {
+	tooth_aligatorto = {
 		label = "Alligator tooth",
 		weight = 100,
 		stack = true,
@@ -4824,7 +4836,7 @@ return {
 		}
 	},
 
-	["large_cooked_meat"] = {
+	large_cooked_meat = {
 		label = "Large Steak",
 		weight = 50,
 		stack = true,
@@ -4835,7 +4847,7 @@ return {
 		}
 	},
 
-	["waterbucket4"] = {
+	waterbucket4 = {
 		label = "Water Bucket",
 		weight = 100,
 		stack = false,
@@ -4846,7 +4858,7 @@ return {
 		}
 	},
 
-	["horse_carrot"] = {
+	horse_carrot = {
 		label = "Horse Carrot",
 		weight = 100,
 		stack = true,
@@ -4857,7 +4869,7 @@ return {
 		}
 	},
 
-	["tail_lizardl"] = {
+	tail_lizardl = {
 		label = "Lizard foot",
 		weight = 100,
 		stack = true,
@@ -4868,7 +4880,7 @@ return {
 		}
 	},
 
-	["cplank"] = {
+	cplank = {
 		label = "High Grade Wood Plank",
 		weight = 300,
 		stack = true,
@@ -4879,7 +4891,7 @@ return {
 		}
 	},
 
-	["poor_javelina_pelt"] = {
+	poor_javelina_pelt = {
 		label = "Javelina Pelt",
 		weight = 100,
 		stack = true,
@@ -4890,7 +4902,7 @@ return {
 		}
 	},
 
-	["perfect_boar_pelt"] = {
+	perfect_boar_pelt = {
 		label = "Boar Pelt",
 		weight = 500,
 		stack = true,
@@ -4901,7 +4913,7 @@ return {
 		}
 	},
 
-	["campflag"] = {
+	campflag = {
 		label = "Campsite Flag",
 		weight = 100,
 		stack = false,
@@ -4912,7 +4924,7 @@ return {
 		}
 	},
 
-	["good_black_bear_pelt"] = {
+	good_black_bear_pelt = {
 		label = "Black Bear Pelt",
 		weight = 1500,
 		stack = true,
@@ -4923,7 +4935,7 @@ return {
 		}
 	},
 
-	["poor_bull_pelt"] = {
+	poor_bull_pelt = {
 		label = "Bull Pelt",
 		weight = 1500,
 		stack = true,
@@ -4934,7 +4946,7 @@ return {
 		}
 	},
 
-	["oilwell"] = {
+	oilwell = {
 		label = "Oil Well Kit",
 		weight = 50000,
 		stack = false,
@@ -4945,7 +4957,7 @@ return {
 		}
 	},
 
-	["good_alligator_pelt"] = {
+	good_alligator_pelt = {
 		label = "Alligator Pelt",
 		weight = 500,
 		stack = true,
@@ -4956,7 +4968,7 @@ return {
 		}
 	},
 
-	["consumable_herb_creeping_thyme"] = {
+	consumable_herb_creeping_thyme = {
 		label = "Creeping Thyme",
 		weight = 0.3,
 		stack = true,
@@ -4967,7 +4979,7 @@ return {
 		}
 	},
 
-	["perfect_cougar_pelt"] = {
+	perfect_cougar_pelt = {
 		label = "Cougar Pelt",
 		weight = 500,
 		stack = true,
@@ -4978,7 +4990,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_cardinal_flower"] = {
+	provision_wldflwr_cardinal_flower = {
 		label = "Cardinal Flower",
 		weight = 0.3,
 		stack = true,
@@ -4989,7 +5001,7 @@ return {
 		}
 	},
 
-	["pocketwatch2"] = {
+	pocketwatch2 = {
 		label = "Pocket Watch",
 		weight = 100,
 		stack = false,
@@ -5000,7 +5012,7 @@ return {
 		}
 	},
 
-	["perfect_sheep_pelt"] = {
+	perfect_sheep_pelt = {
 		label = "Sheep Pelt",
 		weight = 300,
 		stack = true,
@@ -5011,7 +5023,7 @@ return {
 		}
 	},
 
-	["empty_oil_can"] = {
+	empty_oil_can = {
 		label = "Empty Oil Can",
 		weight = 1,
 		stack = true,
@@ -5022,7 +5034,7 @@ return {
 		}
 	},
 
-	["cigarette10"] = {
+	cigarette10 = {
 		label = "Cigarette",
 		weight = 100,
 		stack = false,
@@ -5033,7 +5045,7 @@ return {
 		}
 	},
 
-	["bottle"] = {
+	bottle = {
 		label = "Bottle",
 		weight = 100,
 		stack = true,
@@ -5044,7 +5056,7 @@ return {
 		}
 	},
 
-	["wheatseed"] = {
+	wheatseed = {
 		label = "Wheat Seed",
 		weight = 100,
 		stack = true,
@@ -5055,7 +5067,7 @@ return {
 		}
 	},
 
-	["ruby"] = {
+	ruby = {
 		label = "Ruby",
 		weight = 100,
 		stack = true,
@@ -5066,7 +5078,7 @@ return {
 		}
 	},
 
-	["poor_ox_pelt"] = {
+	poor_ox_pelt = {
 		label = "Ox Pelt",
 		weight = 1500,
 		stack = true,
@@ -5077,7 +5089,7 @@ return {
 		}
 	},
 
-	["copper_bar"] = {
+	copper_bar = {
 		label = "Copper Bar",
 		weight = 1000,
 		stack = true,
@@ -5088,7 +5100,7 @@ return {
 		}
 	},
 
-	["poor_pig_pelt"] = {
+	poor_pig_pelt = {
 		label = "Pig Pelt",
 		weight = 300,
 		stack = true,
@@ -5099,7 +5111,7 @@ return {
 		}
 	},
 
-	["medicalbag"] = {
+	medicalbag = {
 		label = "Medic bag",
 		weight = 50.0,
 		stack = true,
@@ -5110,7 +5122,7 @@ return {
 		}
 	},
 
-	["tomato"] = {
+	tomato = {
 		label = "Totato",
 		weight = 100,
 		stack = true,
@@ -5121,7 +5133,7 @@ return {
 		}
 	},
 
-	["claws_owlt"] = {
+	claws_owlt = {
 		label = "Owl claws",
 		weight = 100,
 		stack = true,
@@ -5132,7 +5144,7 @@ return {
 		}
 	},
 
-	["horn_ox"] = {
+	horn_ox = {
 		label = "Angus Bull horn",
 		weight = 100,
 		stack = true,
@@ -5143,7 +5155,7 @@ return {
 		}
 	},
 
-	["stick"] = {
+	stick = {
 		label = "Stick",
 		weight = 1000,
 		stack = true,
@@ -5154,7 +5166,7 @@ return {
 		}
 	},
 
-	["good_fox_pelt"] = {
+	good_fox_pelt = {
 		label = "Redfox Pelt",
 		weight = 100,
 		stack = true,
@@ -5165,7 +5177,7 @@ return {
 		}
 	},
 
-	["moonshine50"] = {
+	moonshine50 = {
 		label = "Moonshine 50 Proof",
 		weight = 100,
 		stack = true,
@@ -5176,7 +5188,7 @@ return {
 		}
 	},
 
-	["small_raw_meat"] = {
+	small_raw_meat = {
 		label = "Small Raw Meat",
 		weight = 50,
 		stack = true,
@@ -5187,7 +5199,7 @@ return {
 		}
 	},
 
-	["good_goat_pelt"] = {
+	good_goat_pelt = {
 		label = "Goat Pelt",
 		weight = 100,
 		stack = true,
@@ -5198,7 +5210,7 @@ return {
 		}
 	},
 
-	["potato"] = {
+	potato = {
 		label = "Potato",
 		weight = 100,
 		stack = true,
@@ -5209,18 +5221,25 @@ return {
 		}
 	},
 
-	["sandwich"] = {
+	sandwich = {
 		label = "Sandwich",
 		weight = 100,
-		stack = true,
-		close = true,
-		description = "Sandwich",
+		description = "A tasty sandwich to help with hunger.",
+        stack = true,
+		decay = true,
+		degrade = 4320, -- Minutes
+		close = true, -- if should close inventory when used
+		allowArmed = true, -- should we let them use with weapons?
+		prop = "p_bread01x",
 		client = {
-			image = "sandwich.png",
-		}
+			status = { hunger = 30 },
+			anim = 'eating',
+			prop = 'bread',
+			usetime = 5000,
+		},
 	},
 
-	["saloonlicence"] = {
+	saloonlicence = {
 		label = "Saloon Licence",
 		weight = 100,
 		stack = true,
@@ -5231,7 +5250,7 @@ return {
 		}
 	},
 
-	["raw_meat"] = {
+	raw_meat = {
 		label = "Raw Meat",
 		weight = 50,
 		stack = true,
@@ -5242,7 +5261,7 @@ return {
 		}
 	},
 
-	["beak_condorf"] = {
+	beak_condorf = {
 		label = "Condor beak",
 		weight = 100,
 		stack = true,
@@ -5253,7 +5272,7 @@ return {
 		}
 	},
 
-	["consumable_herb_desert_sage"] = {
+	consumable_herb_desert_sage = {
 		label = "Desert Sage",
 		weight = 0.4,
 		stack = true,
@@ -5264,7 +5283,7 @@ return {
 		}
 	},
 
-	["chewingtobacco"] = {
+	chewingtobacco = {
 		label = "Chewing Tobacco",
 		weight = 100,
 		stack = true,
@@ -5275,7 +5294,7 @@ return {
 		}
 	},
 
-	["largenugget"] = {
+	largenugget = {
 		label = "Large Nugget",
 		weight = 100,
 		stack = true,
@@ -5286,7 +5305,7 @@ return {
 		}
 	},
 
-	["perfect_ox_pelt"] = {
+	perfect_ox_pelt = {
 		label = "Ox Pelt",
 		weight = 1500,
 		stack = true,
@@ -5297,7 +5316,7 @@ return {
 		}
 	},
 
-	["repeaterstock"] = {
+	repeaterstock = {
 		label = "Repeater Stock",
 		weight = 100,
 		stack = true,
@@ -5308,7 +5327,7 @@ return {
 		}
 	},
 
-	["backpacks_10"] = {
+	backpacks_10 = {
 		label = "Backpack",
 		weight = 100,
 		stack = false,
@@ -5319,7 +5338,7 @@ return {
 		}
 	},
 
-	["tail_rabbitpaw"] = {
+	tail_rabbitpaw = {
 		label = "Rabbit foot",
 		weight = 100,
 		stack = true,
@@ -5330,7 +5349,7 @@ return {
 		}
 	},
 
-	["canoe"] = {
+	canoe = {
 		label = "Canoe",
 		weight = 100,
 		stack = true,
@@ -5341,7 +5360,7 @@ return {
 		}
 	},
 
-	["bpo_pickaxe"] = {
+	bpo_pickaxe = {
 		label = "BPO Pickaxe",
 		weight = 100,
 		stack = true,
@@ -5352,7 +5371,7 @@ return {
 		}
 	},
 
-	["raw_oil"] = {
+	raw_oil = {
 		label = "Raw Oil",
 		weight = 1,
 		stack = true,
@@ -5363,7 +5382,7 @@ return {
 		}
 	},
 
-	["provision_ro_flower_sparrows"] = {
+	provision_ro_flower_sparrows = {
 		label = "Sparrows Flower",
 		weight = 0.05,
 		stack = true,
@@ -5374,7 +5393,7 @@ return {
 		}
 	},
 
-	["provision_wldflwr_creek_plum"] = {
+	provision_wldflwr_creek_plum = {
 		label = "Creek Plum",
 		weight = 0.3,
 		stack = true,
@@ -5385,7 +5404,7 @@ return {
 		}
 	},
 
-	["cookedlarge_bird_meat"] = {
+	cookedlarge_bird_meat = {
 		label = "Whole Chicken",
 		weight = 50,
 		stack = true,
@@ -5396,7 +5415,7 @@ return {
 		}
 	},
 
-	["beak_daruf"] = {
+	beak_daruf = {
 		label = "Crane beak",
 		weight = 100,
 		stack = true,
@@ -5407,7 +5426,7 @@ return {
 		}
 	},
 
-	["beak_loonf"] = {
+	beak_loonf = {
 		label = "Common Loon beak",
 		weight = 100,
 		stack = true,
@@ -5418,7 +5437,7 @@ return {
 		}
 	},
 
-	["oil"] = {
+	oil = {
 		label = "Oil",
 		weight = 1,
 		stack = true,
@@ -5429,7 +5448,7 @@ return {
 		}
 	},
 
-	["poor_goat_pelt"] = {
+	poor_goat_pelt = {
 		label = "Goat Pelt",
 		weight = 100,
 		stack = true,
@@ -5440,7 +5459,7 @@ return {
 		}
 	},
 
-	["poor_cougar_pelt"] = {
+	poor_cougar_pelt = {
 		label = "Cougar Pelt",
 		weight = 500,
 		stack = true,
@@ -5451,7 +5470,7 @@ return {
 		}
 	},
 
-	["consumable_herb_chanterelles"] = {
+	consumable_herb_chanterelles = {
 		label = "Chanterelles",
 		weight = 0.3,
 		stack = true,
@@ -5462,7 +5481,7 @@ return {
 		}
 	},
 
-	["good_javelina_pelt"] = {
+	good_javelina_pelt = {
 		label = "Javelina Pelt",
 		weight = 100,
 		stack = true,
@@ -5473,7 +5492,7 @@ return {
 		}
 	},
 
-	["poor_moose_pelt"] = {
+	poor_moose_pelt = {
 		label = "Moose Pelt",
 		weight = 1500,
 		stack = true,
@@ -5484,7 +5503,7 @@ return {
 		}
 	},
 
-	["tequila"] = {
+	tequila = {
 		label = "Tequila",
 		weight = 500,
 		stack = true,
@@ -5495,7 +5514,7 @@ return {
 		}
 	},
 
-	["torch"] = {
+	torch = {
 		label = "Torch",
 		weight = 1000,
 		stack = true,
@@ -5506,7 +5525,7 @@ return {
 		}
 	},
 
-	["rolling_paper"] = {
+	rolling_paper = {
 		label = "Rolling Paper",
 		weight = 1,
 		stack = true,
@@ -5517,7 +5536,7 @@ return {
 		}
 	},
 
-	["letter"] = {
+	letter = {
 		label = "letter",
 		weight = 100,
 		stack = true,
@@ -5528,7 +5547,7 @@ return {
 		}
 	},
 
-	["meat"] = {
+	meat = {
 		label = "Raw Meat",
 		weight = 500,
 		stack = true,
@@ -5539,7 +5558,7 @@ return {
 		}
 	},
 
-	["joint_purp"] = {
+	joint_purp = {
 		label = "Ambarino Frost Joint",
 		weight = 1,
 		stack = true,
@@ -5550,7 +5569,7 @@ return {
 		}
 	},
 
-	["processing_table"] = {
+	processing_table = {
 		label = "Drying Rack",
 		weight = 5000,
 		stack = true,
@@ -5561,7 +5580,7 @@ return {
 		}
 	},
 
-	["linen_band"] = {
+	linen_band = {
 		label = "Linen Wrap",
 		weight = 0,
 		stack = true,
@@ -5572,7 +5591,7 @@ return {
 		}
 	},
 
-	["field_surgery_kit"] = {
+	field_surgery_kit = {
 		label = "Field Surgery Kit",
 		weight = 500,
 		stack = true,
@@ -5583,7 +5602,7 @@ return {
 		}
 	},
 
-	["cloth_band"] = {
+	cloth_band = {
 		label = "Cloth Strip",
 		weight = 0,
 		stack = true,
@@ -5594,7 +5613,7 @@ return {
 		}
 	},
 
-	["fullbucket"] = {
+	fullbucket = {
 		label = "Water Bucket",
 		weight = 5000,
 		stack = true,
@@ -5605,7 +5624,7 @@ return {
 		}
 	},
 
-	["herb"] = {
+	herb = {
 		label = "Herbs",
 		weight = 50,
 		stack = true,
@@ -5616,7 +5635,7 @@ return {
 		}
 	},
 
-	["leaf_tex"] = {
+	leaf_tex = {
 		label = "New Austin Haze Leaf",
 		weight = 5,
 		stack = true,
@@ -5627,7 +5646,7 @@ return {
 		}
 	},
 
-	["ammo_arrow_fire"] = {
+	ammo_arrow_fire = {
 		label = "Arrow (F)",
 		weight = 200,
 		stack = true,
@@ -5638,7 +5657,7 @@ return {
 		}
 	},
 
-	["outfit_stand"] = {
+	outfit_stand = {
 		label = "outfit stand",
 		weight = 1,
 		stack = false,
@@ -5649,7 +5668,7 @@ return {
 		}
 	},
 
-	["trimmed_kalka"] = {
+	trimmed_kalka = {
 		label = "Guarma Gold Bud",
 		weight = 2,
 		stack = true,
@@ -5660,7 +5679,7 @@ return {
 		}
 	},
 
-	["tourniquet_leather"] = {
+	tourniquet_leather = {
 		label = "Leather Tourniquet",
 		weight = 100,
 		stack = true,
@@ -5671,7 +5690,7 @@ return {
 		}
 	},
 
-	["seed_kalka"] = {
+	seed_kalka = {
 		label = "Guarma Gold Seed",
 		weight = 1,
 		stack = true,
@@ -5682,7 +5701,7 @@ return {
 		}
 	},
 
-	["loaded_pipe_tex"] = {
+	loaded_pipe_tex = {
 		label = "Pipe (New Austin Haze)",
 		weight = 250,
 		stack = false,
@@ -5693,7 +5712,7 @@ return {
 		}
 	},
 
-	["injection_strychnine"] = {
+	injection_strychnine = {
 		label = "Rope Tourniquet",
 		weight = 100,
 		stack = true,
@@ -5704,7 +5723,7 @@ return {
 		}
 	},
 
-	["wash_barrel"] = {
+	wash_barrel = {
 		label = "Wash Bucket",
 		weight = 5000,
 		stack = true,
@@ -5715,7 +5734,7 @@ return {
 		}
 	},
 
-	["portable_locker"] = {
+	portable_locker = {
 		label = "portable_locker",
 		weight = 100,
 		stack = true,
@@ -5726,7 +5745,7 @@ return {
 		}
 	},
 
-	["washed_kalka"] = {
+	washed_kalka = {
 		label = "Washed Guarma Gold",
 		weight = 5,
 		stack = true,
@@ -5737,7 +5756,7 @@ return {
 		}
 	},
 
-	["flour_wheat"] = {
+	flour_wheat = {
 		label = "Wheat Flour",
 		weight = 100,
 		stack = true,
@@ -5748,7 +5767,7 @@ return {
 		}
 	},
 
-	["mulled_wine"] = {
+	mulled_wine = {
 		label = "Mulled Wine",
 		weight = 300,
 		stack = true,
@@ -5759,7 +5778,7 @@ return {
 		}
 	},
 
-	["cotton_band"] = {
+	cotton_band = {
 		label = "Cotton Bandage",
 		weight = 0,
 		stack = true,
@@ -5770,7 +5789,7 @@ return {
 		}
 	},
 
-	["bottle_milk"] = {
+	bottle_milk = {
 		label = "Bottle of Milk",
 		weight = 500,
 		stack = true,
@@ -5781,7 +5800,7 @@ return {
 		}
 	},
 
-	["injection_cocaine"] = {
+	injection_cocaine = {
 		label = "Rope Tourniquet",
 		weight = 100,
 		stack = true,
@@ -5792,7 +5811,7 @@ return {
 		}
 	},
 
-	["loaded_pipe_purp"] = {
+	loaded_pipe_purp = {
 		label = "Pipe (Ambarino Frost)",
 		weight = 250,
 		stack = false,
@@ -5803,7 +5822,7 @@ return {
 		}
 	},
 
-	["medicine_quinine"] = {
+	medicine_quinine = {
 		label = "Medicine Quinine",
 		weight = 100,
 		stack = true,
@@ -5814,7 +5833,7 @@ return {
 		}
 	},
 
-	["sarsaparilla"] = {
+	sarsaparilla = {
 		label = "Sarsaparilla",
 		weight = 500,
 		stack = true,
@@ -5825,7 +5844,7 @@ return {
 		}
 	},
 
-	["bedroll"] = {
+	bedroll = {
 		label = "Bedroll",
 		weight = 5000,
 		stack = true,
@@ -5836,7 +5855,7 @@ return {
 		}
 	},
 
-	["egg"] = {
+	egg = {
 		label = "Egg",
 		weight = 100,
 		stack = true,
@@ -5847,7 +5866,7 @@ return {
 		}
 	},
 
-	["notepad"] = {
+	notepad = {
 		label = "Notepad",
 		weight = 200,
 		stack = true,
@@ -5858,7 +5877,7 @@ return {
 		}
 	},
 
-	["smoking_pipe"] = {
+	smoking_pipe = {
 		label = "Smoking Pipe",
 		weight = 200,
 		stack = true,
@@ -5869,7 +5888,7 @@ return {
 		}
 	},
 
-	["cleaningcloth"] = {
+	cleaningcloth = {
 		label = "cleaningcloth",
 		weight = 1,
 		stack = false,
@@ -5880,7 +5899,7 @@ return {
 		}
 	},
 
-	["trimmed_tex"] = {
+	trimmed_tex = {
 		label = "New Austin Haze Bud",
 		weight = 2,
 		stack = true,
@@ -5891,7 +5910,7 @@ return {
 		}
 	},
 
-	["leaf_purp"] = {
+	leaf_purp = {
 		label = "Ambarino Frost Leaf",
 		weight = 5,
 		stack = true,
@@ -5902,7 +5921,7 @@ return {
 		}
 	},
 
-	["moonshinekit"] = {
+	moonshinekit = {
 		label = "Moonshine Kit",
 		weight = 10000,
 		stack = false,
@@ -5913,7 +5932,7 @@ return {
 		}
 	},
 
-	["cider"] = {
+	cider = {
 		label = "Cider",
 		weight = 500,
 		stack = true,
@@ -5924,7 +5943,7 @@ return {
 		}
 	},
 
-	["tourniquet_cloth"] = {
+	tourniquet_cloth = {
 		label = "Cloth Tourniquet",
 		weight = 100,
 		stack = true,
@@ -5935,7 +5954,7 @@ return {
 		}
 	},
 
-	["washed_tex"] = {
+	washed_tex = {
 		label = "Washed New Austin Haze",
 		weight = 5,
 		stack = true,
@@ -5946,7 +5965,7 @@ return {
 		}
 	},
 
-	["smelling_salts"] = {
+	smelling_salts = {
 		label = "Smelling Salts",
 		weight = 50,
 		stack = true,
@@ -5957,7 +5976,7 @@ return {
 		}
 	},
 
-	["herbal_tea"] = {
+	herbal_tea = {
 		label = "Herbal Tea",
 		weight = 200,
 		stack = true,
@@ -5968,7 +5987,7 @@ return {
 		}
 	},
 
-	["leaf_kalka"] = {
+	leaf_kalka = {
 		label = "Guarma Gold Leaf",
 		weight = 5,
 		stack = true,
@@ -5979,7 +5998,7 @@ return {
 		}
 	},
 
-	["rum"] = {
+	rum = {
 		label = "Rum",
 		weight = 500,
 		stack = true,
@@ -5990,7 +6009,7 @@ return {
 		}
 	},
 
-	["phonograph"] = {
+	phonograph = {
 		label = "Phonograph",
 		weight = 5000,
 		stack = false,
@@ -6001,7 +6020,7 @@ return {
 		}
 	},
 
-	["canned_apricots"] = {
+	canned_apricots = {
 		label = "Canned Apricots",
 		weight = 300,
 		stack = true,
@@ -6012,7 +6031,7 @@ return {
 		}
 	},
 
-	["bucket"] = {
+	bucket = {
 		label = "Empty Bucket",
 		weight = 2000,
 		stack = true,
@@ -6023,7 +6042,7 @@ return {
 		}
 	},
 
-	["pomade"] = {
+	pomade = {
 		label = "Hair Pomade",
 		weight = 200,
 		stack = true,
@@ -6034,7 +6053,7 @@ return {
 		}
 	},
 
-	["joint_tex"] = {
+	joint_tex = {
 		label = "New Austin Haze Joint",
 		weight = 1,
 		stack = true,
@@ -6045,7 +6064,7 @@ return {
 		}
 	},
 
-	["soup"] = {
+	soup = {
 		label = "Vegetable Soup",
 		weight = 500,
 		stack = true,
@@ -6056,7 +6075,7 @@ return {
 		}
 	},
 
-	["steak"] = {
+	steak = {
 		label = "Fried Steak",
 		weight = 600,
 		stack = true,
@@ -6067,7 +6086,7 @@ return {
 		}
 	},
 
-	["medicine_laudanum"] = {
+	medicine_laudanum = {
 		label = "Medicine Laudanum",
 		weight = 100,
 		stack = true,
@@ -6078,7 +6097,7 @@ return {
 		}
 	},
 
-	["thermometer"] = {
+	thermometer = {
 		label = "Thermometer",
 		weight = 75,
 		stack = true,
@@ -6089,7 +6108,7 @@ return {
 		}
 	},
 
-	["bs_handbag_cane"] = {
+	bs_handbag_cane = {
 		label = "Cane Bag",
 		weight = 2000,
 		stack = false,
@@ -6100,7 +6119,7 @@ return {
 		}
 	},
 
-	["ammo_arrow"] = {
+	ammo_arrow = {
 		label = "Arrow (N)",
 		weight = 200,
 		stack = true,
@@ -6111,7 +6130,7 @@ return {
 		}
 	},
 
-	["fan"] = {
+	fan = {
 		label = "Hand Fan",
 		weight = 100,
 		stack = true,
@@ -6122,7 +6141,7 @@ return {
 		}
 	},
 
-	["lemon"] = {
+	lemon = {
 		label = "Lemon",
 		weight = 100,
 		stack = true,
@@ -6133,7 +6152,7 @@ return {
 		}
 	},
 
-	["medicine_morphine"] = {
+	medicine_morphine = {
 		label = "Medicine Morphine",
 		weight = 100,
 		stack = true,
@@ -6144,7 +6163,7 @@ return {
 		}
 	},
 
-	["bread_sour"] = {
+	bread_sour = {
 		label = "Sourdough Bread",
 		weight = 400,
 		stack = true,
@@ -6155,7 +6174,7 @@ return {
 		}
 	},
 
-	["dried_kalka"] = {
+	dried_kalka = {
 		label = "Dried Guarma Gold",
 		weight = 3,
 		stack = true,
@@ -6166,7 +6185,7 @@ return {
 		}
 	},
 
-	["coffeebeans"] = {
+	coffeebeans = {
 		label = "Coffee Beans",
 		weight = 100,
 		stack = true,
@@ -6177,7 +6196,7 @@ return {
 		}
 	},
 
-	["medicine_whiskey"] = {
+	medicine_whiskey = {
 		label = "Medicine Whiskey",
 		weight = 100,
 		stack = true,
@@ -6188,7 +6207,7 @@ return {
 		}
 	},
 
-	["notebook"] = {
+	notebook = {
 		label = "Notebook",
 		weight = 300,
 		stack = true,
@@ -6199,7 +6218,7 @@ return {
 		}
 	},
 
-	["lemonade"] = {
+	lemonade = {
 		label = "Lemonade",
 		weight = 400,
 		stack = true,
@@ -6210,7 +6229,7 @@ return {
 		}
 	},
 
-	["trimmed_purp"] = {
+	trimmed_purp = {
 		label = "Ambarino Frost Bud",
 		weight = 2,
 		stack = true,
@@ -6221,7 +6240,7 @@ return {
 		}
 	},
 
-	["stethoscope"] = {
+	stethoscope = {
 		label = "Stethoscope",
 		weight = 150,
 		stack = true,
@@ -6232,7 +6251,7 @@ return {
 		}
 	},
 
-	["washed_purp"] = {
+	washed_purp = {
 		label = "Washed Ambarino Frost",
 		weight = 5,
 		stack = true,
@@ -6243,7 +6262,7 @@ return {
 		}
 	},
 
-	["injection_adrenaline"] = {
+	injection_adrenaline = {
 		label = "Rope Tourniquet",
 		weight = 100,
 		stack = true,
@@ -6254,7 +6273,7 @@ return {
 		}
 	},
 
-	["bs_handbag_doctor"] = {
+	bs_handbag_doctor = {
 		label = "Doctor Bag",
 		weight = 2000,
 		stack = false,
@@ -6265,7 +6284,7 @@ return {
 		}
 	},
 
-	["roastedmeat"] = {
+	roastedmeat = {
 		label = "Roasted Meat",
 		weight = 700,
 		stack = true,
@@ -6276,7 +6295,7 @@ return {
 		}
 	},
 
-	["brandy"] = {
+	brandy = {
 		label = "Brandy",
 		weight = 500,
 		stack = true,
@@ -6287,7 +6306,7 @@ return {
 		}
 	},
 
-	["hot_chocolate"] = {
+	hot_chocolate = {
 		label = "Hot Chocolate",
 		weight = 200,
 		stack = true,
@@ -6298,7 +6317,7 @@ return {
 		}
 	},
 
-	["tourniquet_medical"] = {
+	tourniquet_medical = {
 		label = "Medical Tourniquet",
 		weight = 100,
 		stack = true,
@@ -6309,7 +6328,7 @@ return {
 		}
 	},
 
-	["snowball"] = {
+	snowball = {
 		label = "snowball",
 		weight = 1,
 		stack = false,
@@ -6320,7 +6339,7 @@ return {
 		}
 	},
 
-	["cactus"] = {
+	cactus = {
 		label = "Cactus",
 		weight = 200,
 		stack = true,
@@ -6331,7 +6350,7 @@ return {
 		}
 	},
 
-	["seed_purp"] = {
+	seed_purp = {
 		label = "Ambarino Frost Seed",
 		weight = 1,
 		stack = true,
@@ -6342,7 +6361,7 @@ return {
 		}
 	},
 
-	["loaded_pipe_kalka"] = {
+	loaded_pipe_kalka = {
 		label = "Pipe (Guarma Gold)",
 		weight = 250,
 		stack = false,
@@ -6353,7 +6372,7 @@ return {
 		}
 	},
 
-	["seed_tex"] = {
+	seed_tex = {
 		label = "New Austin Haze Seed",
 		weight = 1,
 		stack = true,
@@ -6364,7 +6383,7 @@ return {
 		}
 	},
 
-	["wine"] = {
+	wine = {
 		label = "Red Wine",
 		weight = 500,
 		stack = true,
@@ -6375,7 +6394,7 @@ return {
 		}
 	},
 
-	["injection_saline"] = {
+	injection_saline = {
 		label = "Rope Tourniquet",
 		weight = 100,
 		stack = true,
@@ -6386,7 +6405,7 @@ return {
 		}
 	},
 
-	["sterile_band"] = {
+	sterile_band = {
 		label = "Sterilized Gauze",
 		weight = 0,
 		stack = true,
@@ -6397,7 +6416,7 @@ return {
 		}
 	},
 
-	["dried_purp"] = {
+	dried_purp = {
 		label = "Dried Ambarino Frost",
 		weight = 3,
 		stack = true,
@@ -6408,7 +6427,7 @@ return {
 		}
 	},
 
-	["tourniquet_rope"] = {
+	tourniquet_rope = {
 		label = "Rope Tourniquet",
 		weight = 100,
 		stack = true,
@@ -6419,7 +6438,7 @@ return {
 		}
 	},
 
-	["dried_tex"] = {
+	dried_tex = {
 		label = "Dried New Austin Haze",
 		weight = 3,
 		stack = true,
@@ -6430,7 +6449,7 @@ return {
 		}
 	},
 
-	["tea"] = {
+	tea = {
 		label = "Tea",
 		weight = 200,
 		stack = true,
@@ -6441,7 +6460,7 @@ return {
 		}
 	},
 
-	["joint"] = {
+	joint = {
 		label = "Joint",
 		weight = 50,
 		stack = true,
@@ -6452,7 +6471,7 @@ return {
 		}
 	},
 
-	["gin"] = {
+	gin = {
 		label = "Gin",
 		weight = 500,
 		stack = true,
@@ -6463,7 +6482,7 @@ return {
 		}
 	},
 
-	["pie"] = {
+	pie = {
 		label = "Apple Pie",
 		weight = 500,
 		stack = true,
@@ -6474,7 +6493,7 @@ return {
 		}
 	},
 
-	["joint_kalka"] = {
+	joint_kalka = {
 		label = "Guarma Gold Joint",
 		weight = 1,
 		stack = true,
@@ -6485,7 +6504,7 @@ return {
 		}
 	},
 
-	["grape"] = {
+	grape = {
 		label = "Grapes",
 		weight = 150,
 		stack = true,
