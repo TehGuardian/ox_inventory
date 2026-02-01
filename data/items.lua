@@ -6514,4 +6514,22 @@ return {
 			image = "grape.png",
 		}
 	},
+
+    chocolate_bar = {
+		label = "Chocolate Bar",
+		description = "A sweet chocolate bar to help with hunger.",
+        weight = 200, -- In Grams
+		stack = true,
+		decay = true,
+		degrade = 4320, -- Minutes
+		close = true, -- if should close inventory when used
+		allowArmed = true, -- should we let them use with weapons?
+		prop = "p_bread01x",
+        client = {
+			status = { hunger = 10 },
+			anim = 'eating',
+			prop = 'bread',
+			usetime = 5000,
+		},
+	},
 }

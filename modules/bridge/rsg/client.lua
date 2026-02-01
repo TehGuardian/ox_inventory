@@ -36,18 +36,19 @@ end)
 ---@diagnostic disable-next-line: duplicate-set-field
 function client.setPlayerStatus(values)
     for name, value in pairs(values) do
-        -- compatibility for ESX style values
         if value > 100 or value < -100 then
             value = value * 0.0001
         end
 
         if name == "hunger" then
-            TriggerServerEvent('consumables:server:addHunger', RSGCore.Functions.GetPlayerData().metadata.hunger + value)
+            TriggerServerEvent("RSGCore:Server:SetMetaData", "hunger", RSGCore.Functions.GetPlayerData().metadata.hunger + value)
         elseif name == "thirst" then
-            TriggerServerEvent('consumables:server:addThirst', RSGCore.Functions.GetPlayerData().metadata.thirst + value)
+            TriggerServerEvent("RSGCore:Server:SetMetaData", "thirst", RSGCore.Functions.GetPlayerData().metadata.thirst + value)
+        elseif name == "cleanliness" then
+            TriggerServerEvent("RSGCore:Server:SetMetaData", "cleanliness", RSGCore.Functions.GetPlayerData().metadata.cleanliness + value)
         elseif name == "stress" then
             if value > 0 then
-                TriggerServerEvent('hud:server:GainStress', value)
+                TriggerEvent('hud:client:GainStress', math.random(1, 3))
             else
                 value = math.abs(value)
                 TriggerServerEvent('hud:server:RelieveStress', value)
