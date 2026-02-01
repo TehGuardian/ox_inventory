@@ -50,3 +50,5 @@ files {
     'modules/bridge/rsg/setup.lua',
     'data/*.lua',
 }
+
+provide 'rsg-inventory'
