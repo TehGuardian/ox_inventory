@@ -57,66 +57,29 @@ function Inventory.CanAccessTrunk(entity)
     end
 end
 
-function Inventory.OpenTrunk(entity, ignoreOwner)
+function Inventory.OpenTrunk(entity)
     ---@type number | number[] | nil
     local door
-
-	if IS_GTAV then
-		door = Inventory.CanAccessTrunk(entity)
-		if not door then return end
-
-		if GetVehicleDoorLockStatus(entity) > 1 then
-			return lib.notify({ id = 'vehicle_locked', type = 'error', description = locale('vehicle_locked') })
-		end
-	end
 
 	local netId = NetworkGetNetworkIdFromEntity(entity)
     local invId
 
-	if IS_GTAV then
-		local plate = GetVehicleNumberPlateText(entity)
-		invId = string.format('trunk%s', plate)
-	end
-
-	local vehicleHash = GetEntityModel(vehicle)
-
 	if IS_RDR3 then
-		checkVehicle = Vehicles.trunk.models[vehicleHash]
-		local state = Entity(entity).state
-		local horseUUID = state['transport:id']
-		local ownerServerId = state["transport:ownerPlayerServerId"]
 
-		if not horseUUID then
-			--[[ O cavalo não faz parte do nosso sistema. ]]
-			return
+		local vehicleUUID
+		if Entity(entity).state.wagonId then 
+			vehicleUUID = Entity(entity).state.wagonId
+		else
+			vehicleUUID = "temp:" .. netId
 		end
 
-		if not ignoreOwner then
-			local playerServerId = GetPlayerServerId( PlayerId() )
-
-			if tonumber(playerServerId) ~= tonumber(ownerServerId) then
-				print("I can't look at this wagon")
-				return
-			end
-		end
-
-		invId = ('trunk%d' --[[ It's together like that... it's not wrong ]]):format(horseUUID)
+		invId = vehicleUUID
 	end
 
     local coords = GetEntityCoords(entity)
     TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
 
     if not client.openInventory('trunk', { id = invId, netid = netId, entityid = entity, door = door }) then return end
-
-	if IS_GTAV then
-		if type(door) == 'table' then
-			for i = 1, #door do
-				SetVehicleDoorOpen(entity, door[i], false, false)
-			end
-		else
-			SetVehicleDoorOpen(entity, door --[[@as number]], false, false)
-		end
-	end
 end
 
 if shared.target then
@@ -224,13 +187,7 @@ function Inventory.GetSlotWithItem(itemName, metadata, strict)
 	local tablematch = strict and table.matches or table.contains
 
 	for _, slotData in pairs(inventory) do
-		local isSameName = slotData.name == item.name
-
-		if IS_RDR3 and string.find(slotData.name, item.name) then
-			isSameName = true
-		end
-
-		if slotData and isSameName and (not metadata or tablematch(slotData.metadata, metadata)) then
+		if slotData and slotData.name == item.name and (not metadata or tablematch(slotData.metadata, metadata)) then
 			return slotData
 		end
 	end
@@ -257,6 +214,7 @@ function Inventory.GetSlotsWithItem(itemName, metadata, strict)
 	local item = Items(itemName) --[[@as OxClientItem?]]
 
 	if not inventory or not item then return end
+
 
 	metadata = assertMetadata(metadata)
 	local response = {}
@@ -306,6 +264,7 @@ function Inventory.GetItemCount(itemName, metadata, strict)
 		return item.count
 	end
 
+
 	metadata = assertMetadata(metadata)
 	local count = 0
 	local tablematch = strict and table.matches or table.contains
@@ -329,13 +288,10 @@ end
 ---@param point CPoint
 local function nearbyEvidence(point)
 	---@diagnostic disable-next-line: param-type-mismatch
+	DrawMarker(0x07DCE236, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
 
-	if IS_GTAV then
-		DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
-
-		if point.isClosest and point.currentDistance < 1.2 and IsControlJustReleased(0, 38) then
-			openEvidence()
-		end
+	if point.isClosest and point.currentDistance < 1.2 and IsControlJustReleased(0, 0xCEFD9220) then
+		openEvidence()
 	end
 end
 
@@ -350,15 +306,16 @@ Inventory.Evidence = setmetatable(lib.load('data.evidence'), {
             end
 
 			if client.hasGroup(shared.police) then
-				if shared.target or IS_RDR3 then
+				if shared.target then
 					if evidence.target then
                         evidence.zoneId = Utils.CreateBoxZone(evidence.target, {
-							{
-								name = 'open_police_evidence',
-								label = locale('open_police_evidence'),
+                            {
+                                icon = evidence.target.icon or 'fas fa-warehouse',
+                                label = locale('open_police_evidence'),
+                                groups = shared.police,
                                 onSelect = openEvidence,
-								distance = 2,
-							}
+                                iconColor = evidence.target.iconColor,
+                            }
                         })
 					end
 				else
@@ -375,36 +332,9 @@ Inventory.Evidence = setmetatable(lib.load('data.evidence'), {
 	end
 })
 
-
-local prompt__OpenStash
-
 local function nearbyStash(self)
 	---@diagnostic disable-next-line: param-type-mismatch
-	DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
-
-	if IS_RDR3 and self.prompt then
-		if promptHelper:hasPromptHoldModeCompleted(prompt__OpenStash) then
-			exports.ox_inventory:openInventory( 'stash', self.invId )
-		end
-	end
-end
-
-local function onEnterStash(point)
-	if point.prompt then
-		prompt__OpenStash = PromptBuilder:new()
-			:setControl(`INPUT_QUICK_USE_ITEM`)
-			:setText(('Open %s'):format(point.label))
-			:setMode('Hold', 500)
-			:setPoint(vector3(point.coords.x, point.coords.y, point.coords.z))
-			:setRadius(2.0)
-			:build()
-	end
-end
-
-local function onExitStash()
-	if prompt__OpenStash then
-		prompt__OpenStash = PromptDelete(prompt__Open)
-	end
+	DrawMarker(0x07DCE236, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
 end
 
 Inventory.Stashes = setmetatable(lib.load('data.stashes'), {
@@ -440,12 +370,8 @@ Inventory.Stashes = setmetatable(lib.load('data.stashes'), {
 						coords = stash.coords,
 						distance = 16,
 						inv = 'stash',
-						prompt = stash.prompt,
-						label = stash.label,
 						invId = stash.name,
-						nearby = nearbyStash,
-						onEnter = onEnterStash,
-						onExit = onExitStash
+						nearby = nearbyStash
 					})
 				end
 			end

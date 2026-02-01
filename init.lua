@@ -8,9 +8,8 @@ local function addDeferral(err)
 end
 
 -- Do not modify this file at all. This isn't a "config" file. You want to change
--- resource settings? Use convars like you were told in the documentation.
+-- resource settings? Use the install information like you were told in the readme.
 -- You did read the docs, right? Probably not, if you're here.
--- https://overextended.dev/ox_inventory#config
 
 shared = {
     resource = GetCurrentResourceName(),
@@ -18,36 +17,8 @@ shared = {
     playerslots = GetConvarInt('inventory:slots', 50),
     playerweight = GetConvarInt('inventory:weight', 30000),
     target = GetConvarInt('inventory:target', 0) == 1,
-    police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
-    persistent_items = GetConvarInt('inventory:persistent_items', 1) == 0 -- for REDM only
-}
-
-shared.prime = {
-    { Group = "user",           MaxWeight = 25000, MaxSlots = 25 },
-
-    { Group = "relaunch",       MaxWeight = 40000, MaxSlots = 30 },
-
-    { Group = "bronze",         MaxWeight = 40000, MaxSlots = 30 },
-    { Group = "renewbronze",   MaxWeight = 40000, MaxSlots = 30 },
-
-    { Group = "silver",         MaxWeight = 50000, MaxSlots = 40 },
-    { Group = "renewsilver",   MaxWeight = 50000, MaxSlots = 40 },
-
-    { Group = "gold",           MaxWeight = 60000, MaxSlots = 40 },
-    { Group = "renewgold",     MaxWeight = 60000, MaxSlots = 40 },
-
-    { Group = "platinum",       MaxWeight = 60000, MaxSlots = 45 },
-    { Group = "renewplatinum", MaxWeight = 60000, MaxSlots = 45 },
-
-    { Group = "diamond",        MaxWeight = 70000, MaxSlots = 50 },
-    { Group = "renewdiamond",  MaxWeight = 70000, MaxSlots = 50 },
-
-    { Group = "royalty",        MaxWeight = 70000, MaxSlots = 50 },
-    { Group = "renewroyalty",  MaxWeight = 70000, MaxSlots = 50 },
-
-    { Group = "staff",          MaxWeight = 70000, MaxSlots = 50 },
-    { Group = "admin",          MaxWeight = 70000, MaxSlots = 50 },
-    { Group = "moderator",      MaxWeight = 70000, MaxSlots = 50 },
+    police = json.decode(GetConvar('inventory:police', '["rholaw", "vallaw"]')),
+    persistent_items = GetConvarInt('inventory:persistent_items', 0) == 1 -- for REDM only
 }
 
 do
@@ -58,7 +29,7 @@ do
     local police = table.create(0, shared.police and #shared.police or 0)
 
     for i = 1, #shared.police do
-        table.insert(police, shared.police[i])
+        police[shared.police[i]] = 0
     end
 
     shared.police = police
@@ -66,7 +37,6 @@ end
 
 if IsDuplicityVersion() then
     IS_RDR3 = GetConvar('gamename') == 'rdr3'
-    IS_GTAV = not IS_RDR3
 
     server = {
         bulkstashsave = GetConvarInt('inventory:bulkstashsave', 1) == 1,
@@ -74,7 +44,7 @@ if IsDuplicityVersion() then
         randomprices = GetConvarInt('inventory:randomprices', 0) == 1,
         randomloot = GetConvarInt('inventory:randomloot', 1) == 1,
         evidencegrade = GetConvarInt('inventory:evidencegrade', 2),
-        trimplate = GetConvarInt('inventory:trimplate', 0) == 1,
+        trimplate = GetConvarInt('inventory:trimplate', 1) == 1,
         vehicleloot = json.decode(GetConvar('inventory:vehicleloot', [[
 			[
 				["cola", 1, 1],
@@ -104,7 +74,6 @@ if IsDuplicityVersion() then
     end
 else
     IS_RDR3 = GetGameName() == 'redm'
-    IS_GTAV = not IS_RDR3
 
     PlayerData = {}
     client = {
@@ -113,17 +82,17 @@ else
         keys = json.decode(GetConvar('inventory:keys', '')) or { 'F2', 'K', 'TAB' },
         enablekeys = json.decode(GetConvar('inventory:enablekeys', '[249]')),
         aimedfiring = GetConvarInt('inventory:aimedfiring', 0) == 1,
-        giveplayerlist = GetConvarInt('inventory:giveplayerlist', 1) == 1,
+        giveplayerlist = GetConvarInt('inventory:giveplayerlist', 0) == 1,
         weaponanims = GetConvarInt('inventory:weaponanims', 1) == 1,
         itemnotify = GetConvarInt('inventory:itemnotify', 1) == 1,
-        weaponnotify = GetConvarInt('inventory:weaponnotify', 0) == 1,
+        weaponnotify = GetConvarInt('inventory:weaponnotify', 1) == 1,
         imagepath = GetConvar('inventory:imagepath', 'nui://ox_inventory/web/images'),
-        dropprops = GetConvarInt('inventory:dropprops', 0) == 1,
-        dropmodel = joaat(GetConvar('inventory:dropmodel', 'prop_med_bag_01b')),
+        dropprops = GetConvarInt('inventory:dropprops', 1) == 1,
+        dropmodel = joaat(GetConvar('inventory:dropmodel', 'p_bag01x')),
         weaponmismatch = GetConvarInt('inventory:weaponmismatch', 1) == 1,
         ignoreweapons = json.decode(GetConvar('inventory:ignoreweapons', '[]')),
         suppresspickups = GetConvarInt('inventory:suppresspickups', 1) == 1,
-        shopPrompt = GetConvarInt('inventory:shopprompt', 1) == 1
+        weaponWheel = GetConvarInt('inventory:weaponWheel', 0) == 1,
     }
 
     local ignoreweapons = table.create(0, (client.ignoreweapons and #client.ignoreweapons or 0) + 3)
@@ -206,7 +175,7 @@ end
 local success, msg = lib.checkDependency('oxmysql', '2.7.3')
 
 if success then
-    success, msg = lib.checkDependency('ox_lib', '3.27.0')
+    success, msg = lib.checkDependency('ox_lib', '3.13.0')
 end
 
 if not success then
@@ -215,13 +184,13 @@ end
 
 if not LoadResourceFile(shared.resource, 'web/build/index.html') then
     return spamError(
-        'UI has not been built, refer to the documentation or download a release build.\n	^3https://overextended.dev/ox_inventory^0')
+        'UI has not been built.')
 end
 
 -- No we're not going to support qtarget any longer.
 if shared.target and GetResourceState('ox_target') ~= 'started' then
     shared.target = false
-    warn('ox_target is not loaded - it should start before ox_inventory')
+    warn('ox_target is not loaded - it should start before OX-Inventory')
 end
 
 if lib.context == 'server' then

@@ -10,11 +10,9 @@ function Utils.PlayAnim(wait, dict, name, blendIn, blendOut, duration, flag, rat
 	if wait > 0 then Wait(wait) end
 end
 
-function Utils.PlayAnimAdvanced(wait, dict, name, posX, posY, posZ, rotX, rotY, rotZ, blendIn, blendOut, duration, flag,
-								time)
+function Utils.PlayAnimAdvanced(wait, dict, name, posX, posY, posZ, rotX, rotY, rotZ, blendIn, blendOut, duration, flag, time)
 	lib.requestAnimDict(dict)
-	TaskPlayAnimAdvanced(cache.ped, dict, name, posX, posY, posZ, rotX, rotY, rotZ, blendIn, blendOut, duration, flag,
-		time, 0, 0)
+	TaskPlayAnimAdvanced(cache.ped, dict, name, posX, posY, posZ, rotX, rotY, rotZ, blendIn, blendOut, duration, flag, time, 0, 0)
 	RemoveAnimDict(dict)
 
 	if wait > 0 then Wait(wait) end
@@ -28,14 +26,13 @@ end
 function Utils.Raycast(flag, destination, size)
 	local playerCoords = GetEntityCoords(cache.ped)
 	destination = destination or GetOffsetFromEntityInWorldCoords(cache.ped, 0.0, 2.2, -0.25)
-	local rayHandle = StartShapeTestCapsule(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, destination.x,
-		destination.y, destination.z, size or 2.2, flag or 30, cache.ped, 4)
+	local rayHandle = StartShapeTestCapsule(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, destination.x, destination.y, destination.z, size or 2.2, flag or 30, cache.ped, 4)
 	while true do
 		Wait(0)
 		local result, _, coords, _, entityHit = GetShapeTestResult(rayHandle)
 		if result ~= 1 then
-			-- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, destination.x, destination.y, destination.z, 0, 0, 255, 255)
-			-- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, coords.x, coords.y, coords.z, 255, 0, 0, 255)
+            -- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, destination.x, destination.y, destination.z, 0, 0, 255, 255)
+            -- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, coords.x, coords.y, coords.z, 255, 0, 0, 255)
 			local entityType
 			if entityHit then entityType = GetEntityType(entityHit) end
 			if entityHit and entityType ~= 0 then
@@ -76,10 +73,6 @@ function Utils.Notify(data)
 	lib.notify(data)
 end
 
-function lib.notify(data)
-	print(data.description)
-end
-
 RegisterNetEvent('ox_inventory:notify', Utils.Notify)
 exports('notify', Utils.Notify)
 
@@ -88,29 +81,8 @@ function Utils.ItemNotify(data)
 		return
 	end
 
-	local item = data[1]
-	local notifyType = data[2]
-	local itemCount = data[3]
-	local positive = true
-
-	if notifyType == "ui_removed" then
-		positive = false
-	end
-
-	if item.name == "money" then
-		Utils.CashNotify(item.name, itemCount, 2000, positive)
-		return
-	end
-
-	if item.name == "gold" then
-		Utils.CashNotify(item.name, itemCount, 2000, positive)
-		return
-	end
-
-	SendNUIMessage({ action = 'itemNotify', data = data })
+	SendNUIMessage({action = 'itemNotify', data = data})
 end
-
-
 
 RegisterNetEvent('ox_inventory:itemNotify', Utils.ItemNotify)
 
@@ -141,11 +113,6 @@ function Utils.WeaponWheel(state)
 		Citizen.InvokeNative(0x311150E5, not state) -- SetWeaponsNoAutoreload
 	end
 
-	if IS_GTAV then
-		SetWeaponsNoAutoswap(not state)
-		SetWeaponsNoAutoreload(not state)
-	end
-
 	if client.suppresspickups then
 		-- CLEAR_PICKUP_REWARD_TYPE_SUPPRESSION | SUPPRESS_PICKUP_REWARD_TYPE
 		return state and N_0x762db2d380b48d04(rewardTypes) or N_0xf92099527db8e2a7(rewardTypes, true)
@@ -155,18 +122,7 @@ end
 exports('weaponWheel', Utils.WeaponWheel)
 
 function Utils.CreateBlip(settings, coords)
-	local blip
-	if IS_GTAV then
-		blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-		SetBlipSprite(blip, settings.id)
-		SetBlipDisplay(blip, 4)
-		SetBlipScale(blip, settings.scale)
-		SetBlipColour(blip, settings.colour)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName(settings.name)
-		EndTextCommandSetBlipName(blip)
-	end
-
+	local blip 
 	if IS_RDR3 then
 		blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, coords.x, coords.y, coords.z)
 		SetBlipSprite(blip, settings.id, 1);
@@ -176,7 +132,6 @@ function Utils.CreateBlip(settings, coords)
 
 		local varString = CreateVarString(10, 'LITERAL_STRING', settings.name);
 		Citizen.InvokeNative(0x9CB1A1623062F402, blip, varString)
-		SetBlipSprite(blip, `blip_shop_market_stall`, 1);
 	end
 
 	return blip
@@ -187,96 +142,33 @@ end
 ---@param options? OxTargetOption[]
 ---@return number
 function Utils.CreateBoxZone(data, options)
-	if data.length then
-		local height = math.abs(data.maxZ - data.minZ)
-		local z = data.loc.z + math.abs(data.minZ - data.maxZ) / 2
-		data.coords = vec3(data.loc.x, data.loc.y, z)
-		data.size = vec3(data.width, data.length, height)
-		data.rotation = data.heading
-		data.loc = nil
-		data.heading = nil
-		data.length = nil
-		data.width = nil
-		data.maxZ = nil
-		data.minZ = nil
-	end
+    if data.length then
+        local height = math.abs(data.maxZ - data.minZ)
+        local z = data.loc.z + math.abs(data.minZ - data.maxZ) / 2
+        data.coords = vec3(data.loc.x, data.loc.y, z)
+        data.size = vec3(data.width, data.length, height)
+        data.rotation = data.heading
+        data.loc = nil
+        data.heading = nil
+        data.length = nil
+        data.width = nil
+        data.maxZ = nil
+        data.minZ = nil
+    end
 
-	if not data.options and options then
-		local distance = data.distance or 2.0
+    if not data.options and options then
+        local distance = data.distance or 2.0
 
-		for k, v in pairs(options) do
-			if not v.distance then
-				v.distance = distance
-			end
-		end
+        for k, v in pairs(options) do
+            if not v.distance then
+                v.distance = distance
+            end
+        end
 
-		data.options = options
-	end
+        data.options = options
+    end
 
-	return exports.ox_target:addBoxZone(data)
-end
-
-function Utils.CashNotify(item, fAmount, durationMs, positive)
-	--Transaction_Feed_Sounds", "Transaction_Positive
-
-	local isCents =  fAmount < 100
-
-	local moneyAmount = isCents and '¢' or ("%.2f"):format(fAmount / 100)
-	local moneySymble = isCents and fAmount or '$'
-
-	local strAmount = item == 'gold' and fAmount or ("%s%s"):format(moneySymble, moneyAmount)
-	local itemType = item == 'gold' and `ITEMTYPE_GOLD` or `ITEMTYPE_CASH`
-
-	local str1 = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", strAmount, Citizen.ResultAsLong())
-	local str2 = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", "ITEMTYPE_TEXTURES",
-		Citizen.ResultAsLong())
-
-	local soundSetStr = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", "Transaction_Feed_Sounds",
-		Citizen.ResultAsLong())
-	local soundNameStr = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", "Transaction_Positive",
-		Citizen.ResultAsLong())
-
-	local pStr1 = DataView.ArrayBuffer(16)
-	pStr1:SetInt64(0, str1)
-
-	local pStr2 = DataView.ArrayBuffer(16)
-	pStr2:SetInt64(0, str2)
-
-	local pSoundSetStr = DataView.ArrayBuffer(16)
-	pSoundSetStr:SetInt64(0, soundSetStr)
-	local pSoundNameStr = DataView.ArrayBuffer(16)
-	pSoundNameStr:SetInt64(0, soundNameStr)
-
-	local struct1 = DataView.ArrayBuffer(128)
-	struct1:SetInt32(8 * 0, durationMs)           --duration
-	struct1:SetInt64(8 * 1, pSoundSetStr:GetInt64(0)) -- const char*, Sound set, e.g., "Honor_Display_Sounds"
-	struct1:SetInt64(8 * 2, pSoundNameStr:GetInt64(0)) -- const char*, Sound to play, e.g., "Honor_Decrease_Small"
-	struct1:SetInt32(8 * 3, 0)                    --int
-	struct1:SetInt32(8 * 4, 0)                    --int
-	struct1:SetInt32(8 * 5, 0)                    --int
-	struct1:SetInt64(8 * 6, 0)                    -- const char* 2ndSubtitle
-	struct1:SetInt32(8 * 7, 0)                    --int
-	struct1:SetInt32(8 * 8, 0)                    --int
-	struct1:SetInt32(8 * 9, 0)                    --int
-	struct1:SetInt32(8 * 10, 0)                   --int
-	struct1:SetInt32(8 * 11, 0)                   --int
-	struct1:SetInt32(8 * 12, 0)                   --int
-
-	local struct2 = DataView.ArrayBuffer(128)
-	struct2:SetInt32(8 * 0, 0)                                          --unk0
-	struct2:SetInt64(8 * 1, pStr1:GetInt64(0))                          -- title
-	struct2:SetInt64(8 * 2, pStr2:GetInt64(0))                          -- subtitle
-	struct2:SetInt32(8 * 3, itemType)                            -- TRANSACTION_HONOR_BAD
-	struct2:SetInt32(8 * 4, 0)
-	struct2:SetInt32(8 * 5, positive and `COLOR_PURE_WHITE` or `COLOR_RED`) --COLOR_GOLD
-	struct2:SetInt32(8 * 6, 0)
-	struct2:SetInt32(8 * 7, 0)
-
-	--_UI_FEED_POST_SAMPLE_TOAST_RIGHT. Part of HUD_TOASTS, I believe
-	Citizen.InvokeNative(0xB249EBCB30DD88E0, struct1:Buffer(), struct2:Buffer(), 1)
-
-	-- Could this prevent the above buffers from deleting before RAGE can use them?
-	Citizen.Wait(durationMs)
+    return exports.ox_target:addBoxZone(data)
 end
 
 return Utils

@@ -1,7 +1,29 @@
 local Inventory = require 'modules.inventory.server'
 local Items = require 'modules.items.server'
+local RSGCore = exports['rsg-core']:GetCoreObject()
 
-local RSGCore
+AddEventHandler('RSGCore:Server:OnPlayerUnload', server.playerDropped)
+
+AddEventHandler('RSGCore:Server:OnJobUpdate', function(source, job)
+    local inventory = Inventory(source)
+    if not inventory then return end
+    inventory.player.groups[inventory.player.job] = nil
+    inventory.player.job = job.name
+    inventory.player.groups[job.name] = job.grade.level
+end)
+
+AddEventHandler('RSGCore:Server:OnGangUpdate', function(source, gang)
+    local inventory = Inventory(source)
+    if not inventory then return end
+    inventory.player.groups[inventory.player.gang] = nil
+    inventory.player.gang = gang.name
+    inventory.player.groups[gang.name] = gang.grade.level
+end)
+
+AddEventHandler('onResourceStart', function(resource)
+    if resource ~= 'rsg-weapons' then return end
+    StopResource(resource)
+end)
 
 ---@param item SlotWithItem?
 ---@return SlotWithItem?
@@ -139,6 +161,7 @@ AddEventHandler('ox_inventory:itemRemoved', function(source, itemName, count)
 end)
 
 AddEventHandler('RSGCore:Server:PlayerLoaded', setupPlayer)
+
 SetTimeout(500, function()
     RSGCore = exports['rsg-core']:GetCoreObject()
     server.GetPlayerFromId = RSGCore.Functions.GetPlayer
@@ -148,22 +171,6 @@ SetTimeout(500, function()
         StopResource('rsg-weapons')
     end
 
-    local shopState = GetResourceState('rsg-weaponcomp')
-
-    if shopState ~= 'missing' and (shopState == 'started' or shopState == 'starting') then
-        StopResource('rsg-weaponcomp')
-    end
-
-    -- Auto-import items from RSGCore.Shared.Items to ox_inventory
-    if RSGCore.Shared and RSGCore.Shared.Items then
-        local ItemImporter = require 'modules.items.import'
-        local ignoreList = {
-            'weapon_', 'WEAPON_', -- Weapons are handled by weapons_RDR3.lua
-            'ammo_', 'AMMO_',     -- Ammo is handled by weapons_RDR3.lua
-        }
-        ItemImporter.ImportFromFramework(RSGCore.Shared.Items, 'RSGCore', ignoreList)
-    end
-
     for _, Player in pairs(RSGCore.Functions.GetRSGPlayers()) do setupPlayer(Player) end
 end)
 
@@ -171,6 +178,18 @@ function server.UseItem(source, itemName, data)
     local cb = RSGCore.Functions.CanUseItem(itemName)
     return cb and cb(source, data)
 end
+
+AddEventHandler('RSGCore:Server:OnMoneyChange', function(src, account, amount, changeType)
+    if account ~= "cash" then return end
+
+    local item = Inventory.GetItem(src, 'money', nil, false)
+
+    if not item then return end
+
+    Inventory.SetItem(src, 'money',
+        changeType == "set" and amount or changeType == "remove" and item.count - amount or
+        changeType == "add" and item.count + amount)
+end)
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.setPlayerData(player)
@@ -266,6 +285,14 @@ function server.convertInventory(playerId, items)
                         hasThis = true
                     end
                 end
+
+                if not hasThis then
+                    local amount = player.Functions.GetMoney(name == 'money' and 'cash' or name)
+
+                    if amount then
+                        items[#items + 1] = { name = name, amount = amount }
+                    end
+                end
             end
         end
 
@@ -283,8 +310,7 @@ function server.convertInventory(playerId, items)
                     weight = weight,
                     slot = slot,
                     count = count,
-                    description =
-                    item.description,
+                    description = item.description,
                     metadata = metadata,
                     stack = item.stack,
                     close = item.close

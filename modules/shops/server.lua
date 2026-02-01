@@ -9,11 +9,6 @@ local locations = shared.target and 'targets' or 'locations'
 ---@field slot number
 ---@field weight number
 
-local function comma_value(n)
-	local left,num,right = string.match(n,'^([^%d]*%d)(%d*)(.-)$')
-	return left..(num:reverse():gsub('(%d%d%d)','%1,'):reverse())..right
-end
-
 local function setupShopItems(id, shopType, shopName, groups)
 	local shop = id and Shops[shopType][id] or Shops[shopType] --[[@as OxShop]]
 
@@ -159,47 +154,16 @@ lib.callback.register('ox_inventory:openShop', function(source, data)
 end)
 
 local function canAffordItem(inv, currency, price)
-	if currency == 'gold' then
-
-		local goldStatus, goldAmount = pcall(function()
-			return exports.prime_api:getUserCash( source )
-		end)
-
-		if not goldStatus then
-			print(("A problem occurred%s"):format(goldAmount))
-			return false
-		end
-
-		if not goldStatus or not goldAmount then
-			return {
-				type = 'error',
-				description = locale('cannot_afford', ('%s%s'):format((currency == 'money' and locale('$') or comma_value(price)), (currency == 'money' and comma_value(price) or ' '..Items(currency).label)))
-			}
-		end
-		return goldAmount >= price
-	end
-
 	local canAfford = price >= 0 and Inventory.GetItem(inv, currency, false, true) >= price
 
 	return canAfford or {
 		type = 'error',
-		description = locale('cannot_afford', ('%s%s'):format((currency == 'money' and locale('$') or comma_value(price)), (currency == 'money' and comma_value(price) or ' '..Items(currency).label)))
+		description = locale('cannot_afford', ('%s%s'):format((currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label)))
 	}
 end
 
-local function removeCurrency(inv, currency, price, reason)
-	if currency == "gold" then
-		local status, err = pcall(function()
-			return exports.prime_api:removeUserCash( { inv.id, price, reason })
-		end)
-
-		if not status then
-			print("A problem occurred")
-		end
-
-		return status
-	end
-	return Inventory.RemoveItem(inv, currency, price)
+local function removeCurrency(inv, currency, price)
+	Inventory.RemoveItem(inv, currency, price)
 end
 
 local TriggerEventHooks = require 'modules.hooks.server'
@@ -249,18 +213,10 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 			end
 
 			if fromData.grade then
-
-				-- local hasPermission = Business.personaHasPermissionGrade( playerInv.citizenId, businessId, {"edit_permission", "full_permission"})
-
-				local group, rank = server.hasGroup(playerInv, shop.groups)
-
-				if not Business.hasClassePermission(playerInv.playerData.citizenId, group, rank) then
+				local _, rank = server.hasGroup(playerInv, shop.groups)
+				if not isRequiredGrade(fromData.grade, rank) then
 					return false, false, { type = 'error', description = locale('stash_lowgrade') }
 				end
-
-				-- if not isRequiredGrade(fromData.grade, rank) then
-				-- 	return false, false, { type = 'error', description = locale('stash_lowgrade') }
-				-- end
 			end
 
 			local currency = fromData.currency or 'money'
@@ -287,12 +243,6 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 					return false, false, canAfford
 				end
 
-				local itemLabel = currency == 'money' and comma_value(price) or ' '..(currency == "gold" and "Gold" or Items(currency).label)
-				local message = locale('purchased_for', count, metadata?.label or fromItem.label, (currency == 'money' and locale('$') or comma_value(price)), (itemLabel))
-
-				local res = removeCurrency(playerInv, currency, tonumber( ('%0.2f'):format(price) ), message)
-				assert(res, "Ocorreu um problema na hora da compra")
-
 				if not TriggerEventHooks('buyItem', {
 					source = source,
 					shopType = shopType,
@@ -309,8 +259,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 
 				Inventory.SetSlot(playerInv, fromItem, count, metadata, data.toSlot)
 				playerInv.weight = newWeight
-
-				Business.TaxRepositoryCreate(source, price)
+				removeCurrency(playerInv, currency, price)
 
 				if fromData.count then
 					shop.items[data.fromSlot].count = fromData.count - count
@@ -318,7 +267,13 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 
 				if server.syncInventory then server.syncInventory(playerInv) end
 
-				lib.logger(playerInv.source, 'buyItem', ('"%s" %s'):format(playerInv.label, message:lower()), ('shop:%s'):format(shop.label))
+				local message = locale('purchased_for', count, metadata?.label or fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
+
+				if server.loglevel > 0 then
+					if server.loglevel > 1 or fromData.price >= 500 then
+						lib.logger(playerInv.owner, 'buyItem', ('"%s" %s'):format(playerInv.label, message:lower()), ('shop:%s'):format(shop.label))
+					end
+				end
 
 				return true, {data.toSlot, playerInv.items[data.toSlot], shop.items[data.fromSlot].count and shop.items[data.fromSlot], playerInv.weight}, { type = 'success', description = message }
 			end

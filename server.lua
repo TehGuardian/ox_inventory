@@ -1,7 +1,7 @@
 if not lib then return end
 
 if GetConvar('inventory:versioncheck', 'true') == 'true' then
-	lib.versionCheck('overextended/ox_inventory')
+	lib.versionCheck('nelmar32/ox_inventory-RSG/')
 end
 
 require 'modules.bridge.server'
@@ -26,24 +26,16 @@ function server.setPlayerInventory(player, data)
 		data = db.loadPlayer(player.identifier)
 	end
 
-	local playerInventoryConfig = shared.prime[1]
-
---[[ 	for _, group in ipairs(shared.prime) do
-		if API.IsPlayerAceAllowedGroup( player.source, "prime_"..group.Group ) or API.IsPlayerAceAllowedGroup( player.source, group.Group ) then
-			playerInventoryConfig = group
-		end
-	end ]]
-
 	local inventory = {}
 	local totalWeight = 0
 
-	if type(data.items) == 'table' then
+	if type(data) == 'table' then
 		local ostime = os.time()
 
-		for _, v in pairs(data.items) do
+		for _, v in pairs(data) do
 			if type(v) == 'number' or not v.count or not v.slot then
 				if server.convertInventory then
-					inventory, totalWeight = server.convertInventory(player.source, data.items)
+					inventory, totalWeight = server.convertInventory(player.source, data)
 					break
 				else
 					return error(('Inventory for player.%s (%s) contains invalid data. Ensure you have converted inventories to the correct format.'):format(player.source, GetPlayerName(player.source)))
@@ -56,36 +48,14 @@ function server.setPlayerInventory(player, data)
 					local weight = Inventory.SlotWeight(item, v)
 					totalWeight = totalWeight + weight
 
-					inventory[v.slot] = {
-						name = item.name,
-						label = item.label,
-						weight = weight,
-						slot = v.slot,
-						count = v.count,
-						description = item.description,
-						metadata = v.metadata,
-						stack = item.stack,
-						close = item.close,
-
-					}
+					inventory[v.slot] = {name = item.name, label = item.label, weight = weight, slot = v.slot, count = v.count, description = item.description, metadata = v.metadata, stack = item.stack, close = item.close}
 				end
 			end
 		end
 	end
 
-	local customSlots = playerInventoryConfig.MaxSlots
-	local customMaxWeight = playerInventoryConfig.MaxWeight
-
-	if data and data.slots then
-		customSlots += data.slots
-	end
-
-	if data and data.weight then
-		customMaxWeight += data.weight
-	end
-
 	player.source = tonumber(player.source)
-	local inv = Inventory.Create(player.source, player.name, 'player', customSlots, totalWeight, customMaxWeight, player.identifier, inventory)
+	local inv = Inventory.Create(player.source, player.name, 'player', shared.playerslots, totalWeight, shared.playerweight, player.identifier, inventory)
 
 	if inv then
 		inv.player = server.setPlayerData(player)
@@ -245,10 +215,6 @@ lib.callback.register('ox_inventory:openInventory', function(source, invType, da
 	return openInventory(source, invType, data)
 end)
 
-lib.callback.register('ox_inventory:getItemBySlot', function(source, slot)
-	return Inventory.GetSlot(source, slot)
-end)
-
 ---@param netId number
 lib.callback.register('ox_inventory:isVehicleATrailer', function(source, netId)
 	local entity = NetworkGetEntityFromNetworkId(netId)
@@ -280,6 +246,29 @@ lib.callback.register('ox_inventory:buyLicense', function(source, id)
 	return server.buyLicense(inventory, license)
 end)
 
+local RSGCore = exports['rsg-core']:GetCoreObject()
+
+RegisterNetEvent('rsg-horses:server:openhorseinventory')
+AddEventHandler('rsg-horses:server:openhorseinventory', function()
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    if not Player then return end
+
+    -- Define stash details
+    local stashName = 'horse_stash_' .. src 
+    local label = 'Horse Trunk Storage' 
+    local maxWeight = 20000 
+    local maxSlots = 10
+
+    -- Register the stash with ox_inventory
+    exports.ox_inventory:RegisterStash(stashName, label, maxSlots, maxWeight)
+
+    print("Opening stash for player: " .. src .. ", Stash Name: " .. stashName)
+
+    -- Open the stash for the player
+    TriggerClientEvent('ox_inventory:openInventory', src, 'stash', stashName)
+end)
+
 lib.callback.register('ox_inventory:getItemCount', function(source, item, metadata, target)
 	local inventory = target and Inventory(target) or Inventory(source)
 	return (inventory and Inventory.GetItem(inventory, item, metadata, true)) or 0
@@ -307,8 +296,9 @@ RegisterNetEvent('ox_inventory:usedItemInternal', function(slot)
     local item = inventory.usingItem
 
     if not item or item.slot ~= slot then
-        -- Anti-cheat: Kick player attempting item slot manipulation
+        ---@todo
         DropPlayer(inventory.id, 'sussy')
+
         return
     end
 
@@ -325,7 +315,7 @@ end)
 lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, metadata, noAnim)
 	local inventory = Inventory(source) --[[@as OxInventory]]
 
-	if inventory and inventory.player then
+	if inventory.player then
 		local item = Items(itemName)
 		local data = item and (slot and inventory.items[slot] or Inventory.GetSlotWithItem(inventory, item.name, metadata, true))
 
@@ -366,22 +356,12 @@ lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, m
 			data = {name=data.name, label=label, count=data.count, slot=slot, metadata=data.metadata, weight=data.weight}
 
 			if item.ammo then
-
 				if inventory.weapon then
 					local weapon = inventory.items[inventory.weapon]
 
-					if IS_GTAV then
-						if weapon and weapon?.metadata.durability > 0 then
-							consume = nil
-						end
+					if weapon and weapon?.metadata.durability > 0 then
+						consume = nil
 					end
-
-					if IS_RDR3 then
-						if weapon and weapon?.metadata.degradation < 1.0 then
-							consume = nil
-						end
-					end
-
 				else return false end
 			elseif item.component or item.tint then
 				consume = 1
@@ -409,13 +389,6 @@ lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, m
 			end
 
 			data.consume = consume
-
-            if not TriggerEventHooks('usingItem', {
-				source = source,
-                inventoryId = inventory and inventory.id,
-                item = inventory.items[slot],
-                consume = consume
-			}) then return false end
 
             ---@type boolean
 			local success = lib.callback.await('ox_inventory:usingItem', source, data, noAnim)
@@ -485,7 +458,7 @@ end)
 local function conversionScript()
 	shared.ready = false
 
-	local file = 'setup/convert.lua'
+	local file = 'modules/bridge/rsg/setup.lua'
 	local import = LoadResourceFile(shared.resource, file)
 	local func = load(import, ('@@%s/%s'):format(shared.resource, file)) --[[@as function]]
 
@@ -500,11 +473,12 @@ RegisterCommand('convertinventory', function(source, args)
 	local convert = arg and conversionScript[arg]
 
 	if not convert then
-		return warn('Invalid conversion argument. Valid options: esx, esxproperty, qb, qbx, linden, rsg')
+		return warn('Invalid conversion argument. Valid options: rsg, linden')
 	end
 
 	CreateThread(convert)
 end, true)
+
 
 lib.addCommand({'additem', 'giveitem'}, {
 	help = 'Gives an item to a player with the given id',
@@ -520,8 +494,7 @@ lib.addCommand({'additem', 'giveitem'}, {
 
 	if item then
 		local inventory = Inventory(args.target) --[[@as OxInventory]]
-		local count = args.count and math.max(args.count, 1) or 1
-
+		local count = args.count or 1
 		local success, response = Inventory.AddItem(inventory, item.name, count, args.type and { type = tonumber(args.type) or args.type })
 
 		if not success then
@@ -536,33 +509,30 @@ lib.addCommand({'additem', 'giveitem'}, {
 	end
 end)
 
-
 lib.addCommand('removeitem', {
 	help = 'Removes an item to a player with the given id',
 	params = {
 		{ name = 'target', type = 'playerId', help = 'The player to remove the item from' },
 		{ name = 'item', type = 'string', help = 'The name of the item' },
-		{ name = 'count', type = 'number', help = 'The amount of the item to take', optional = true },
+		{ name = 'count', type = 'number', help = 'The amount of the item to take' },
 		{ name = 'type', help = 'Only remove items with a matching metadata "type"', optional = true },
 	},
 	restricted = 'group.admin',
 }, function(source, args)
 	local item = Items(args.item)
 
-	if item then
+	if item and args.count > 0 then
 		local inventory = Inventory(args.target) --[[@as OxInventory]]
-		local count = args.count and math.max(args.count, 1) or 1
-
-		local success, response = Inventory.RemoveItem(inventory, item.name, count, args.type and { type = tonumber(args.type) or args.type }, nil, true)
+		local success, response = Inventory.RemoveItem(inventory, item.name, args.count, args.type and { type = tonumber(args.type) or args.type }, nil, true)
 
 		if not success then
-			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(count, item.name, args.target, response))
+			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(args.count, item.name, args.target, response))
 		end
 
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
-			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, count, item.name, inventory.label))
+			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label))
 		end
 	end
 end)
@@ -581,18 +551,16 @@ lib.addCommand('setitem', {
 
 	if item then
 		local inventory = Inventory(args.target) --[[@as OxInventory]]
-		local count = args.count and math.max(args.count, 0) or 0
-
-		local success, response = Inventory.SetItem(inventory, item.name, count or 0, args.type and { type = tonumber(args.type) or args.type })
+		local success, response = Inventory.SetItem(inventory, item.name, args.count or 0, args.type and { type = tonumber(args.type) or args.type })
 
 		if not success then
-			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, count, args.target, response))
+			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, args.count, args.target, response))
 		end
 
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
-			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, count))
+			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count))
 		end
 	end
 end)
@@ -606,8 +574,6 @@ lib.addCommand('clearevidence', {
 	if not server.isPlayerBoss then return end
 
 	local inventory = Inventory(source)
-	if not inventory then return end
-
 	local group, grade = server.hasGroup(inventory, shared.police)
 	local hasPermission = group and server.isPlayerBoss(source, group, grade)
 
@@ -664,138 +630,4 @@ lib.addCommand('viewinv', {
 	restricted = 'group.admin',
 }, function(source, args)
 	Inventory.InspectInventory(source, tonumber(args.invId) or args.invId)
-end)
-
-RegisterNetEvent("inventory:server:forceRemoveItemWithNoDurability", function( slotId, itemName )
-	local playerId = source
-	exports.ox_inventory:RemoveItem(playerId, itemName, 1, nil, slotId)
-end)
-
-RegisterNetEvent("inventory:server:forceRemoveItem", function( itemName, amount )
-	local playerId = source
-	exports.ox_inventory:RemoveItem(playerId, itemName, amount)
-end)
-
-RegisterNetEvent("inventory:server:RemoveByConsume", function(slot, playerId)
-	local playerId = playerId or source
-
-	if not playerId then
-		return
-	end
-
-	local slotKey = slot.slot
-
-	local item = Inventory(playerId).items[slotKey]
-
-	local itemInfo = Items(item.name)
-	local itemInfoDegrade = ( itemInfo?.metadata?.consume or itemInfo?.consume )
-
-	-- local changePercentage = (durability / 100)
-
-	-- local change = (60 * itemInfoDegrade) * changePercentage
-
-	local prevDurability = item.metadata.durability
-	local remove = prevDurability * itemInfoDegrade
-
-	local newDurability = prevDurability - remove
-
-	Inventory.SetDurability(playerId, slotKey, newDurability)
-end)
-
-
-RegisterNetEvent("inventory:server:RemoveDurability", function(slot, durability, playerId)
-	local playerId = playerId or source
-
-	if not playerId then
-		return
-	end
-
-	local slotKey = slot.slot
-
-	local itemInfo = Items(slot.name)
-
-	local itemInfoDegrade = itemInfo?.metadata?.degrade or itemInfo?.degrade
-
-	local item = Inventory(playerId).items[slotKey]
-
-	local changePercentage = (durability / 100)
-
-	local change = (60 * itemInfoDegrade) * changePercentage
-
-	local prevDurability = item.metadata.durability
-
-	local newDurability = prevDurability - change
-
-	Inventory.SetDurability(playerId, slotKey, newDurability)
-end)
-
-local PickupToItem = data 'pickup_to_item'
-
-RegisterServerEvent('inventory:addWeaponFromPickup', function(pickupHash)
-	local playerId = source
-
-	local inv = Inventory(playerId)
-
-	local item = PickupToItem[pickupHash]
-
-	if item then
-		Inventory.AddItem(inv, item, 1)
-	end
-end)
-
-local function reloadPlayerInventory (User, charId)
-	server.playerDropped( User:GetSource() )
-	Wait(1000)
-
-	local Player = User:GetCharacter()
-	if not Player then return end
-
-	local PlayerData = {}
-	PlayerData.source = Player.source
-
-	PlayerData.inventory = Player.Inventory.items
-	PlayerData.slots = Player.Inventory.slots
-	PlayerData.weight = Player.Inventory.weight
-	PlayerData.identifier = charId or Player.id
-	PlayerData.citizenId = Player.citizenId
-
-	shared.playerslots = Player.Inventory.slots
-	shared.playerweight = Player.Inventory.weight
-
-	PlayerData.name = ('%s %s (%s)'):format(Player.firstName, Player.lastName, Player.citizenId)
-	server.setPlayerInventory(PlayerData)
-end
-
-AddEventHandler('ox_inventory:addAdditionalSlots', function( playerId, characterId )
-	local inv = MySQL.single.await('SELECT weight, slots FROM character_inventory WHERE charId = ? LIMIT 1', { characterId })
-
-	if inv?.slots >= 100 then
-		TriggerClientEvent("texas:notify:simple", playerId, "Já estou no maximo da minha bolsa")
-		return
-	end
-
-	local res = MySQL.update.await('UPDATE character_inventory SET weight = weight + ?, slots = slots + ? WHERE charId = ? ', {2500, 5, characterId })
-
-	if res ~= nil then
-		Inventory.RemoveItem(playerId, "bag_container", 1)
-		local User = Inventory( playerId )
-		reloadPlayerInventory( User, characterId )
-		TriggerClientEvent("texas:notify:simple", playerId, "Aumentei os espaços na minha bolsa")
-	else
-		TriggerClientEvent("texas:notify:simple", playerId, "Ocorreu um erro ao tentar aumentar a bolsa")
-	end
-end)
-
-AddEventHandler('ox_inventory:removeAdditionalSlots', function( playerId, characterId )
-	local res = MySQL.update.await('UPDATE character_inventory SET weight = 0, slots = 0 WHERE charId = ? ', { characterId })
-
-	if res ~= nil then
-		local User = Inventory( playerId )
-
-		reloadPlayerInventory( User, characterId )
-
-		TriggerClientEvent("texas:notify:simple", playerId, "Perdi os expaços extras na minha bolsa")
-	else
-		-- TriggerClientEvent("texas:notify:simple", playerId, "Ocorreu um erro ao tentar aumentar a bolsa")
-	end
 end)

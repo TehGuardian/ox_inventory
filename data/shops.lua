@@ -1,9 +1,19 @@
+---@class OxShop
+---@field name string
+---@field label? string
+---@field blip? { id: number, colour: number, scale: number }
+---@field inventory { name: string, price: number, count?: number, currency?: string }
+---@field locations? vector3[]
+---@field targets? { loc: vector3, length: number, width: number, heading: number, minZ: number, maxZ: number, distance: number, debug?: boolean, drawSprite?: boolean }[]
+---@field groups? string | string[] | { [string]: number }
+---@field model? number[]
+
 return {
 	General = {
-		name = 'Armazém Geral',
-		prompt = true,
+		name = 'General Store',
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 59, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{name = "water", price = 0.05},
 			{name = "apple", price = 0.05},
@@ -22,45 +32,23 @@ return {
 			{name = "sieve", price = 2.35},
 			{name = "campfire", price = 0.15},
 			{name = "emptybag", price = 0.01},
-			-- {name = "pigeon", price = 0.25},
-			-- {name = "scratch_ticket", price = 1.50},
-			-- {name = "dog_food", price = 1.00},
-		}, locations = {
-
-			-- vec3(2825.75, -1318.34, 46.76), -- Saint Denis
-			-- vec3( 1328.48, -1292.83, 77.02), -- Rhodes
-			-- vec3(-322.39, 803.89, 117.69), -- Valentine
-
-			-- vec3( 3025.47, 561.33, 44.54 )
-
-			-- vec3(-785.20, -1323.84, 43.89), -- BlackWater
-			--vec3(-3685.508, -2623.638, -13.431), -- Armadillo
-			--vec3(-5487.755, -2938.284, -0.388), -- Tumbleweed
-			-- vec3(-1791.316, -387.160, 160.334), -- Strawberry
-		}
-	},
-
-	Idcard = {
-		name = 'Emissão de Documento',
-		prompt = true,
-		blip = {
-			id = 59, colour = 69, scale = 0.8
-		}, inventory = {
-			{name = "id_card", price = 2.00},
-		}, locations = {
-			-- vec3(2513.64, -1305.51, 48.77), -- Saint Denis
-			-- vec3(-279.01, 808.6, 119.19), -- Valentine
-			-- vec3(2906.2, 1308.63, 44.75), -- Annesburg
-
-			-- vec3(-768.12, -1266.33, 43.87), -- Blackwater
+		}, targets = {
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(1330.36 , -1292.74, 77.02)  , heading = 65.0, distance = 2.0 }, -- Rhodes
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(2824.44 , -1319.39, 46.75)  , heading = 320.0, distance = 2.0 }, -- Saint Denis
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-785.80 , -1322.13, 43.88)  , heading = 182.0, distance = 2.0 }, -- Blackwater
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-3687.33, -2623.59, -13.43) , heading = 265.0, distance = 2.0 }, -- Armadillo
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-5485.94, -2937.86, -0.39)  , heading = 128.0, distance = 2.0 }, -- Tumbleweed
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-324.07 ,  803.66 , 117.88) , heading = 279.0, distance = 2.0 }, -- Valentine
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-1789.75, -388.12 , 160.32) , heading = 54.0, distance = 2.0 }, -- Strawberry
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(3025.71 ,  562.25 , 44.72)  , heading = 249.0, distance = 2.0 }, -- Van Horn
 		}
 	},
 
 	Pexeiro = {
 		name = 'Acessorios de Pesca',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 402, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{name = "WEAPON_FISHINGROD", price = 0.5},
 			{name = "p_baitBread01x", price = 0.02},
@@ -84,9 +72,9 @@ return {
 
 	Ammunation = {
 		name = 'Loja de Armas',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 110, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{name = "weapon_melee_lantern", price = 2},
             {name = "weapon_melee_davy_lantern", price = 2},
@@ -117,20 +105,17 @@ return {
 			{name = "ammo_case", price = 2.55},
 
 			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
-		}, locations = {
-			-- vec3(2715.9, -1285.04, 49.63), -- Saint Denis
-			-- vec3(1323.09, -1321.63, 77.8), -- Rhodes
-			-- vec3(2946.47, 1319.74, 44.88), -- Annesburg
-			-- vec3(-281.26, 780.72, 119.49), -- Valentine
-			--vec3(-5508.22, -2964.26, -0.62), -- Tumb
+		}, targets = {
+            { ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-5506.36, -2964.00, -0.63), heading = 119.0, distance = 2.0 }, -- Armadillo
+			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(2717.2678, -1286.846, 49.636447), heading = 25.0, distance = 2.0 }, -- Saint Denis
 		}
 	},
 
 	Jornaleiro = {
 		name = 'Jornaleiro',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 93, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		},
 		inventory = {
 			{name = "newspaper", price = 0.45},
@@ -146,9 +131,9 @@ return {
 
 	Estabulo = {
 		name = 'Estabulo',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 93, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		},
 		inventory = {
 			{name = "tonic_horse_reviver", price = 0.50},
@@ -163,9 +148,9 @@ return {
 
 	Farmacia = {
 		name = 'Farmacia',
-		prompt = false,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 93, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 69, scale = 0.8
 		},
 		inventory = {
 			{name = "tonic_potent_cure", price = 3.0},
@@ -178,9 +163,9 @@ return {
 
 	MercadoClandestino = {
 		name = 'Vendedor Klandestino',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 93, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		},
 		inventory = {
 			{name = "lockpick", price = 2 },
@@ -198,10 +183,10 @@ return {
 
 	PoliceArmoury = {
 		name = 'Armário de Sheriff',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		groups = shared.police,
 		blip = {
-			id = 110, colour = 84, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		},
 		inventory = {
 			{ name = 'badge_officer', price = 0, grade = nil },
@@ -252,9 +237,9 @@ return {
 
 	LumberShop = {
 		name = 'Lenhador',
-		prompt = false,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 403, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{ name = 'axe',  price = 5 },
 		}
@@ -262,9 +247,9 @@ return {
 
 	MineShop = {
 		name = 'Minerador',
-		prompt = false,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 403, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{ name = 'pickaxe',  price = 5 },
 			{ name = 'weapon_melee_lantern',  price = 3 },
@@ -273,9 +258,9 @@ return {
 
 	IllegalShop = {
 		name = 'Vendedor Clandestino',
-		prompt = false,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 403, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		}, inventory = {
 			{ name = 'distiller',  price = 250, count = 1 },
 			{ name = 'opiumtable', price = 200, count = 1 },
@@ -284,9 +269,9 @@ return {
 
 	Fazenda = {
 		name = 'Fazenda',
-		prompt = true,
+		promptKey = 0xF3830D8E,
 		blip = {
-			id = 93, colour = 69, scale = 0.8
+			id = `blip_shop_market_stall`, colour = 'BLIP_MODIFIER_MP_COLOR_32', scale = 0.8
 		},
 		inventory = {
 			{name = "tobacco_seed", price = 0.05},

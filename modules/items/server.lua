@@ -28,14 +28,12 @@ local function getItem(_, name)
 
     name = name:lower()
 
-    if name:sub(0, 7) == 'weapon_' or name:sub(0, 5) == 'ammo_' then
+    if name:sub(0, 7) == 'weapon_' then
         name = name:upper()
     end
 
     return ItemList[name]
 end
-
-exports('API_Items', function() return ItemList end)
 
 setmetatable(Items --[[@as table]], {
 	__call = getItem
@@ -79,15 +77,15 @@ CreateThread(function()
 
 				---@todo separate into functions for reusability, properly handle nil values
 				local itemFormat = [[
-					[%q] = {
-						label = %q,
-						weight = %s,
-						stack = %s,
-						close = %s,
-						description = %q
-					},
-				]]
 
+	[%q] = {
+		label = %q,
+		weight = %s,
+		stack = %s,
+		close = %s,
+		description = %q
+	},
+]]
 				local fileSize = #file
 
 				for _, item in pairs(dump) do
@@ -114,9 +112,9 @@ CreateThread(function()
 
 		Wait(500)
 
-	elseif shared.framework == 'qb' then
-		local QBCore = exports['qb-core']:GetCoreObject()
-		local items = QBCore.Shared.Items
+	elseif shared.framework == 'rsg' then
+		local RSGCore = exports['rsg-core']:GetCoreObject()
+		local items = RSGCore.Shared.Items
 
 		if items and table.type(items) ~= 'empty' then
 			local dump = {}
@@ -210,7 +208,7 @@ CreateThread(function()
 				file[fileSize+1] = '}'
 
 				SaveResourceFile(shared.resource, 'data/items.lua', table.concat(file), -1)
-				shared.info(count, 'items have been copied from the QBCore.Shared.Items.')
+				shared.info(count, 'items have been copied from the RSGCore.Shared.Items.')
 				shared.info('You should restart the resource to load the new items.')
 			end
 		end
@@ -278,31 +276,7 @@ function Items.Metadata(inv, item, metadata, count)
 
 	if item.weapon then
 		if type(metadata) ~= 'table' then metadata = {} end
-		--- RDR3 Weapons are using degradation system
-		if IS_RDR3 then
-			local degradation = metadata.degradation
-
-			if degradation == nil or degradation < 0 then
-				metadata.degradation = 0
-			end
-
-			if not metadata.soot then
-				metadata.soot = 0
-			end
-
-			if not metadata.dirt then
-				metadata.dirt = 0
-			end
-
-			if not metadata.damage then
-				metadata.damage = 0
-			end
-		end
-
-		if IS_GTAV then
-			if not metadata.durability then metadata.durability = 100 end
-		end
-
+		if not metadata.durability then metadata.durability = 100 end
 		if not metadata.ammo and item.ammoname then metadata.ammo = 0 end
 		if not metadata.components then metadata.components = {} end
 
@@ -375,7 +349,6 @@ end
 ---@param ostime number
 ---Validate (and in some cases convert) item metadata when an inventory is being loaded.
 function Items.CheckMetadata(metadata, item, name, ostime)
-
 	if metadata.bag then
 		metadata.container = metadata.bag
 		metadata.size = Items.containers[name]?.size or {5, 1000}
@@ -393,47 +366,25 @@ function Items.CheckMetadata(metadata, item, name, ostime)
 	end
 
 	if item.weapon then
-
-		local degradation = metadata.degradation
-
-		if degradation == nil or degradation < 0 then
-			metadata.degradation = 0
-		end
-
-		if not metadata.soot then
-			metadata.soot = 0
-		end
-
-		if not metadata.dirt then
-			metadata.dirt = 0
-		end
-
-		if not metadata.damage then
-			metadata.damage = 0
-		end
-
 		if metadata.components then
-			local tableSize = #metadata.components
-			if IS_GTAV then
-				if tableSize >= 1 then
-					for i = tableSize, 1, -1 do
-						if not ItemList[metadata.components[i]] then
-							table.remove(metadata.components, i)
-						end
+			if table.type(metadata.components) == 'array' then
+				for i = #metadata.components, 1, -1 do
+					if not ItemList[metadata.components[i]] then
+						table.remove(metadata.components, i)
 					end
-				else
-					local components = {}
-					local size = 0
-
-					for _, component in pairs(metadata.components) do
-						if component and ItemList[component] then
-							size += 1
-							components[size] = component
-						end
-					end
-
-					metadata.components = components
 				end
+			else
+				local components = {}
+				local size = 0
+
+				for _, component in pairs(metadata.components) do
+					if component and ItemList[component] then
+						size += 1
+						components[size] = component
+					end
+				end
+
+				metadata.components = components
 			end
 		end
 
@@ -441,14 +392,9 @@ function Items.CheckMetadata(metadata, item, name, ostime)
 			metadata.serial = nil
 		end
 
-		if not metadata.customAmmo then
-			metadata.customAmmo = {}
+		if metadata.specialAmmo and type(metadata.specialAmmo) ~= 'string' then
+			metadata.specialAmmo = nil
 		end
-
-		if item.ammoname and not metadata.customAmmo[item.ammoname:lower()] then
-			metadata.customAmmo[item.ammoname:lower()] = 0
-		end
-
 	end
 
 	return metadata
@@ -501,37 +447,23 @@ end
 -- Serverside item functions
 -----------------------------------------------------------------------------------------------
 
+-- Item('testburger', function(event, item, inventory, slot, data)
+-- 	if event == 'usingItem' then
+-- 		if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then
+-- 			-- if we return false here, we can cancel item use
+-- 			return {
+-- 				inventory.label, event, 'external item use poggies'
+-- 			}
+-- 		end
+
+-- 	elseif event == 'usedItem' then
+-- 		print(('%s just ate a %s from slot %s'):format(inventory.label, item.label, slot))
+
+-- 	elseif event == 'buying' then
+-- 		print(data.id, data.coords, json.encode(data.items[slot], {indent=true}))
+-- 	end
+-- end)
+
 -----------------------------------------------------------------------------------------------
-Item('bag_container', function(event, item, inventory, slot, data)
-
-    local playerId = inventory.id
-    local User   = API.GetUserFromSource(playerId)
-	local characterId = User:GetCharacterId()
-
-    if event == 'buying' then
-        return true
-    end
-
-    if event == 'usingItem' then
-		TriggerEvent("ox_inventory:addAdditionalSlots", playerId, characterId)
-	end
-
-	
-    if event == 'usedItem' then
-	end
-
-	return false
-end)
-
-exports('CreateUseableItem', function (itemName, cb)
-	Item(itemName, function(event, item, inventory, slot, data)
-		if event == 'usingItem' then
-			if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then
-				cb(inventory.id, inventory.items[slot])
-			end
-		end
-	end)
-end)
-
 
 return Items
