@@ -108,10 +108,8 @@ function Utils.WeaponWheel(state)
 
 	EnableWeaponWheel = state
 
-	if IS_RDR3 then
-		Citizen.InvokeNative(0x2A7B50E, not state) -- SetWeaponsNoAutoswap
-		Citizen.InvokeNative(0x311150E5, not state) -- SetWeaponsNoAutoreload
-	end
+	Citizen.InvokeNative(0x2A7B50E, not state) -- SetWeaponsNoAutoswap
+	Citizen.InvokeNative(0x311150E5, not state) -- SetWeaponsNoAutoreload
 
 	if client.suppresspickups then
 		-- CLEAR_PICKUP_REWARD_TYPE_SUPPRESSION | SUPPRESS_PICKUP_REWARD_TYPE
@@ -122,8 +120,7 @@ end
 exports('weaponWheel', Utils.WeaponWheel)
 
 function Utils.CreateBlip(settings, coords)
-	local blip 
-	if IS_RDR3 then
+	local blip
 		blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, coords.x, coords.y, coords.z)
 		SetBlipSprite(blip, settings.id, 1);
 
@@ -132,8 +129,6 @@ function Utils.CreateBlip(settings, coords)
 
 		local varString = CreateVarString(10, 'LITERAL_STRING', settings.name);
 		Citizen.InvokeNative(0x9CB1A1623062F402, blip, varString)
-	end
-
 	return blip
 end
 
