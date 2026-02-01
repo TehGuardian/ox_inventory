@@ -2088,7 +2088,6 @@ Citizen.CreateThread(function()
                     -- Add to hotbar table
                     Inhotbar[key] = invItem
 
-
                     -- Request and load the weapon asset
                     Citizen.InvokeNative(0x72D4CB5DB927009C, GetHashKey(invItem.name), 1, true)
                     while not Citizen.InvokeNative(0xFF07CF465F48B830, GetHashKey(invItem.name)) do

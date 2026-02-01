@@ -1,7 +1,7 @@
 if not lib then return end
 
 if GetConvar('inventory:versioncheck', 'true') == 'true' then
-	lib.versionCheck('nelmar32/ox_inventory-RSG/')
+	lib.versionCheck('https://github.com/TehGuardian/ox_inventory')
 end
 
 require 'modules.bridge.server'
@@ -255,9 +255,9 @@ AddEventHandler('rsg-horses:server:openhorseinventory', function()
     if not Player then return end
 
     -- Define stash details
-    local stashName = 'horse_stash_' .. src 
-    local label = 'Horse Trunk Storage' 
-    local maxWeight = 20000 
+    local stashName = 'horse_stash_' .. src
+    local label = 'Horse Trunk Storage'
+    local maxWeight = 20000
     local maxSlots = 10
 
     -- Register the stash with ox_inventory
