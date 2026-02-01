@@ -773,7 +773,7 @@ local invHotkeys = false
 
 ---@type function?
 local function registerCommands()
-	-- RegisterCommand('steal', openNearbyInventory, false)
+	RegisterCommand('steal', openNearbyInventory, false)
 
 	local function openGlovebox(vehicle)
 
@@ -1287,34 +1287,24 @@ local function onExitDrop(point)
 	end
 end
 
-local function createDrop(dropId, data, dataitem)
-    local tempModel = nil
-    if dataitem then
-        if dataitem.model and not dataitem.hash then
-            tempModel = dataitem.model
-        elseif dataitem.hash and dataitem.props then
-            tempModel = dataitem.props
-        else
-            tempModel = "p_bag01x"
-        end
-    else
-        tempModel = "p_bag01x"
-    end
-    local point = lib.points.new({
-        coords = data.coords,
-        distance = 3,
-        invId = dropId,
-        instance = data.instance,
-        model = tempModel or "p_bag01x",
-    })
-    if point.model or client.dropprops then
-        point.distance = 30
-        point.onEnter = onEnterDrop
-        point.onExit = onExitDrop
-    else
-        point.nearby = nearbyDrop
-    end
-    client.drops[dropId] = point
+local function createDrop(dropId, data)
+	local point = lib.points.new({
+		coords = data.coords,
+		distance = 16,
+		invId = dropId,
+		instance = data.instance,
+		model = data.model
+	})
+
+	if point.model or client.dropprops then
+		point.distance = 30
+		point.onEnter = onEnterDrop
+		point.onExit = onExitDrop
+	else
+		point.nearby = nearbyDrop
+	end
+
+	client.drops[dropId] = point
 end
 
 RegisterNetEvent('ox_inventory:createDrop', function(dropId, data, owner, slot)

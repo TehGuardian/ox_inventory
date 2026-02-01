@@ -393,7 +393,7 @@ local function onEnterStash(point)
 	if point.prompt then
 		prompt__OpenStash = PromptBuilder:new()
 			:setControl(`INPUT_QUICK_USE_ITEM`)
-			:setText(('Abrir %s'):format(point.label))
+			:setText(('Open %s'):format(point.label))
 			:setMode('Hold', 500)
 			:setPoint(vector3(point.coords.x, point.coords.y, point.coords.z))
 			:setRadius(2.0)

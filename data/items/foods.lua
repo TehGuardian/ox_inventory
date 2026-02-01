@@ -118,7 +118,7 @@ return {
 		degrade = 7000,
 		weight = 10,
 		consume = 1,
-        model = 'p_apple01x',
+        prop = 'p_apple01x',
 	},
 	["tomato"] = {
         type = 'Generic',
@@ -470,7 +470,7 @@ return {
 		weight = 100,
 		-- image = "water",
 		consume = 1,
-        model = 'p_camp_cup_01x',
+        prop = 'p_camp_cup_01x',
 	},
 	["blackberry_juice"] = {
         type = 'Generic',
