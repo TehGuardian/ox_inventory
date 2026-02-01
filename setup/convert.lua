@@ -134,7 +134,7 @@ local function ConvertESX()
 	started = false
 end
 
-local function ConvertQB()
+local function ConvertRSG()
 	if started then
 		return warn('Data is already being converted, please wait..')
 	end
@@ -194,155 +194,8 @@ local function ConvertQB()
 		Wait(100)
 	end
 
-	local plates = MySQL.query.await('SELECT plate, citizenid FROM player_vehicles')
 
-	if plates then
-		for i = 1, #plates do
-			plates[plates[i].plate] = plates[i].citizenid
-		end
-
-		local trunk = MySQL.query.await('SELECT plate, items FROM trunkitems')
-
-		if trunk then
-			table.wipe(parameters)
-			count = 0
-			local vehicles = {}
-
-			for _, v in pairs(trunk) do
-				local owner = plates[v.plate]
-
-				if owner then
-					if not vehicles[owner] then
-						vehicles[owner] = {}
-					end
-
-					if not vehicles[owner][v.plate] then
-						local items = json.decode(v.items) or {}
-						local inventory, slot = {}, 0
-
-						for _, v in pairs(items) do
-							if Items(v?.name) then
-								slot += 1
-								inventory[slot] = {slot=slot, name=v.name, count=v.amount, metadata = type(v.info) == 'table' and v.info or {}}
-								if v.type == "weapon" then
-									inventory[slot].metadata.durability = v.info.quality or 100
-									inventory[slot].metadata.ammo = v.info.ammo or 0
-									inventory[slot].metadata.components = {}
-									inventory[slot].metadata.serial = v.info.serie or GenerateSerial()
-									inventory[slot].metadata.quality = nil
-								end
-							end
-						end
-
-						vehicles[owner][v.plate] = true
-						count += 1
-						parameters[count] = { 'UPDATE player_vehicles SET trunk = ? WHERE plate = ? AND citizenid = ?', { json.encode(inventory), v.plate, owner } }
-					end
-				end
-			end
-
-			Print(('Moving ^3%s^0 trunks to the player_vehicles table'):format(count))
-
-			if count > 0 then
-				if not MySQL.transaction.await(parameters) then
-					return Print('An error occurred while converting trunk inventories')
-				end
-
-				Wait(100)
-			end
-		end
-
-		local glovebox = MySQL.query.await('SELECT plate, items FROM gloveboxitems')
-
-		if glovebox then
-			table.wipe(parameters)
-			count = 0
-			local vehicles = {}
-
-			for _, v in pairs(glovebox) do
-				local owner = plates[v.plate]
-
-				if owner then
-					if not vehicles[owner] then
-						vehicles[owner] = {}
-					end
-
-					if not vehicles[owner][v.plate] then
-						local items = json.decode(v.items) or {}
-						local inventory, slot = {}, 0
-
-						for _, v in pairs(items) do
-							if Items(v?.name) then
-								slot += 1
-								inventory[slot] = {slot=slot, name=v.name, count=v.amount, metadata = type(v.info) == 'table' and v.info or {}}
-
-								if v.type == "weapon" then
-									inventory[slot].metadata.durability = v.info.quality or 100
-									inventory[slot].metadata.ammo = v.info.ammo or 0
-									inventory[slot].metadata.components = {}
-									inventory[slot].metadata.serial = v.info.serie or GenerateSerial()
-									inventory[slot].metadata.quality = nil
-								end
-							end
-						end
-
-						vehicles[owner][v.plate] = true
-						count += 1
-						parameters[count] = { 'UPDATE player_vehicles SET glovebox = ? WHERE plate = ? AND citizenid = ?', { json.encode(inventory), v.plate, owner } }
-					end
-				end
-			end
-
-			Print(('Moving ^3%s^0 gloveboxes to the player_vehicles table'):format(count))
-
-			if count > 0 then
-				if not MySQL.transaction.await(parameters) then
-					return Print('An error occurred while converting glovebox inventories')
-				end
-			end
-		end
-	end
-
-	local qbEvidence = MySQL.query.await("SELECT stash, items FROM stashitems WHERE stash LIKE '% | Drawer%'")
-
-	if qbEvidence then
-		table.wipe(parameters)
-		count = 0
-
-		---@type table<string, OxItem[]> maps stash name to inventory
-		local oxEvidence = {}
-
-		for i = 1, #qbEvidence do
-			local qbStash = qbEvidence[i]
-			local name = 'evidence-'..qbStash.stash:sub(12)
-			local items = server.convertInventory(nil, (qbStash.items and json.decode(qbStash.items) or {}))
-
-			--- evidence numbers can be shared between locations, so need to maintain map and merge.
-			if oxEvidence[name] then
-				for k = 1, #items do
-					oxEvidence[name][#oxEvidence[name]+1] = items[k]
-				end
-			else
-				oxEvidence[name] = items
-			end
-		end
-
-		for name, items in pairs(oxEvidence) do
-			count += 1
-			parameters[count] = { "INSERT INTO ox_inventory (owner, name, data) VALUES ('', ?, ?) ON DUPLICATE KEY UPDATE name = VALUES(name), data = VALUES(data)", {
-				name, json.encode(items)
-			}}
-		end
-
-		Print(('Creating ^3%s^0 evidence lockers from ^3%s^0 lockers by merging duplicate locker numbers'):format(count, #qbEvidence))
-		if count > 0 then
-			if not MySQL.transaction.await(parameters) then
-				return Print('An error occurred while converting evidence lockers')
-			end
-		end
-	end
-
-	Print('Successfully converted user and vehicle inventories')
+	Print('Successfully converted user inventories')
 	started = false
 end
 
@@ -413,6 +266,6 @@ end
 return {
 	linden = Upgrade,
 	esx = ConvertESX,
-	rsg = ConvertQB,
+	rsg = ConvertRSG,
 	esxproperty = Convert_Old_ESX_Property,
 }

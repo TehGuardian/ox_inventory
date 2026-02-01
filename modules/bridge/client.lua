@@ -12,47 +12,15 @@ function client.hasGroup(group)
 	if type(group) == 'table' then
 		for name, rank in pairs(group) do
 			local groupRank = PlayerData.groups[name]
-
 			if groupRank and groupRank >= (rank or 0) then
 				return name, groupRank
 			end
-
-			local gradePermission = type(rank) == "string" and rank or nil
-			local className = type(name) == 'string' and name or gradePermission
-
-			if className == gradePermission then
-				gradePermission = nil
-			end
-
---[[ 			if Business.hasClassePermission(className, gradePermission) then
-				return className, gradePermission
-			end
-
-			if API.IsPlayerAceAllowedGroup( PlayerData.source, className ) then
-				return className, gradePermission
-			end ]]
 		end
 	else
 		local groupRank = PlayerData.groups[group]
-
 		if groupRank then
 			return group, groupRank
 		end
-
-		local gradePermission = type(groupRank) == "string" and groupRank or nil
-		local className = type(group) == 'string' and group or gradePermission
-
-		if className == gradePermission then
-			gradePermission = nil
-		end
-
---[[ 		if Business.hasClassePermission(className, gradePermission) then
-			return className, gradePermission
-		end
-
-		if API.IsPlayerAceAllowedGroup( PlayerData.source, className ) then
-			return className, gradePermission
-		end ]]
 	end
 end
 

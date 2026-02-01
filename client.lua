@@ -26,13 +26,13 @@ RegisterNetEvent('tryLockpicking', function(lockpickHealth)
 
 	if not entity then return end
 
-	-- if not shared.target and entityType == 3 then
-	-- 	local model = GetEntityModel(entity)
+	if not shared.target and entityType == 3 then
+		local model = GetEntityModel(entity)
 
-	-- 	if model and Inventory?.Dumpsters[model] then
-	-- 		return Inventory.OpenDumpster(entity)
-	-- 	end
-	-- end
+		if model and Inventory?.Dumpsters[model] then
+			return Inventory.OpenDumpster(entity)
+		end
+	end
 
 	if entityType ~= 2 then return end
 
