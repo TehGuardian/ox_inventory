@@ -2,35 +2,35 @@ return {
     Weapons = {
         -- REVOLVER
         ['WEAPON_REVOLVER_CATTLEMAN'] = {
-            label = 'Revolver de Vaqueiro M1873',
+            label = 'Revolver Cattleman',
             weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
             type = 'WeaponGun',
         },
         ['WEAPON_REVOLVER_CATTLEMAN_MEXICAN'] = {
-            label = 'Revolver Steel Colt M1873',
+            label = 'Revolver Cattlemen',
             weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
             type = 'WeaponGun',
         },
         ['WEAPON_REVOLVER_DOUBLEACTION_GAMBLER'] = {
-            label = 'Revolver Double-action com Travamento',
+            label = 'Revolver Double-Action Gambler',
             weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
             type = 'WeaponGun',
         },
         ['WEAPON_REVOLVER_DOUBLEACTION'] = {
-            label = 'Revolver de Ação Dupla',
+            label = 'Revolver Double-action',
             weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
             type = 'WeaponGun',
         },
         ['WEAPON_REVOLVER_SCHOFIELD'] = {
-            label = 'Revolver Schofield Smith & Wesson No. 3',
+            label = 'Revolver Schofield',
             weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
@@ -52,28 +52,28 @@ return {
         },
         -- PISTOL
         ['WEAPON_PISTOL_VOLCANIC'] = {
-            label = 'Pistola Volcanic',
+            label = 'Volcanic Pistol',
             weight = 1300,
             durability = 0.03,
             ammoname = 'ammo_pistol',
             type = 'WeaponGun',
         },
         ['WEAPON_PISTOL_M1899'] = {
-            label = 'Pistola FN Browning M1900',
+            label = 'M1899 Pistol',
             weight = 1100,
             durability = 0.03,
             ammoname = 'ammo_pistol',
             type = 'WeaponGun',
         },
         ['WEAPON_PISTOL_MAUSER'] = {
-            label = 'Pistola Mauser C96',
+            label = 'Mauser Pistol',
             weight = 1100,
             durability = 0.03,
             ammoname = 'ammo_pistol',
             type = 'WeaponGun',
         },
         ['WEAPON_PISTOL_SEMIAUTO'] = {
-            label = 'Pistola Borchardt C-93',
+            label = 'Semi Auto Pistol',
             weight = 1100,
             durability = 0.03,
             ammoname = 'ammo_pistol',
@@ -81,28 +81,28 @@ return {
         },
         -- CARBINE
         ['WEAPON_REPEATER_CARBINE'] = {
-            label = 'Carabina Spencer Model 1865',
+            label = 'Carabine Repeating Rifle',
             weight = 3000,
             durability = 0.03,
             ammoname = 'ammo_repeater',
             type = 'WeaponGun',
         },
         ['WEAPON_REPEATER_WINCHESTER'] = {
-            label = 'Winchester de Repetição Model 1866',
+            label = 'Winchester Rifle',
             weight = 3000,
             durability = 0.03,
             ammoname = 'ammo_repeater',
             type = 'WeaponGun',
         },
         ['WEAPON_REPEATER_HENRY'] = {
-            label = 'Litchfield de Repetição Model 1860',
+            label = 'Henry Repeating Rifle',
             weight = 3000,
             durability = 0.03,
             ammoname = 'ammo_repeater',
             type = 'WeaponGun',
         },
         ['WEAPON_REPEATER_EVANS'] = {
-            label = 'Evans de Repetição Rifle',
+            label = 'Evans Rifle',
             weight = 3000,
             durability = 0.03,
             ammoname = 'ammo_repeater',
@@ -110,28 +110,28 @@ return {
         },
         -- RIFLES
         ['WEAPON_RIFLE_VARMINT'] = {
-            label = 'Rifle Anti-Pragas Model 1890',
+            label = 'Varmint Rifle',
             weight = 2000,
             durability = 0.03,
             ammoname = 'ammo_22',
             type = 'WeaponGun',
         },
         ['WEAPON_RIFLE_SPRINGFIELD'] = {
-            label = 'Rifle Springfield Model 1873',
+            label = 'Springfield Rifle',
             weight = 4000,
             durability = 0.15,
             ammoname = 'ammo_rifle',
             type = 'WeaponGun',
         },
         ['WEAPON_RIFLE_BOLTACTION'] = {
-            label = 'Rifle de Ferrolho Model 1892',
+            label = 'Bolt Action Rifle',
             weight = 4500,
             durability = 0.3,
             ammoname = 'ammo_rifle',
             type = 'WeaponGun',
         },
         ['WEAPON_RIFLE_ELEPHANT'] = {
-            label = 'Rifle Elephant',
+            label = 'Elephant Rifle',
             weight = 5000,
             durability = 0.2,
             ammoname = 'ammo_rifle',
@@ -140,21 +140,21 @@ return {
 
         -- SHOTGUN
         ['WEAPON_SHOTGUN_DOUBLEBARREL'] = {
-            label = 'Espingarda Cano Duplo 1878',
+            label = 'Double Barrel Shotgun',
             weight = 2300,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
             type = 'WeaponGun',
         },
         ['WEAPON_SHOTGUN_DOUBLEBARREL_EXOTIC'] = {
-            label = 'Espingarda Cano Duplo  Decorada 1878',
+            label = 'Double Barrel Shotgun Exotic',
             weight = 2300,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
             type = 'WeaponGun',
         },
         ['WEAPON_SHOTGUN_SAWEDOFF'] = {
-            label = 'Espingarda Cerrada Hamerless 1883',
+            label = 'Sawnoff Shotgun',
             weight = 2300,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
@@ -162,14 +162,14 @@ return {
         },
 
         ['WEAPON_SHOTGUN04'] = {
-            label = 'Espingarda Winchester Model 1887',
+            label = 'Shotgun 4',
             weight = 1900,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
             type = 'WeaponGun',
         },
         ['WEAPON_SHOTGUN05'] = {
-            label = 'Espingarda Winchester Model 1897',
+            label = 'Shotgun 5',
             weight = 2000,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
@@ -177,21 +177,21 @@ return {
         },
 
         ['WEAPON_SHOTGUN_SEMIAUTO'] = {
-            label = 'Espingarda Browning Semi-Automatic',
+            label = 'Semi-Auto Shotgun',
             weight = 2000,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
             type = 'WeaponGun',
         },
         ['WEAPON_SHOTGUN_PUMP'] = {
-            label = 'Espingarda Pump',
+            label = 'Pump Shotgun',
             weight = 2300,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
             type = 'WeaponGun',
         },
         ['WEAPON_SHOTGUN_REPEATING'] = {
-            label = 'Espingarda de Repetição',
+            label = 'Repeating Shotgun',
             weight = 2300,
             durability = 0.03,
             ammoname = 'ammo_shotgun',
@@ -223,75 +223,75 @@ return {
 
         -- MELEE
         ['WEAPON_BOW'] = {
-            label = 'Arco',
+            label = 'Bow',
             weight = 1000,
             durability = 0.03,
             ammoname = 'AMMO_ARROW',
             type = 'WeaponGun',
         },
         ['WEAPON_BOW_IMPROVED'] = {
-            label = 'Arco de caça reforçado',
+            label = 'Improved Bow',
             weight = 1400,
             durability = 0.03,
             ammoname = 'AMMO_ARROW',
             type = 'WeaponGun',
         },
         ['WEAPON_LASSO'] = {
-            label = 'Laço',
+            label = 'Lasso',
             weight = 100,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_LASSO_REINFORCED'] = {
-            label = 'Laço Reforçado',
+            label = 'Reinforced Lasso',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE'] = {
-            label = 'Faca',
+            label = 'Knife',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_JAWBONE'] = {
-            label = 'Faca Jawbone',
+            label = 'Jawbone Knife',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_HAMMER'] = {
-            label = 'Martelo',
+            label = 'Hammer',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_CLEAVER'] = {
-            label = 'Cutelo',
+            label = 'Cleaver',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_MINER'] = {
-            label = 'Faca de mineração',
+            label = 'Miner Knife',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_VAMPIRE'] = {
-            label = 'Faca de vampiro',
+            label = 'Vampire Knife',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_TORCH'] = {
-            label = 'Tocha',
+            label = 'Torch',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_HATCHET'] = {
-            label = 'Machadinha',
+            label = 'Hatchet',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
@@ -303,14 +303,14 @@ return {
             type = 'Weapon',
         },
         ['WEAPON_MELEE_LANTERN'] = {
-            label = 'Lanterna Silver',
+            label = 'Lantern',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
             buttons =
             {
                 {
-                    label = "Mudar posição",
+                    label = "Change position",
                     action = function(slot)
                         TriggerEvent('ox_inventory:ReplaceCurrentAttachPoint', slot)
                     end
@@ -318,14 +318,14 @@ return {
             }
         },
         ['WEAPON_MELEE_DAVY_LANTERN'] = {
-            label = 'Lanterna Golden',
+            label = 'Davy Lantern',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
             buttons =
             {
                 {
-                    label = "Mudar posição",
+                    label = "Change position",
                     action = function(slot)
                         TriggerEvent('ox_inventory:ReplaceCurrentAttachPoint', slot)
                     end
@@ -333,14 +333,14 @@ return {
             }
         },
         ['WEAPON_MELEE_LANTERN_ELECTRIC'] = {
-            label = 'Lâmpada elétrica',
+            label = 'Electric Lantern',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
             buttons =
             {
                 {
-                    label = "Mudar posição",
+                    label = "Change position",
                     action = function(slot)
                         TriggerEvent('ox_inventory:ReplaceCurrentAttachPoint', slot)
                     end
@@ -354,32 +354,32 @@ return {
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_TRADER'] = {
-            label = 'Faca de Negociador',
+            label = 'Trader Knife',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_HORROR'] = {
-            label = 'Faca Dupla',
+            label = 'Horror Knife',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_KNIFE_RUSTIC'] = {
-            label = 'Faca Rustica',
+            label = 'Rustic Knife',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MELEE_LANTERN_HALLOWEEN'] = {
-            label = 'Lanterna de Caveira',
+            label = 'Halloween Lantern',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
             buttons =
             {
                 {
-                    label = "Mudar posição",
+                    label = "Change position",
                     action = function(slot)
                         TriggerEvent('ox_inventory:ReplaceCurrentAttachPoint', slot)
                     end
@@ -387,20 +387,20 @@ return {
             }
         },
         ['WEAPON_MELEE_MACHETE_HORROR'] = {
-            label = 'Machete de Pirata',
+            label = 'Horror Machete',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_MOONSHINEJUG_MP'] = {
-            label = 'Galão de Moonshine',
+            label = 'Moonshine Jug',
             weight = 200,
             durability = 0.03,
             type = 'Weapon',
         },
 
         ['WEAPON_THROWN_DYNAMITE'] = {
-            label = 'Dinamite',
+            label = 'Dynamite',
             weight = 300,
             durability = 0.03,
 			throwable = true,
@@ -414,28 +414,28 @@ return {
             type = 'Weapon',
         },
         ['WEAPON_THROWN_THROWING_KNIVES'] = {
-            label = 'Facas de arremesso',
+            label = 'Throwing Knives',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_TOMAHAWK'] = {
-            label = 'Tomahawk de Arremeço ',
+            label = 'Throwing Tomahawk',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_TOMAHAWK_ANCIENT'] = {
-            label = 'Machadinho de Arremeço',
+            label = 'Ancient Tomahawk',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_BOLAS'] = {
-            label = 'Boladeira',
+            label = 'Bolas',
             weight = 300,
             durability = 0.03,
 			throwable = true,
@@ -443,72 +443,72 @@ return {
         },
 
         ['WEAPON_THROWN_POISONBOTTLE'] = {
-            label = 'Garrafa de Veneno',
+            label = 'Poison Bottle',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_BOLAS_HAWKMOTH'] = {
-            label = 'Boleadeira de Borboleta',
+            label = 'Hawkmoth Bolas',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_BOLAS_IRONSPIKED'] = {
-            label = 'Boleadeira de Espinhos',
+            label = 'Iron Spiked Bolas',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_THROWN_BOLAS_INTERTWINED'] = {
-            label = 'Boleadeira de Ancora',
+            label = 'Intertwined Bolas',
             weight = 300,
             durability = 0.03,
 			throwable = true,
             type = 'Weapon',
         },
         ['WEAPON_KIT_BINOCULARS_IMPROVED'] = {
-            label = 'Binóculos melhorado',
+            label = 'Improved Binoculars',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
 
         ['WEAPON_KIT_BINOCULARS'] = {
-            label = 'Binoculos',
+            label = 'Binoculars',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_FISHINGROD'] = {
-            label = 'Vara de Pesca',
+            label = 'Fishing Rod',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_KIT_CAMERA'] = {
-            label = 'Câmera',
+            label = 'Camera',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_KIT_CAMERA_ADVANCED'] = {
-            label = 'Camera avançada',
+            label = 'Advanced Camera',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_KIT_METAL_DETECTOR'] = {
-            label = 'WEAPON_KIT_METAL_DETECTOR',
+            label = 'Metal Detector',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
         },
         ['WEAPON_REVOLVER_NAVY_CROSSOVER'] = {
-            label = 'Revolver da Marinha Cruzamento',
+            label = 'Revolver Navy Crossover',
             weight = 300,
             durability = 0.03,
             type = 'Weapon',
@@ -529,73 +529,73 @@ return {
 
     Ammo = {
         ['AMMO_22'] = {
-            label = 'Munição anti-pragas',
+            label = '22 Caliber Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_22_TRANQUILIZER'] = {
-            label = 'Munição anti-pragas',
+            label = 'Tranquilizer 22 Caliber Ammunition',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_ARROW'] = {
-            label = 'Flechas',
+            label = 'Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_CONFUSION'] = {
-            label = 'Flechas Fogo',
+            label = 'Confusion Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_DISORIENT'] = {
-            label = 'Flechas Fogo',
+            label = 'Disorient Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_DRAIN'] = {
-            label = 'Flechas Fogo',
+            label = 'Drain Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_DYNAMITE'] = {
-            label = 'Flechas Fogo',
+            label = 'Dynamite Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_FIRE'] = {
-            label = 'Flechas Fogo',
+            label = 'Fire Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_IMPROVED'] = {
-            label = 'Flechas Fogo',
+            label = 'Improved Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_POISON'] = {
-            label = 'Flechas Fogo',
+            label = 'Poison Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_SMALL_GAME'] = {
-            label = 'Flechas Fogo',
+            label = 'Small Game Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_TRACKING'] = {
-            label = 'Flechas Fogo',
+            label = 'Tracking Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_TRAIL'] = {
-            label = 'Flechas Fogo',
+            label = 'Trail Arrows',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_ARROW_WOUND'] = {
-            label = 'Flechas Fogo',
+            label = 'Wound Arrows',
             weight = 3,
             type = 'Generic',
         },
@@ -606,147 +606,147 @@ return {
             type = 'Generic',
         },
         ['AMMO_BOLAS_HAWKMOTH'] = {
-            label = 'Bolas',
+            label = 'Hawkmoth Bolas',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_BOLAS_INTERTWINED'] = {
-            label = 'Bolas',
+            label = 'Intertwined Bolas',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_BOLAS_IRONSPIKED'] = {
-            label = 'Bolas',
+            label = 'Iron Spiked Bolas',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_REVOLVER'] = {
-            label = 'Munição de Revolver',
+            label = 'Revolver ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REVOLVER_EXPRESS'] = {
-            label = 'Munição de Revolver Exposiva',
+            label = 'Express Revolver Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REVOLVER_EXPRESS_EXPLOSIVE'] = {
-            label = 'Munição de Revolver Exposiva',
+            label = 'Explosive Revolver Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REVOLVER_HIGH_VELOCITY'] = {
-            label = 'Munição de Revolver Exposiva',
+            label = 'High Velocity Revolver Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REVOLVER_SPLIT_POINT'] = {
-            label = 'Munição de Revolver Exposiva',
+            label = 'Split Point Revolver Ammunition',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_PISTOL'] = {
-            label = 'Munição de Pistola',
+            label = 'Pistol Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_PISTOL_EXPRESS'] = {
-            label = 'Munição de Pistola',
+            label = 'Express Pistol Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_PISTOL_EXPRESS_EXPLOSIVE'] = {
-            label = 'Munição de Pistola',
+            label = 'Explosive Pistol Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_PISTOL_HIGH_VELOCITY'] = {
-            label = 'Munição de Pistola',
+            label = 'High Velocity Pistol Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_PISTOL_SPLIT_POINT'] = {
-            label = 'Munição de Pistola',
+            label = 'Split Point Pistol Ammunition',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_SHOTGUN'] = {
-            label = 'Munição de Escopeta',
+            label = 'Shotgun Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_SHOTGUN_BUCKSHOT_INCENDIARY'] = {
-            label = 'Munição de Escopeta',
+            label = 'Incendiary Shotgun Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_SHOTGUN_SLUG'] = {
-            label = 'Munição de Escopeta',
+            label = 'Slug Shotgun Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_SHOTGUN_SLUG_EXPLOSIVE'] = {
-            label = 'Munição de Escopeta',
+            label = 'Slug Explosive Shotgun Ammunition',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_REPEATER'] = {
-            label = 'Munição de Repetição',
+            label = 'Repeating Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REPEATER_EXPRESS'] = {
-            label = 'Munição de Repetição',
+            label = 'Express Repeating Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REPEATER_EXPRESS_EXPLOSIVE'] = {
-            label = 'Munição de Repetição',
+            label = 'Explosive Repeating Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REPEATER_HIGH_VELOCITY'] = {
-            label = 'Munição de Repetição',
+            label = 'High Velocity Repeating Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_REPEATER_SPLIT_POINT'] = {
-            label = 'Munição de Repetição',
+            label = 'Split Point Repeating Ammunition',
             weight = 3,
             type = 'Generic',
         },
 
         ['AMMO_RIFLE'] = {
-            label = 'Munição de Rifle',
+            label = 'Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_RIFLE_ELEPHANT'] = {
-            label = 'Munição de Rifle',
+            label = 'Elephant Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_RIFLE_EXPRESS'] = {
-            label = 'Munição de Rifle',
+            label = 'Express Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_RIFLE_EXPRESS_EXPLOSIVE'] = {
-            label = 'Munição de Rifle',
+            label = 'Explosive Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_RIFLE_HIGH_VELOCITY'] = {
-            label = 'Munição de Rifle',
+            label = 'High Velocity Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         },
         ['AMMO_RIFLE_SPLIT_POINT'] = {
-            label = 'Munição de Rifle',
+            label = 'Split Point Rifle Ammunition',
             weight = 3,
             type = 'Generic',
         }
