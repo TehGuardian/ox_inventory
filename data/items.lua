@@ -6921,4 +6921,15 @@ return {
 			image = "bank_draft.png",
 		}
 	},
+
+	["sandwich"] = {
+		label = "Sandwich",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Sandwich",
+		client = {
+			image = "sandwich.png",
+		}
+	},
 }
