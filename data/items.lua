@@ -27,12 +27,6 @@ return {
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
 		prop = "p_bread01x",
-        client = {
-			status = { hunger = 200000 },
-			anim = 'eating',
-			prop = 'bread',
-            usetime = 2500,
-		},
 	},
 	water = {
 		label = "Water",
@@ -43,12 +37,6 @@ return {
 		degrade = 4320, -- Minutes
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
-        client = {
-			status = { thirst = 200000 },
-			anim = 'drinking',
-			prop = 'bottle',
-			usetime = 5000,
-		},
 	},
 
 	p_baitcheese01x = {
@@ -3822,9 +3810,6 @@ return {
 		stack = true,
 		close = true,
 		description = "cup of coffee",
-		client = {
-			status = { thirst = 200000 },
-		},
 	},
 
 	cookedbird_meat = {
@@ -5224,23 +5209,23 @@ return {
 		}
 	},
 
-	sandwich = {
-		label = "Sandwich",
-		weight = 100,
-		description = "A tasty sandwich to help with hunger.",
-        stack = true,
-		decay = true,
-		degrade = 4320, -- Minutes
-		close = true, -- if should close inventory when used
-		allowArmed = true, -- should we let them use with weapons?
-		prop = "p_bread01x",
-		client = {
-			status = { hunger = 30 },
-			anim = 'eating',
-			prop = 'bread',
-			usetime = 5000,
-		},
-	},
+	-- sandwich = {
+	-- 	label = "Sandwich",
+	-- 	weight = 100,
+	-- 	description = "A tasty sandwich to help with hunger.",
+    --     stack = true,
+	-- 	decay = true,
+	-- 	degrade = 4320, -- Minutes
+	-- 	close = true, -- if should close inventory when used
+	-- 	allowArmed = true, -- should we let them use with weapons?
+	-- 	prop = "p_bread01x",
+	-- 	client = {
+	-- 		status = { hunger = 30 },
+	-- 		anim = 'eating',
+	-- 		prop = 'bread',
+	-- 		usetime = 5000,
+	-- 	},
+	-- },
 
 	saloonlicence = {
 		label = "Saloon Licence",
@@ -6528,11 +6513,412 @@ return {
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
 		prop = "s_chocolatebar01x",
-        client = {
-			status = { hunger = 200000 },
-			anim = 'eating',
-			prop = 'bread',
-			usetime = 5000,
-		},
+	},
+
+	["american_ginseng"] = {
+		label = "American Ginseng",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "American Ginseng root",
+		client = {
+			image = "American_Ginseng.png",
+		}
+	},
+
+	["confidential_ledger"] = {
+		label = "Confidential Ledger",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "A heavy book containing secret financial records",
+		client = {
+			image = "confidential_ledger.png",
+		}
+	},
+
+	["diamond_ring"] = {
+		label = "Diamond Ring",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A ring with a large diamond",
+		client = {
+			image = "diamond_ring.png",
+		}
+	},
+
+	["bearer_bond"] = {
+		label = "Bearer Bond",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "A valuable government bond",
+		client = {
+			image = "bearer_bond.png",
+		}
+	},
+
+	["cooked_steak"] = {
+		label = "Cooked Steak",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cooked_steak.png",
+		}
+	},
+
+	["blackberry_moonshine"] = {
+		label = "Blackberry Moonshine",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Sweet blackberry moonshine",
+		client = {
+			image = "blackberry_moonshine.png",
+		}
+	},
+
+	["ginseng_moonshine"] = {
+		label = "Ginseng Moonshine",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Premium ginseng moonshine",
+		client = {
+			image = "ginseng_moonshine.png",
+		}
+	},
+
+	["evergreen_huckleberry"] = {
+		label = "Evergreen Huckleberry",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Evergreen huckleberries",
+		client = {
+			image = "Evergreen_Huckleberry.png",
+		}
+	},
+
+	["alcohol"] = {
+		label = "Alcohol Base",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Pure alcohol base",
+		client = {
+			image = "alcohol.png",
+		}
+	},
+
+	["blackberry_mash"] = {
+		label = "Blackberry Mash",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Fermented blackberry mash",
+		client = {
+			image = "blackberry_mash.png",
+		}
+	},
+
+	["gold_ring"] = {
+		label = "Gold Ring",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A shiny gold ring, valuable to the right buyer",
+		client = {
+			image = "gold_ring.png",
+		}
+	},
+
+	["railroad_bond"] = {
+		label = "Railroad Bond",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "Shares in the Cornwall Railroad",
+		client = {
+			image = "railroad_bond.png",
+		}
+	},
+
+	["rolex"] = {
+		label = "Pocket Watch",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "An expensive pocket watch",
+		client = {
+			image = "rolex.png",
+		}
+	},
+
+	["minty_berry_moonshine"] = {
+		label = "Minty Berry Moonshine",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Refreshing minty berry moonshine",
+		client = {
+			image = "minty_berry_moonshine.png",
+		}
+	},
+
+	["cooked_mutton"] = {
+		label = "Cooked Mutton",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cooked_mutton.png",
+		}
+	},
+
+	["gold_certificate"] = {
+		label = "Gold Certificate",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "Certificate redeemable for gold coin",
+		client = {
+			image = "gold_certificate.png",
+		}
+	},
+
+	["fish_pie"] = {
+		label = "Fish Pie",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "fish_pie.png",
+		}
+	},
+
+	["raw_beef"] = {
+		label = "Raw Beef",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "raw_beef.png",
+		}
+	},
+
+	["coffee_beans"] = {
+		label = "Coffee Beans",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "coffee_beans.png",
+		}
+	},
+
+	["ginseng_mash"] = {
+		label = "Ginseng Mash",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Fermented ginseng mash",
+		client = {
+			image = "ginseng_mash.png",
+		}
+	},
+
+	["wild_mint"] = {
+		label = "Wild Mint",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Wild mint leaves",
+		client = {
+			image = "Wild_Mint.png",
+		}
+	},
+
+	["agarita"] = {
+		label = "Agarita",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Agarita berries",
+		client = {
+			image = "agarita.png",
+		}
+	},
+
+	["bay_bolete"] = {
+		label = "Bay Bolete",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Bay Bolete mushroom",
+		client = {
+			image = "Bay_Bolete.png",
+		}
+	},
+
+	["cooked_beef"] = {
+		label = "Cooked Beef",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cooked_beef.png",
+		}
+	},
+
+	["p_boxcar_barrel_09a"] = {
+		label = "Mash Barrel",
+		weight = 3000,
+		stack = true,
+		close = true,
+		description = "A barrel for making mash",
+		client = {
+			image = "moonshine_barrel.png",
+		}
+	},
+
+	["raw_mutton"] = {
+		label = "Raw Mutton",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "raw_mutton.png",
+		}
+	},
+
+	["tnt"] = {
+		label = "Dynamite Stick",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Explosive for blowing open bank vaults",
+		client = {
+			image = "tnt.png",
+		}
+	},
+
+	["minty_berry_mash"] = {
+		label = "Minty Berry Mash",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Fermented minty berry mash",
+		client = {
+			image = "minty_berry_mash.png",
+		}
+	},
+
+	["black_currant"] = {
+		label = "Black Currant",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Black currant berries",
+		client = {
+			image = "Black_Currant.png",
+		}
+	},
+
+	["trust_deed"] = {
+		label = "Trust Deed",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "Deed to a valuable property",
+		client = {
+			image = "trust_deed.png",
+		}
+	},
+
+	["alaskan_ginseng"] = {
+		label = "Alaskan Ginseng",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Alaskan Ginseng root",
+		client = {
+			image = "Alaskan_Ginseng.png",
+		}
+	},
+
+	["antique_jewelry_box"] = {
+		label = "Antique Jewelry Box",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A velvet lined box filled with jewels",
+		client = {
+			image = "antique_jewelry_box.png",
+		}
+	},
+
+	["residency_document"] = {
+		label = "Residency Document",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "residency_document.png",
+		}
+	},
+
+	["shipping_manifest"] = {
+		label = "Shipping Manifest",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "Details of valuable cargo shipments",
+		client = {
+			image = "shipping_manifest.png",
+		}
+	},
+
+	["yarrow"] = {
+		label = "Yarrow",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "Yarrow herb",
+		client = {
+			image = "Yarrow.png",
+		}
+	},
+
+	["mp001_p_mp_still02x"] = {
+		label = "Moonshine Still",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "A portable moonshine distillery",
+		client = {
+			image = "mp001_p_mp_still02x.png",
+		}
+	},
+
+	["bank_draft"] = {
+		label = "Bank Draft",
+		weight = 10,
+		stack = true,
+		close = false,
+		description = "A draft for a large sum of money",
+		client = {
+			image = "bank_draft.png",
+		}
 	},
 }
