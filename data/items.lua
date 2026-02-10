@@ -2935,16 +2935,16 @@ return {
 		}
 	},
 
-	dollar = {
-		label = "Dollars",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "Standard currency used for everyday transactions",
-		client = {
-			image = "dollar.png",
-		}
-	},
+	["dollar"] = {
+        label = "Dollars",
+        weight = 1,
+        stack = true,
+        close = true,
+        description = "Standard currency used for everyday transactions",
+        client = {
+            image = "dollar.png"
+        },
+    },
 
 	provision_ro_flower_ghost = {
 		label = "Ghost Flower",
@@ -4351,16 +4351,16 @@ return {
 		}
 	},
 
-	cent = {
-		label = "Cents",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "Small denomination of currency, commonly used for change",
-		client = {
-			image = "cent.png",
-		}
-	},
+	["cent"] = {
+        label = "Cents",
+        weight = 3,
+        stack = true,
+        close = true,
+        description = "Small denomination of currency, commonly used for change",
+        client = {
+            image = "cent.png"
+        },
+    },
 
 	weaponsmithlicence = {
 		label = "Weaponsmith Licence",
