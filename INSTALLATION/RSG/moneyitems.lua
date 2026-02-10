@@ -28,7 +28,7 @@ local updatingMoney = {}
 -- Helper functions
 -------------------
 
-local function getInventoryMoney(playerData) 
+local function getInventoryMoney(playerData)
     local money = {
         cashDollars = 0,
         cashCents = 0,
@@ -47,11 +47,11 @@ local function getInventoryMoney(playerData)
 end
 
 local function removeItems(player, itemName, amountToRemove)
-    
+
     if not player.Functions or not player.Functions.GetItemsByName then
         return
     end
-    
+
     for _, item in ipairs(player.Functions.GetItemsByName(itemName) or {}) do
         if item and (item.amount or item.count) then
             local itemAmount = item.amount or item.count or 0
@@ -81,7 +81,7 @@ end
 
 local function handleAddMoney(src, moneytype, amount)
     if updatingMoney[src] then return end -- Prevent circular updates
-    
+
     local player = RSGCore.Functions.GetPlayer(src)
     if not player or not moneyItems[moneytype] or not player.Functions then return end
 
@@ -89,7 +89,7 @@ local function handleAddMoney(src, moneytype, amount)
 
     local dollars, cents = getParts(amount)
 
-    if dollars > 0 then 
+    if dollars > 0 then
         player.Functions.AddItem(moneyItems[moneytype].dollar, dollars)
     end
     if cents > 0 then
@@ -105,7 +105,7 @@ end
 
 local function handleRemoveMoney(src, moneytype, amount)
     if updatingMoney[src] then return end -- Prevent circular updates
-    
+
     local player = RSGCore.Functions.GetPlayer(src)
     if not player or not moneyItems[moneytype] or not player.Functions then return end
 
@@ -160,9 +160,9 @@ local function handleRemoveMoney(src, moneytype, amount)
     updatingMoney[src] = nil
 end
 
-local function handleSetMoney(src, moneytype, amount) 
+local function handleSetMoney(src, moneytype, amount)
     if updatingMoney[src] then return end -- Prevent circular updates
-    
+
     local player = RSGCore.Functions.GetPlayer(src)
     if not player or not moneyItems[moneytype] or not player.Functions then return end
 
@@ -174,7 +174,7 @@ local function handleSetMoney(src, moneytype, amount)
             updatingMoney[src] = nil
             return
         end
-        
+
         for _, item in ipairs(player.Functions.GetItemsByName(itemName) or {}) do
             if item and item.name then
                 local itemAmount = item.amount or item.count or 0
@@ -194,8 +194,8 @@ local function handleSetMoney(src, moneytype, amount)
     if dollars > 0 then player.Functions.AddItem(moneyItems[moneytype].dollar, dollars) end
     if cents > 0 then player.Functions.AddItem(moneyItems[moneytype].cent, cents) end
 
-    if Player(src).state.inv_busy then 
-        TriggerClientEvent('rsg-inventory:client:updateInventory', src) 
+    if Player(src).state.inv_busy then
+        TriggerClientEvent('rsg-inventory:client:updateInventory', src)
     end
 
     updatingMoney[src] = nil
@@ -237,7 +237,7 @@ AddEventHandler('RSGCore:Server:OnPlayerLoaded', function()
                 if not player.Functions.GetItemsByName then
                     return
                 end
-                
+
                 for _, item in ipairs(player.Functions.GetItemsByName(itemName) or {}) do
                     if item and item.name then
                         local itemAmount = item.amount or item.count or 0
@@ -247,7 +247,7 @@ AddEventHandler('RSGCore:Server:OnPlayerLoaded', function()
                     end
                 end
             end
-        
+
             removeAllItems(moneyItems['cash'].cent)
             removeAllItems(moneyItems['cash'].dollar)
             removeAllItems(moneyItems['bloodmoney'].cent)
@@ -281,10 +281,10 @@ if RSGCore.Config.Money.EnableMoneyItems then
     AddEventHandler('RSGCore:Server:OnMoneyChange', function(src, moneytype, amount, operation, reason)
         -- Don't handle money changes if we're in the middle of updating money items
         if updatingMoney[src] then return end
-        
+
         local handler = moneyHandlers[operation]
-        if handler then 
-            handler(src, moneytype, amount) 
+        if handler then
+            handler(src, moneytype, amount)
             TriggerClientEvent('hud:client:OnMoneyChange', src, moneytype, amount, operation == 'remove')
         end
     end)
@@ -292,12 +292,12 @@ if RSGCore.Config.Money.EnableMoneyItems then
     function SynchronizeMoneyItems(playerData)
         local src = playerData.source
         if not initialized[src] or updatingMoney[src] then return playerData end
-    
-        local money = getInventoryMoney(playerData) 
-    
+
+        local money = getInventoryMoney(playerData)
+
         playerData.money.cash = calculateTotal(money.cashDollars, money.cashCents)
         playerData.money.bloodmoney = calculateTotal(money.bloodDollars, money.bloodCents)
-    
+
         return playerData
     end
 

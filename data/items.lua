@@ -6932,4 +6932,103 @@ return {
 			image = "sandwich.png",
 		}
 	},
+
+	["bs_handbag_purse"] = {
+		label = "Purse",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A small handbag for the lady of society",
+		client = {
+			image = "p_cs_purse01x.png",
+		}
+	},
+
+	["bs_handbag_purse1"] = {
+		label = "Fine Handbag",
+		weight = 150,
+		stack = true,
+		close = true,
+		description = "A fine handbag for the lady of society",
+		client = {
+			image = "s_pursefancy01x.png",
+		}
+	},
+
+	["bs_handbag_classy"] = {
+		label = "Classy Bag",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A classic bag with timeless design",
+		client = {
+			image = "p_cs_bagstrauss01x.png",
+		}
+	},
+
+	["bs_handbag_coal"] = {
+		label = "Coal Bag",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bag for carrying coal",
+		client = {
+			image = "p_coalbag01x.png",
+		}
+	},
+
+	["bs_handbag_workbagdark"] = {
+		label = "Work Bag (Dark)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A robust bag for daily work (dark)",
+		client = {
+			image = "p_cs_baganders01x.png",
+		}
+	},
+
+	["bs_handbag_penelope"] = {
+		label = "Penelope Handbag",
+		weight = 150,
+		stack = true,
+		close = true,
+		description = "A fine handbag in Penelope style",
+		client = {
+			image = "s_penelopepurse01x.png",
+		}
+	},
+
+	["bs_handbag_purse2"] = {
+		label = "Ornate Handbag",
+		weight = 150,
+		stack = true,
+		close = true,
+		description = "A beautifully ornate handbag",
+		client = {
+			image = "s_pursefancy02x.png",
+		}
+	},
+
+	["bs_handbag_penelopebig"] = {
+		label = "Penelope Big Bag",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A large handbag in Penelope style",
+		client = {
+			image = "s_penelopebag01x.png",
+		}
+	},
+
+	["bs_handbag_fancy"] = {
+		label = "Elegant Handbag",
+		weight = 150,
+		stack = true,
+		close = true,
+		description = "An elegant handbag for special occasions",
+		client = {
+			image = "mp004_p_cs_jessicapurse01x.png",
+		}
+	},
 }

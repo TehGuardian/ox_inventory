@@ -125,29 +125,6 @@ local function setupPlayer(Player)
     end
 end
 
-AddEventHandler('RSGCore:Server:OnPlayerUnload', server.playerDropped)
-
-AddEventHandler('RSGCore:Server:OnJobUpdate', function(source, job)
-    local inventory = Inventory(source)
-    if not inventory then return end
-    inventory.player.groups[inventory.player.job] = nil
-    inventory.player.job = job.name
-    inventory.player.groups[job.name] = job.grade.level
-end)
-
-AddEventHandler('RSGCore:Server:OnGangUpdate', function(source, gang)
-    local inventory = Inventory(source)
-    if not inventory then return end
-    inventory.player.groups[inventory.player.gang] = nil
-    inventory.player.gang = gang.name
-    inventory.player.groups[gang.name] = gang.grade.level
-end)
-
-AddEventHandler('onResourceStart', function(resource)
-    if resource ~= 'rsg-weapons' or resource ~= 'rsg-weaponcomp' or resource ~= 'rsg-ammo' then return end
-    StopResource(resource)
-end)
-
 AddEventHandler('ox_inventory:itemAdded', function(source, itemName, count)
     if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
         syncMoneyToRSGCore(source)
@@ -160,7 +137,7 @@ AddEventHandler('ox_inventory:itemRemoved', function(source, itemName, count)
     end
 end)
 
-AddEventHandler('RSGCore:Server:PlayerLoaded', setupPlayer)
+AddEventHandler('RSGCore:Server:OnPlayerLoaded', setupPlayer)
 
 SetTimeout(500, function()
     RSGCore = exports['rsg-core']:GetCoreObject()
