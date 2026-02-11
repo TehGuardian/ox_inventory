@@ -1,10 +1,12 @@
 return {
 	money = {
 		label = "Money",
+        stack = true,
 		prop = "p_moneystack03x",
 	},
 	black_money = {
 		label = "Black Money",
+        stack = true,
 		prop = "p_moneystack01x",
 	},
 
