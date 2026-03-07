@@ -1,7 +1,7 @@
 ---@class OxShop
 ---@field name string
 ---@field label? string
----@field blip? { id: number, colour: number, scale: number }
+---@field blip? { sprite: number, colour: number, scale: number }
 ---@field inventory { name: string, price: number, count?: number, currency?: string }
 ---@field locations? vector3[]
 ---@field targets? { loc: vector3, length: number, width: number, heading: number, minZ: number, maxZ: number, distance: number, debug?: boolean, drawSprite?: boolean }[]
@@ -12,7 +12,7 @@ return {
 	General = {
 		name = 'General Store',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = `blip_shop_store`, colour = `BLIP_MODIFIER_LOCAL_PLAYER_OWNED`, scale = 0.8
 		}, inventory = {
 			{name = "water", price = 0.05},
 			{name = "apple", price = 0.05},
@@ -33,30 +33,23 @@ return {
 			{name = "emptybag", price = 0.01},
 		},
         locations = {
-			vec3(1328.09, -1293.74, 77.02), -- Rhodes
-			vec3(-322.36, 803.84, 117.88), -- Valentine
-			vec3(-1791.22, -387.08, 160.33), -- Strawberry
-			vec3(2825.59, -1318.19, 46.76), -- Saint Denis
-			vec3(-5487.24, -2938.99, -0.39), -- Tumbleweed
-			vec3(-785.11, -1323.83, 43.86), -- Blackwater
-			vec3(3027.29, 562.30, 44.72), -- Van Horn
 		},
         targets = {
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(1330.36 , -1292.74, 77.02)  , heading = 65.0, distance = 2.0 }, -- Rhodes
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(2824.44 , -1319.39, 46.75)  , heading = 320.0, distance = 2.0 }, -- Saint Denis
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-785.80 , -1322.13, 43.88)  , heading = 182.0, distance = 2.0 }, -- Blackwater
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-3687.33, -2623.59, -13.43) , heading = 265.0, distance = 2.0 }, -- Armadillo
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-5485.94, -2937.86, -0.39)  , heading = 128.0, distance = 2.0 }, -- Tumbleweed
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-324.07 ,  803.66 , 117.88) , heading = 279.0, distance = 2.0 }, -- Valentine
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-1789.75, -388.12 , 160.32) , heading = 54.0, distance = 2.0 }, -- Strawberry
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(3025.71 ,  562.25 , 44.72)  , heading = 249.0, distance = 2.0 }, -- Van Horn
+			{ loc = vector3(-324.06, 803.37, 117.88), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = 270.311, distance = 10.0 },
+			{ loc = vector3(1330.227, -1293.41, 76.021), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = 68.88, distance = 10.0 },
+			{ loc = vector3(-1789.66, -387.918, 159.32), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = 56.96, distance = 10.0 },
+			{ loc = vector3(-784.738, -1321.73, 42.884), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = 179.63, distance = 10.0 },
+			{ loc = vector3(-3687.34, -2623.53, -13.43), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = -85.32, distance = 10.0 },
+			{ loc = vector3(-5485.70, -2938.08, -0.299), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = 127.72, distance = 10.0 },
+			{ loc = vector3(2824.863, -1319.74, 45.755), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = -39.61, distance = 10.0 },
+			{ loc = vector3(3025.420, 561.7910, 43.722), ped = `u_m_m_sdexoticsshopkeeper_01`, heading = -99.20, distance = 10.0 },
 		}
 	},
 
 	Pexeiro = {
 		name = 'Acessorios de Pesca',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{name = "WEAPON_FISHINGROD", price = 0.5},
 			{name = "p_baitBread01x", price = 0.02},
@@ -79,9 +72,9 @@ return {
 	},
 
 	Ammunation = {
-		name = 'Loja de Armas',
+		name = 'Gun Store',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = `blip_shop_gunsmith`, colour = `BLIP_MODIFIER_LOCAL_PLAYER_OWNED`, scale = 0.8
 		}, inventory = {
 			{name = "weapon_melee_lantern", price = 2},
             {name = "weapon_melee_davy_lantern", price = 2},
@@ -113,15 +106,18 @@ return {
 
 			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, targets = {
-            { ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(-5506.36, -2964.00, -0.63), heading = 119.0, distance = 2.0 }, -- Armadillo
-			{ ped = "u_m_m_sdexoticsshopkeeper_01", loc = vec3(2717.2678, -1286.846, 49.636447), heading = 25.0, distance = 2.0 }, -- Saint Denis
+			{ loc = vector3(-280.4646, 779.0331, 119.2540), ped = `S_M_M_UNIBUTCHERS_01`, heading = 2.82, distance = 10.0 },
+			{ loc = vector3(2717.75, -1286.62, 49.64), ped = `S_M_M_UNIBUTCHERS_01`, heading = 44.58, distance = 10.0 },
+			{ loc = vector3(1322.95, -1323.21, 77.89), ped = `S_M_M_UNIBUTCHERS_01`, heading = 350.17, distance = 10.0 },
+			{ loc = vector3(2948.16, 1318.79, 44.82), ped = `S_M_M_UNIBUTCHERS_01`, heading = 91.34, distance = 10.0 },
+			{ loc = vector3(-5505.97, -2963.91, -0.64), ped = `S_M_M_UNIBUTCHERS_01`, heading = 103.15, distance = 10.0 },
 		}
 	},
 
 	Jornaleiro = {
 		name = 'Jornaleiro',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "newspaper", price = 0.45},
@@ -138,7 +134,7 @@ return {
 	Estabulo = {
 		name = 'Estabulo',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tonic_horse_reviver", price = 0.50},
@@ -154,7 +150,7 @@ return {
 	Farmacia = {
 		name = 'Farmacia',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tonic_potent_cure", price = 3.0},
@@ -168,7 +164,7 @@ return {
 	MercadoClandestino = {
 		name = 'Vendedor Klandestino',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "lockpick", price = 2 },
@@ -188,7 +184,7 @@ return {
 		name = 'Armário de Sheriff',
 		groups = shared.police,
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{ name = 'badge_officer', price = 0, grade = nil },
@@ -240,7 +236,7 @@ return {
 	LumberShop = {
 		name = 'Lenhador',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'axe',  price = 5 },
 		}
@@ -249,7 +245,7 @@ return {
 	MineShop = {
 		name = 'Minerador',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'pickaxe',  price = 5 },
 			{ name = 'weapon_melee_lantern',  price = 3 },
@@ -259,7 +255,7 @@ return {
 	IllegalShop = {
 		name = 'Vendedor Clandestino',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
 			{ name = 'distiller',  price = 250, count = 1 },
 			{ name = 'opiumtable', price = 200, count = 1 },
@@ -269,7 +265,7 @@ return {
 	Fazenda = {
 		name = 'Fazenda',
 		blip = {
-			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tobacco_seed", price = 0.05},
