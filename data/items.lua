@@ -7033,4 +7033,103 @@ return {
 			image = "mp004_p_cs_jessicapurse01x.png",
 		}
 	},
+
+	["gourmet_meal"] = {
+		label = "Gourmet Meal",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A delicious gourmet meal",
+		client = {
+			image = "gourmet_meal.png",
+		}
+	},
+
+	["horse"] = {
+		label = "horse",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "horse.png",
+		}
+	},
+
+	["sheep"] = {
+		label = "sheep",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "sheep.png",
+		}
+	},
+
+	["hydrant"] = {
+		label = "Hydrant",
+		weight = 120,
+		stack = true,
+		close = true,
+		description = "firehydrant",
+		client = {
+			image = "hydrant.png",
+		}
+	},
+
+	["ranch"] = {
+		label = "ranch",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "ranch",
+		client = {
+			image = "ranch.png",
+		}
+	},
+
+	["dog"] = {
+		label = "dog",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "dog.png",
+		}
+	},
+
+	["cow"] = {
+		label = "cow",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "cow.png",
+		}
+	},
+
+	["pig"] = {
+		label = "pig",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "pig.png",
+		}
+	},
+
+	["chicken"] = {
+		label = "chicken",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "animal",
+		client = {
+			image = "chicken.png",
+		}
+	},
 }
