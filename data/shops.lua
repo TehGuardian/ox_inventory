@@ -14,23 +14,21 @@ return {
 		blip = {
 			sprite = `blip_shop_store`, colour = `BLIP_MODIFIER_LOCAL_PLAYER_OWNED`, scale = 0.8
 		}, inventory = {
-			{name = "water", price = 0.05},
-			{name = "apple", price = 0.05},
-			{name = "canned_meat", price = 0.25},
-			{name = "canned_corn", price = 0.25},
-			{name = "canned_stew", price = 0.25},
-			{name = "alcohol", price = 0.30},
-			{name = "canteen_empty", price = 1.20},
-			{name = "notepad", price = 0.30},
-			{name = "compass", price = 0.50},
-			{name = "brush", price = 0.90},
-			{name = "empty_watering_can", price = 1.50},
-			{name = "bottle_empty", price = 0.05},
-			{name = "axe", price = 2.35},
-			{name = "pickaxe", price = 2.35},
-			{name = "sieve", price = 2.35},
-			{name = "campfire", price = 0.15},
-			{name = "emptybag", price = 0.01},
+			{name = "water", price = 0.05, count = 100},
+			{name = "apple", price = 0.05, count = 100},
+			{name = "canned_meat", price = 0.25, count = 100},
+			{name = "canned_corn", price = 0.25, count = 100},
+			{name = "canned_stew", price = 0.25, count = 100},
+			{name = "canteen_empty", price = 1.20, count = 100},
+			{name = "notepad", price = 0.30, count = 100},
+			{name = "compass", price = 0.50, count = 100},
+			{name = "brush", price = 0.90, count = 100},
+			{name = "empty_watering_can", price = 1.50, count = 100},
+			{name = "bottle_empty", price = 0.05, count = 100},
+			{name = "axe", price = 2.35, count = 100},
+			{name = "pickaxe", price = 2.35, count = 100},
+			{name = "campfire", price = 0.15, count = 100},
+			{name = "emptybag", price = 0.01, count = 100},
 		},
         locations = {
 		},
@@ -46,8 +44,8 @@ return {
 		}
 	},
 
-	Pexeiro = {
-		name = 'Acessorios de Pesca',
+	Fishing = {
+		name = 'Fishing',
 		blip = {
 			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		}, inventory = {
@@ -131,8 +129,8 @@ return {
 		}
 	},
 
-	Estabulo = {
-		name = 'Estabulo',
+	Stable = {
+		name = 'Stable',
 		blip = {
 			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
@@ -147,8 +145,8 @@ return {
 		}
 	},
 
-	Farmacia = {
-		name = 'Farmacia',
+	Pharmacy = {
+		name = 'Pharmacy',
 		blip = {
 			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
@@ -161,8 +159,8 @@ return {
 		}
 	},
 
-	MercadoClandestino = {
-		name = 'Vendedor Klandestino',
+	blackmarket = {
+		name = 'Black Market',
 		blip = {
 			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
@@ -181,7 +179,7 @@ return {
 	},
 
 	PoliceArmoury = {
-		name = 'Armário de Sheriff',
+		name = 'Police Armoury',
 		groups = shared.police,
 		blip = {
 			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
@@ -230,59 +228,6 @@ return {
 			-- vec3(-764.753, -1272.402, 44.0413), -- blackwater
 			-- vec3(-3623.315, -2602.468, -13.342), -- armadillo
 			-- vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
-		}
-	},
-
-	LumberShop = {
-		name = 'Lenhador',
-		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		}, inventory = {
-			{ name = 'axe',  price = 5 },
-		}
-	},
-
-	MineShop = {
-		name = 'Minerador',
-		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		}, inventory = {
-			{ name = 'pickaxe',  price = 5 },
-			{ name = 'weapon_melee_lantern',  price = 3 },
-		}
-	},
-
-	IllegalShop = {
-		name = 'Vendedor Clandestino',
-		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		}, inventory = {
-			{ name = 'distiller',  price = 250, count = 1 },
-			{ name = 'opiumtable', price = 200, count = 1 },
-		}
-	},
-
-	Fazenda = {
-		name = 'Fazenda',
-		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		},
-		inventory = {
-			{name = "tobacco_seed", price = 0.05},
-			{name = "sugar_seed", price = 0.05},
-			{name = "tomato_seed", price = 0.05},
-			{name = "corn_seed", price = 0.05},
-			{name = "carrot_seed", price = 0.05},
-			{name = "cotton_seed", price = 0.05},
-			{name = "wheat_seed", price = 0.05},
-			{name = "potato_seed", price = 0.05},
-			{name = "goldencurrant_seed", price = 0.05},
-			{name = "weed_seed", price = 0.05},
-
-		}, locations = {
-			-- vec3(2587.82, -1010.6, 44.05), -- Saint Denis
-			-- vec3(-965.36, -1252.72, 53.78), -- BlackWater
-			-- vec3(-404.62, 662.44, 115.37), -- Valentine
 		}
 	},
 }

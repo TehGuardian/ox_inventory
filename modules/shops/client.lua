@@ -12,7 +12,7 @@ local function CreatePrompt(name, group)
     UiPromptSetEnabled(PedPrompt, true)
     UiPromptSetVisible(PedPrompt, true)
     UiPromptSetStandardMode(PedPrompt, true)
-    -- UiPromptSetHoldMode(PedPrompt, 1000)
+    --UiPromptSetHoldMode(PedPrompt, 1000)
     UiPromptSetGroup(PedPrompt, group, 0)
     UiPromptRegisterEnd(PedPrompt)
     return PedPrompt
@@ -38,7 +38,7 @@ for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<strin
 
 	if blip then
 		blip.name = shopData.name
-		-- AddTextEntry(blip.name, shop.name or shopType)
+		AddTextEntry(blip.name, shop.name or shopType)
 	end
 end
 
@@ -54,7 +54,6 @@ end
 
 ---@param point CPoint
 local function onEnterShop(point)
-	print('Entered shop zone')
 	if not point.entity then
 		local model = lib.requestModel(point.ped)
 		if not model then return end
@@ -73,7 +72,7 @@ local function onEnterShop(point)
 		local promptGroup = UiPromptGetGroupIdForTargetEntity(entity)
 		point.prompt = CreatePrompt(point.label, promptGroup)
 
-		-- if point.scenario then TaskStartScenarioInPlace(entity, point.scenario, 0, true) end -- idk the rdr native anims
+		if point.scenario then TaskStartScenarioInPlace(entity, point.scenario, 0, true) end -- idk the rdr native anims
 		point.entity = entity
 	end
 end
@@ -81,12 +80,11 @@ end
 local Utils = require 'modules.utils.client'
 
 local function onExitShop(point)
-	print('onExitShop')
 	local entity = point.entity
 
 	if not entity then return end
 
-	-- exports.ox_target:removeLocalEntity(entity)
+	exports.ox_target:removeLocalEntity(entity)
 	Utils.DeleteEntity(entity)
 
 	if point.prompt then
@@ -138,7 +136,6 @@ local function refreshShops()
 			if shop.model then
 				if not hasShopAccess(shop) then goto skipLoop end
 
-				print('This is bad')
 				-- exports.ox_target:removeModel(shop.model, shop.name)
 				-- exports.ox_target:addModel(shop.model, {
                 --     {
@@ -196,7 +193,7 @@ local function refreshShops()
                                     distance = target.distance
                                 }
                             }),
-							-- blip = blip and createBlip(blip, target.coords)
+							blip = blip and createBlip(blip, target.coords)
 						}
 					end
 
@@ -223,7 +220,7 @@ local function refreshShops()
                         message = 'Message'
                     },
 					nearby = Utils.nearbyMarker,
-					-- blip = blip and createBlip(blip, coords)
+					blip = blip and createBlip(blip, coords)
 				})
 			end
 		end

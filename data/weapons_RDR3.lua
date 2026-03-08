@@ -76,6 +76,7 @@ return {
             label = 'Semi Auto Pistol',
             weight = 1100,
             durability = 0.03,
+            inspect = true,
             ammoname = 'ammo_pistol',
             type = 'WeaponGun',
         },

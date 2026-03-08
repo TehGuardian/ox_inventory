@@ -120,16 +120,13 @@ end
 exports('weaponWheel', Utils.WeaponWheel)
 
 function Utils.CreateBlip(settings, coords)
-	local blip
-		blip = BlipAddForCoords(1664425300, coords.x, coords.y, coords.z)
-		SetBlipSprite(blip, settings.id, 1);
+    local blip = BlipAddForCoords(1664425300, coords.x, coords.y, coords.z)
+    SetBlipSprite(blip,settings.sprite,true)
+    SetBlipScale(blip, settings.scale or 1.0)
+    if settings.colour then BlipAddModifier(blip, settings.colour) end
+    SetBlipName(blip, settings.name)
 
-		local blipColor = settings.colour and joaat(settings.colour) or `BLIP_MODIFIER_MP_COLOR_32`
-		BlipAddModifier(blip, blipColor);
-
-		local varString = CreateVarString(10, 'LITERAL_STRING', settings.name);
-		SetBlipName(blip, varString)
-	return blip
+    return blip
 end
 
 ---Takes OxTargetBoxZone or legacy zone data (PolyZone) and creates a zone.

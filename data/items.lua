@@ -2,22 +2,93 @@ return {
 	money = {
 		label = "Money",
         stack = true,
-		prop = "p_moneystack03x",
 	},
 	black_money = {
 		label = "Black Money",
         stack = true,
-		prop = "p_moneystack01x",
 	},
 
 	money_clip = {
 		label = "Money Clip",
-		prop = "p_moneystack03x",
 	},
 	blood_money_clip = {
 		label = "Black Money Clip",
-		prop = "p_moneystack01x",
 	},
+
+    ammo_22 = {
+        label = "Ammo .22",
+        stack = true,
+    },
+
+    ammo_revolver = {
+        label = "Revolver Ammo",
+        stack = true,
+    },
+
+    ammo_pistol = {
+        label = "Pistol Ammo",
+        stack = true,
+    },
+
+    ammo_rifle = {
+        label = "Rifle Ammo",
+        stack = true,
+    },
+
+    ammo_repeater = {
+        label = "Repeater Ammo",
+        stack = true,
+    },
+
+    ammo_case = {
+        label = "Ammo Case",
+        stack = true,
+    },
+
+    canned_meat = {
+        label = "Canned Meat",
+        stack = true,
+    },
+
+    canned_corn = {
+        label = "Canned Corn",
+        stack = true,
+    },
+
+    canned_stew = {
+        label = "Canned Stew",
+        stack = true,
+    },
+
+    canteen_empty = {
+        label = "Empty Canteen",
+        stack = true,
+    },
+
+    compass = {
+        label = "Compass",
+        stack = true,
+    },
+
+    emptybag = {
+        label = "Empty Bag",
+        stack = true,
+    },
+
+    empty_watering_can = {
+        label = "Empty Watering Can",
+        stack = true,
+    },
+
+    bottle_empty = {
+        label = "Empty Bottle",
+        stack = true,
+    },
+
+    brush = {
+        label = "Brush",
+        stack = true,
+    },
 
 	bread = {
 		label = "Bread",
@@ -28,7 +99,6 @@ return {
 		degrade = 4320, -- Minutes
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
-		prop = "p_bread01x",
 	},
 	water = {
 		label = "Water",
@@ -5220,7 +5290,6 @@ return {
 	-- 	degrade = 4320, -- Minutes
 	-- 	close = true, -- if should close inventory when used
 	-- 	allowArmed = true, -- should we let them use with weapons?
-	-- 	prop = "p_bread01x",
 	-- 	client = {
 	-- 		status = { hunger = 30 },
 	-- 		anim = 'eating',
@@ -6514,7 +6583,6 @@ return {
 		degrade = 4320, -- Minutes
 		close = true, -- if should close inventory when used
 		allowArmed = true, -- should we let them use with weapons?
-		prop = "s_chocolatebar01x",
 	},
 
 	["american_ginseng"] = {
@@ -7130,6 +7198,28 @@ return {
 		description = "animal",
 		client = {
 			image = "chicken.png",
+		}
+	},
+
+	["bs_handbag_levin"] = {
+		label = "Levin Bag",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bag for carrying Levin",
+		client = {
+			image = "p_cs_baglevin01x.png",
+		}
+	},
+
+	["bs_handbag_workbag"] = {
+		label = "Work Bag",
+		weight = 250,
+		stack = true,
+		close = true,
+		description = "A robust bag for daily work",
+		client = {
+			image = "p_bag01x.png",
 		}
 	},
 }

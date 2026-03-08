@@ -4,8 +4,8 @@ lua54 'yes'
 games { 'rdr3'}
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 name 'ox-inventory'
-author 'Initial Commit made by younNGG97 on Discord'
-version '2.0.0'
+author 'Guardian'
+version '1.0.0'
 repository ''
 description 'Slot-based inventory with item metadata support'
 
@@ -14,6 +14,7 @@ dependencies {
     '/onesync',
     'oxmysql',
     'ox_lib',
+    'ox_target',
 }
 
 shared_script '@ox_lib/init.lua'

@@ -83,6 +83,89 @@ local function canOpenTarget(ped)
 	or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
 end
 
+function DrawText(text, fontId, x, y, scaleX, scaleY, r, g, b, a)
+    -- Draw Text
+    SetTextScale(scaleX, scaleY);
+    SetTextColor(r, g, b, a);
+    SetTextCentre(true);
+    Citizen.InvokeNative(0xADA9255D, fontId); -- Loads the font requested
+    DisplayText(CreateVarString(10, "LITERAL_STRING", text), x, y);
+
+    local lineLength = string.len(text) / 100;
+    DrawTexture("boot_flow", "selection_box_bg_1d", x, y, scaleX - lineLength , 0.1, 1, 0, 0, 0, 200);
+end
+
+function DrawTexture(textureDict, textureName, x, y, width, height, rotation, r, g, b, a)
+
+    if not HasStreamedTextureDictLoaded(textureDict) then
+
+        RequestStreamedTextureDict(textureDict, false);
+        while not HasStreamedTextureDictLoaded(textureDict) do
+            Citizen.Wait(100)
+        end
+    end
+    DrawSprite(textureDict, textureName, x, y + 0.03, width, height, rotation, r, g, b, a, true);
+end
+
+local RustWeather = {
+	[`BLIZZARD`] = true,
+	[`DRIZZLE`] = true,
+	[`HAIL`] = true,
+	[`HURRICANE`] = true,
+	[`RAIN`] = true,
+	[`SHOWER`] = true,
+	[`SLEET`] = true,
+	[`THUNDERSTORM`] = true,
+	[`WHITEOUT`] = true
+}
+
+local function UnderCover()
+    local ped = cache.ped -- Get the player's ped (assuming you are the player)
+    local playerPos = cache.coords -- Get the player's position
+
+    -- Define the starting point and endpoint for the raycast.
+    local origin = playerPos
+    local target = playerPos + vector3(0.0, 0.0, 20.0) -- 10 units above the player
+
+    -- Perform the raycast.
+    local shapeTest = StartShapeTestRay(origin.x, origin.y, origin.z, target .x, target .y, target .z, -1, ped ,7)
+    local retval, hit, endCoords, surfaceNormal, entityHit = GetShapeTestResult(shapeTest)
+
+    return {retval, hit}
+end
+
+---@type function?
+local function ShouldRustWeapon()
+	local playerPed = cache.ped
+	if Citizen.InvokeNative(0x2942457417A5FD24,playerPed, Citizen.ResultAsFloat()) > 0.0 then -- improve using RayCast
+		return true
+	elseif RustWeather[Citizen.InvokeNative(0x4BEB42AEBCA732E9)] then --Has Rusty Weather defined above (works only with weathersync)
+		local retval, hit = table.unpack(UnderCover())
+		if retval == 2 and hit > 0 then -- Under Cover or Interior
+			return false
+		else
+			return true
+		end
+	else
+		return false
+	end
+end
+
+local function ShouldDirtWeapon()
+	local ped = cache.ped
+	if GetInteriorFromEntity(ped) ~= 0 then
+		return false
+	elseif Citizen.InvokeNative(0x4BEB42AEBCA732E9) == `SANDSTORM`  then --Has Sandstorm Weather defined above (works only with weathersync)
+		return true
+	elseif (GetWindSpeed() > 2.0 and GetWindSpeed() < 5.0) and math.random(0, 100) < 20 then
+		return true
+	elseif GetWindSpeed() > 5.0 then
+		return true
+	else
+		return false
+	end
+end
+
 local defaultInventory = {
 	type = 'newdrop',
 	slots = shared.playerslots,
@@ -1437,6 +1520,25 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	if registerCommands then registerCommands() end
 
 	TriggerEvent('ox_inventory:updateInventory', PlayerData.inventory)
+
+    -- Alert This might cause hitches on large scale
+	client.interval = SetInterval(function()
+		if currentWeapon and currentWeapon.timer and currentWeapon.canInspect then
+			if math.random(0, 100) <= 20 and ShouldRustWeapon() then
+				if currentWeapon.metadata?.rust < 100 then
+					currentWeapon.metadata.rust = currentWeapon.metadata.rust + 1
+					TriggerServerEvent('ox_inventory:updateWeapon', 'rust', currentWeapon.metadata.rust)
+					Citizen.InvokeNative(0xE22060121602493B ,currentWeapon.weaponObject , tonumber((currentWeapon.metadata.rust / 100))) --SetWeaponRust
+				end
+			elseif math.random(0, 100) <= 50 and ShouldDirtWeapon() then
+				if currentWeapon.metadata?.dirt < 100 then
+					currentWeapon.metadata.dirt = currentWeapon.metadata.dirt + 1
+					TriggerServerEvent('ox_inventory:updateWeapon', 'dirt', currentWeapon.metadata.dirt)
+					Citizen.InvokeNative(0x812CE61DEBCAB948 ,currentWeapon.weaponObject , tonumber((currentWeapon.metadata.dirt / 100))) --SetWeaponDust
+				end
+			end
+		end
+	end, 1000)
 
 	client.interval = SetInterval(function()
 		if invOpen == false then

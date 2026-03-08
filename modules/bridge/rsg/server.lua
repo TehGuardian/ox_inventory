@@ -52,6 +52,8 @@ local function setupPlayer(Player)
     Player.PlayerData.inventory = Player.PlayerData.items
     Player.PlayerData.identifier = Player.PlayerData.citizenid
     Player.PlayerData.name = ('%s %s'):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
+    -- NOW set up the inventory after methods are available
+    server.setPlayerInventory(Player.PlayerData)
 
     -- Add player methods FIRST before doing anything else
     RSGCore.Functions.AddPlayerMethod(Player.PlayerData.source, "AddItem", function(item, amount, slot, info)
@@ -81,9 +83,6 @@ local function setupPlayer(Player)
     RSGCore.Functions.AddPlayerMethod(Player.PlayerData.source, "SetInventory", function(items)
         return exports.ox_inventory:setPlayerInventory(Player.PlayerData.source, items)
     end)
-
-    -- NOW set up the inventory after methods are available
-    server.setPlayerInventory(Player.PlayerData)
 
     -- Convert money to items if money items are enabled
     local cashDollars, cashCents = getParts(Player.PlayerData.money.cash)
@@ -121,11 +120,6 @@ AddEventHandler('RSGCore:Server:OnGangUpdate', function(source, gang)
     inventory.player.groups[gang.name] = gang.grade.level
 end)
 
-AddEventHandler('onResourceStart', function(resource)
-    if resource ~= 'rsg-weapons' then return end
-    StopResource(resource)
-end)
-
 AddEventHandler('ox_inventory:itemAdded', function(source, itemName)
     if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
         syncMoneyToRSGCore(source)
@@ -149,10 +143,16 @@ SetTimeout(500, function()
         StopResource('rsg-weapons')
     end
 
-    local shopState = GetResourceState('rsg-weaponcomp')
+    local weaponcompState = GetResourceState('rsg-weaponcomp')
+
+    if weaponcompState ~= 'missing' and (weaponcompState == 'started' or weaponcompState == 'starting') then
+        StopResource('rsg-weaponcomp')
+    end
+
+    local shopState = GetResourceState('rsg-shops')
 
     if shopState ~= 'missing' and (shopState == 'started' or shopState == 'starting') then
-        StopResource('rsg-weaponcomp')
+        StopResource('rsg-shops')
     end
 
     -- Auto-import items from RSGCore.Shared.Items to ox_inventory
@@ -500,4 +500,23 @@ export('rsg-inventory.HasItem', function(items, amount)
     end
 
     return count >= amount
+end)
+
+RegisterNetEvent('rsg-horses:server:openhorseinventory')
+AddEventHandler('rsg-horses:server:openhorseinventory', function()
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    if not Player then return end
+
+    -- Define stash details
+    local stashName = 'horse_stash_' .. src
+    local label = 'Horse Trunk Storage'
+    local maxWeight = 20000
+    local maxSlots = 10
+
+    -- Register the stash with ox_inventory
+    exports.ox_inventory:RegisterStash(stashName, label, maxSlots, maxWeight)
+
+    -- Open the stash for the player
+    TriggerClientEvent('ox_inventory:openInventory', src, 'stash', stashName)
 end)
