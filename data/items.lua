@@ -7222,4 +7222,466 @@ return {
 			image = "p_bag01x.png",
 		}
 	},
+
+	["clothing_pants"] = {
+		label = "Pants",
+		weight = 400,
+		stack = false,
+		close = true,
+		description = "Pants",
+		client = {
+			image = "clothing_pants.png",
+		}
+	},
+
+	["clothing_satchels"] = {
+		label = "Bag",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "Shoulder bag",
+		client = {
+			image = "clothing_satchels.png",
+		}
+	},
+
+	["clothing_loadouts"] = {
+		label = "Equipment",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Equipment Set",
+		client = {
+			image = "clothing_loadouts.png",
+		}
+	},
+
+	["clothing_neckties"] = {
+		label = "Tie",
+		weight = 50,
+		stack = false,
+		close = true,
+		description = "Tie",
+		client = {
+			image = "clothing_neckties.png",
+		}
+	},
+
+	["clothing_suspenders"] = {
+		label = "Suspenders",
+		weight = 150,
+		stack = false,
+		close = true,
+		description = "Suspenders",
+		client = {
+			image = "clothing_suspenders.png",
+		}
+	},
+
+	["clothing_boots"] = {
+		label = "Boots",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Boots or boots",
+		client = {
+			image = "clothing_boots.png",
+		}
+	},
+
+	["clothing_coats"] = {
+		label = "Coat",
+		weight = 800,
+		stack = false,
+		close = true,
+		description = "Coat or jacket",
+		client = {
+			image = "clothing_coats.png",
+		}
+	},
+
+	["clothing_gauntlets"] = {
+		label = "Bracers",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Protective Bracers",
+		client = {
+			image = "clothing_gauntlets.png",
+		}
+	},
+
+	["clothing_chaps"] = {
+		label = "Chaps",
+		weight = 400,
+		stack = false,
+		close = true,
+		description = "Leather foot pads",
+		client = {
+			image = "clothing_chaps.png",
+		}
+	},
+
+	["clothing_vests"] = {
+		label = "Vest",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "Vest",
+		client = {
+			image = "clothing_vests.png",
+		}
+	},
+
+	["clothing_belts"] = {
+		label = "Belt",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Waist belt",
+		client = {
+			image = "clothing_belts.png",
+		}
+	},
+
+	["clothing_belt_buckles"] = {
+		label = "Belt buckle",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Belt buckle",
+		client = {
+			image = "clothing_belt_buckles.png",
+		}
+	},
+
+	["clothing_accessories"] = {
+		label = "Accessory",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Decorative accessory",
+		client = {
+			image = "clothing_accessories.png",
+		}
+	},
+
+	["clothing_corsets"] = {
+		label = "Corset",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "Corset",
+		client = {
+			image = "clothing_corsets.png",
+		}
+	},
+
+	["clothing_shirts_full"] = {
+		label = "Shirt",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "Shirt",
+		client = {
+			image = "clothing_shirts_full.png",
+		}
+	},
+
+	["clothing_dresses"] = {
+		label = "Dress",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Dress",
+		client = {
+			image = "clothing_dresses.png",
+		}
+	},
+
+	["clothing_gunbelts"] = {
+		label = "Bandolier",
+		weight = 400,
+		stack = false,
+		close = true,
+		description = "Ammo belt",
+		client = {
+			image = "clothing_gunbelts.png",
+		}
+	},
+
+	["clothing_spurs"] = {
+		label = "Spurs",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Riding spurs",
+		client = {
+			image = "clothing_spurs.png",
+		}
+	},
+
+	["clothing_neckwear"] = {
+		label = "Neckwear",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Scarf or tie",
+		client = {
+			image = "clothing_neckwear.png",
+		}
+	},
+
+	["clothing_holsters_left"] = {
+		label = "Holster (left)",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Left holster",
+		client = {
+			image = "clothing_holsters_left.png",
+		}
+	},
+
+	["clothing_hats"] = {
+		label = "Hat",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Hat",
+		client = {
+			image = "clothing_hats.png",
+		}
+	},
+
+	["clothing_necklaces"] = {
+		label = "Necklace",
+		weight = 50,
+		stack = false,
+		close = true,
+		description = "Necklace",
+		client = {
+			image = "clothing_necklaces.png",
+		}
+	},
+
+	["clothing_ponchos"] = {
+		label = "Poncho",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Poncho",
+		client = {
+			image = "clothing_ponchos.png",
+		}
+	},
+
+	["clothing_bracelets"] = {
+		label = "Bracelet",
+		weight = 30,
+		stack = false,
+		close = true,
+		description = "Bracelet",
+		client = {
+			image = "clothing_bracelets.png",
+		}
+	},
+
+	["clothing_rings_rh"] = {
+		label = "Ring (right)",
+		weight = 20,
+		stack = false,
+		close = true,
+		description = "Ring for the right hand",
+		client = {
+			image = "clothing_rings_rh.png",
+		}
+	},
+
+	["clothing_masks"] = {
+		label = "Mask",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Face mask",
+		client = {
+			image = "clothing_masks.png",
+		}
+	},
+
+	["clothing_skirts"] = {
+		label = "Skirt",
+		weight = 350,
+		stack = false,
+		close = true,
+		description = "Skirt",
+		client = {
+			image = "clothing_skirts.png",
+		}
+	},
+
+	["clothing_earrings"] = {
+		label = "Earrings",
+		weight = 20,
+		stack = false,
+		close = true,
+		description = "Earrings",
+		client = {
+			image = "clothing_earrings.png",
+		}
+	},
+
+	["clothing_cloaks"] = {
+		label = "Cloak",
+		weight = 600,
+		stack = false,
+		close = true,
+		description = "Cloak or cape",
+		client = {
+			image = "clothing_cloaks.png",
+		}
+	},
+
+	["clothing_eyewear"] = {
+		label = "Glasses",
+		weight = 50,
+		stack = false,
+		close = true,
+		description = "Glasses",
+		client = {
+			image = "clothing_eyewear.png",
+		}
+	},
+
+	["clothing_badges"] = {
+		label = "Badge",
+		weight = 50,
+		stack = false,
+		close = true,
+		description = "Sheriff or Marshal Badge",
+		client = {
+			image = "clothing_badges.png",
+		}
+	},
+
+	["clothing_rings_lh"] = {
+		label = "Ring (left)",
+		weight = 20,
+		stack = false,
+		close = true,
+		description = "Ring for the left hand",
+		client = {
+			image = "clothing_rings_lh.png",
+		}
+	},
+
+	["clothing_gloves"] = {
+		label = "Gloves",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Gloves",
+		client = {
+			image = "clothing_gloves.png",
+		}
+	},
+
+	["clothing_holsters_right"] = {
+		label = "Holster (right)",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Right holster",
+		client = {
+			image = "clothing_holsters_right.png",
+		}
+	},
+
+	["clothing_coats_closed"] = {
+		label = "Closed Coat",
+		weight = 800,
+		stack = false,
+		close = true,
+		description = "Buttoned coat",
+		client = {
+			image = "clothing_coats.png",
+		}
+	},
+
+	["st_furniture"] = {
+		label = "Furniture",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A piece of furniture. Use to place it inside your property.",
+		client = {
+			image = "st_furniture.png",
+		}
+	},
+
+	["plan_ranch_house"] = {
+		label = "Wooden House Plan",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "A building plan for a wooden house. Use to enter placement mode.",
+		client = {
+			image = "plan_ranch_house.png",
+		}
+	},
+
+	["rope"] = {
+		label = "Rope",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A length of sturdy rope used in construction.",
+		client = {
+			image = "rope.png",
+		}
+	},
+
+	["glass_pane"] = {
+		label = "Glass Pane",
+		weight = 300,
+		stack = true,
+		close = false,
+		description = "A flat pane of glass used for windows.",
+		client = {
+			image = "glass_pane.png",
+		}
+	},
+
+	["iron_nail"] = {
+		label = "Iron Nail",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "Hand-forged iron nails used in construction.",
+		client = {
+			image = "iron_nail.png",
+		}
+	},
+
+	["wood_plank"] = {
+		label = "Wood Plank",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "A rough-cut wooden plank used in construction.",
+		client = {
+			image = "wood_plank.png",
+		}
+	},
+
+	["stone"] = {
+		label = "Stone",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A rough stone. Use near water to wash it, or deposit into a building site.",
+		client = {
+			image = "stone.png",
+		}
+	},
 }

@@ -26,12 +26,12 @@ for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<strin
 		label = shopData.label,
 	}
 
-	-- if shared.target then
+	if shared.target then
 		shop.model = shopData.model
 		shop.targets = shopData.targets
-	-- else
-	-- 	shop.locations = shopData.locations
-	-- end
+	else
+		shop.locations = shopData.locations
+	end
 
 	shopTypes[shopType] = shop
 	local blip = shop.blip
@@ -67,7 +67,7 @@ local function onEnterShop(point)
 		SetEntityCanBeDamaged(entity, false)
 		SetEntityInvincible(entity, true)
 		SetPedPromptName(entity, point.name)
-		-- SetBlockingOfNonTemporaryEvents(entity, true) -- This blocks ped from being targeted?
+		SetBlockingOfNonTemporaryEvents(entity, true) -- This blocks ped from being targeted?
 
 		local promptGroup = UiPromptGetGroupIdForTargetEntity(entity)
 		point.prompt = CreatePrompt(point.label, promptGroup)
@@ -131,23 +131,22 @@ local function refreshShops()
 		local label = shop.label or locale('open_label', shop.name)
 		local name = 'Shop Keeper'
 
-		-- if shared.target then
-		if true then
+		if shared.target then
 			if shop.model then
 				if not hasShopAccess(shop) then goto skipLoop end
 
-				-- exports.ox_target:removeModel(shop.model, shop.name)
-				-- exports.ox_target:addModel(shop.model, {
-                --     {
-                --         name = shop.name,
-                --         icon = shop.icon or 'fas fa-shopping-basket',
-                --         label = label,
-                --         onSelect = function()
-                --             client.openInventory('shop', { type = type })
-                --         end,
-                --         distance = 2
-                --     },
-				-- })
+				exports.ox_target:removeModel(shop.model, shop.name)
+				exports.ox_target:addModel(shop.model, {
+                    {
+                        name = shop.name,
+                        icon = shop.icon or 'fas fa-shopping-basket',
+                        label = label,
+                        onSelect = function()
+                            client.openInventory('shop', { type = type })
+                        end,
+                        distance = 2
+                    },
+				})
 			elseif shop.targets then
 				for i = 1, #shop.targets do
 					local target = shop.targets[i]

@@ -27,6 +27,20 @@ local function getParts(number)
     return dollars, cents
 end
 
+-- Add a flag to prevent circular updates
+local updatingMoney = {}
+
+local moneyItems = {
+    cash = {
+        dollar = 'dollar',
+        cent = 'cent',
+    },
+    bloodmoney = {
+        dollar = 'blood_dollar',
+        cent = 'blood_cent',
+    },
+}
+
 local function syncMoneyToRSGCore(source)
     local player = server.GetPlayerFromId(source)
     if not player then return end
@@ -46,6 +60,98 @@ local function syncMoneyToRSGCore(source)
     -- Trigger HUD update
     TriggerClientEvent('hud:client:OnMoneyChange', source, 'cash', totalCash, false)
     TriggerClientEvent('hud:client:OnMoneyChange', source, 'bloodmoney', totalBloodMoney, false)
+end
+
+local function handleAddMoney(src, moneytype, amount)
+    if updatingMoney[src] then return end -- Prevent circular updates
+
+    updatingMoney[src] = true
+
+    local dollars, cents = getParts(amount)
+
+    if dollars > 0 then
+        Inventory.AddItem(src, moneyItems[moneytype].dollar, dollars)
+    end
+    if cents > 0 then
+        Inventory.AddItem(src, moneyItems[moneytype].cent, cents)
+    end
+
+    updatingMoney[src] = nil
+end
+
+local function handleRemoveMoney(src, moneytype, amount)
+    if updatingMoney[src] then return end -- Prevent circular updates
+
+    updatingMoney[src] = true
+
+    local amountDollars, amountCents = getParts(amount)
+    local dollarCount = Inventory.GetItemCount(src, moneyItems[moneytype].dollar) or 0
+    local centCount = Inventory.GetItemCount(src, moneyItems[moneytype].cent) or 0
+
+    local remainingCentValue = amount * 100
+    local centsToRemove, dollarsToRemove, centsToAdd = 0, 0, 0
+
+    if centCount > 0 and centCount >= amountCents then
+        centsToRemove = amountCents
+        centCount = centCount - amountCents
+        remainingCentValue = remainingCentValue - amountCents
+
+        local availableHundredBlocks = math.floor(centCount / 100)
+        if availableHundredBlocks > 0 and amountDollars > 0 then
+            local dollarsFromCents = math.min(availableHundredBlocks, amountDollars)
+            local additionalCentsToUse = dollarsFromCents * 100
+
+            centsToRemove = centsToRemove + additionalCentsToUse
+            remainingCentValue = remainingCentValue - additionalCentsToUse
+            amountDollars = amountDollars - dollarsFromCents
+        end
+    end
+
+    if amountDollars > 0 then
+        dollarsToRemove = amountDollars
+        remainingCentValue = remainingCentValue - (amountDollars * 100)
+    end
+
+    if remainingCentValue > 0 then
+        dollarsToRemove = dollarsToRemove + 1
+        centsToAdd = 100 - remainingCentValue
+    end
+
+    local centName = moneyItems[moneytype].cent
+    local dollarName = moneyItems[moneytype].dollar
+
+    if centsToRemove > 0 then Inventory.RemoveItem(src, centName, centsToRemove) end
+    if dollarsToRemove > 0 then Inventory.RemoveItem(src, dollarName, dollarsToRemove) end
+    if centsToAdd > 0 then Inventory.AddItem(src, centName, centsToAdd) end
+
+    updatingMoney[src] = nil
+end
+
+local function handleSetMoney(src, moneytype, amount)
+    if updatingMoney[src] then return end -- Prevent circular updates
+
+    updatingMoney[src] = true
+
+    local dollarName = moneyItems[moneytype].dollar
+    local centName = moneyItems[moneytype].cent
+
+    -- Remove all existing money items
+    local dollarCount = Inventory.GetItemCount(src, dollarName) or 0
+    local centCount = Inventory.GetItemCount(src, centName) or 0
+
+    if dollarCount > 0 then
+        Inventory.RemoveItem(src, dollarName, dollarCount)
+    end
+    if centCount > 0 then
+        Inventory.RemoveItem(src, centName, centCount)
+    end
+
+    local dollars, cents = getParts(amount)
+
+    if dollars > 0 then Inventory.AddItem(src, dollarName, dollars) end
+    if cents > 0 then Inventory.AddItem(src, centName, cents) end
+
+    updatingMoney[src] = nil
 end
 
 local function setupPlayer(Player)
@@ -85,24 +191,30 @@ local function setupPlayer(Player)
     end)
 
     -- Convert money to items if money items are enabled
-    local cashDollars, cashCents = getParts(Player.PlayerData.money.cash)
-    local bloodDollars, bloodCents = getParts(Player.PlayerData.money.bloodmoney)
+        local cashDollars, cashCents = getParts(Player.PlayerData.money.cash)
+        local bloodDollars, bloodCents = getParts(Player.PlayerData.money.bloodmoney)
 
-    if cashDollars > 0 then
-        Inventory.SetItem(Player.PlayerData.source, 'dollar', cashDollars)
-    end
-    if cashCents > 0 then
-        Inventory.SetItem(Player.PlayerData.source, 'cent', cashCents)
-    end
-    if bloodDollars > 0 then
-        Inventory.SetItem(Player.PlayerData.source, 'blood_dollar', bloodDollars)
-    end
-    if bloodCents > 0 then
-        Inventory.SetItem(Player.PlayerData.source, 'blood_cent', bloodCents)
-    end
+        if cashDollars > 0 then
+            Inventory.SetItem(Player.PlayerData.source, 'dollar', cashDollars)
+        end
+        if cashCents > 0 then
+            Inventory.SetItem(Player.PlayerData.source, 'cent', cashCents)
+        end
+        if bloodDollars > 0 then
+            Inventory.SetItem(Player.PlayerData.source, 'blood_dollar', bloodDollars)
+        end
+        if bloodCents > 0 then
+            Inventory.SetItem(Player.PlayerData.source, 'blood_cent', bloodCents)
+        end
 end
 
 AddEventHandler('RSGCore:Server:OnPlayerUnload', server.playerDropped)
+
+-- Clean up when player disconnects
+AddEventHandler('playerDropped', function()
+    local src = source
+    updatingMoney[src] = nil
+end)
 
 AddEventHandler('RSGCore:Server:OnJobUpdate', function(source, job)
     local inventory = Inventory(source)
@@ -120,23 +232,44 @@ AddEventHandler('RSGCore:Server:OnGangUpdate', function(source, gang)
     inventory.player.groups[gang.name] = gang.grade.level
 end)
 
-AddEventHandler('ox_inventory:itemAdded', function(source, itemName)
-    if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
-        syncMoneyToRSGCore(source)
-    end
-end)
-
-AddEventHandler('ox_inventory:itemRemoved', function(source, itemName)
-    if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
-        syncMoneyToRSGCore(source)
-    end
-end)
-
 AddEventHandler('RSGCore:Server:PlayerLoaded', setupPlayer)
 
 SetTimeout(500, function()
     RSGCore = exports['rsg-core']:GetCoreObject()
     server.GetPlayerFromId = RSGCore.Functions.GetPlayer
+
+    -- Enable money change handlers and item sync if money items are enabled in config
+        AddEventHandler('RSGCore:Server:OnMoneyChange', function(src, moneytype, amount, operation, reason)
+            -- Don't handle money changes if we're in the middle of updating money items
+            if updatingMoney[src] then return end
+
+            local handler
+            if operation == 'add' then
+                handler = handleAddMoney
+            elseif operation == 'remove' then
+                handler = handleRemoveMoney
+            elseif operation == 'set' then
+                handler = handleSetMoney
+            end
+
+            if handler then
+                handler(src, moneytype, amount)
+                TriggerClientEvent('hud:client:OnMoneyChange', src, moneytype, amount, operation == 'remove')
+            end
+        end)
+
+        AddEventHandler('ox_inventory:itemAdded', function(source, itemName)
+            if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
+                syncMoneyToRSGCore(source)
+            end
+        end)
+
+        AddEventHandler('ox_inventory:itemRemoved', function(source, itemName)
+            if itemName == 'dollar' or itemName == 'cent' or itemName == 'blood_dollar' or itemName == 'blood_cent' then
+                syncMoneyToRSGCore(source)
+            end
+        end)
+
     local weapState = GetResourceState('rsg-weapons')
 
     if weapState ~= 'missing' and (weapState == 'started' or weapState == 'starting') then
