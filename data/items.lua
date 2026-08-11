@@ -7684,4 +7684,1456 @@ return {
 			image = "stone.png",
 		}
 	},
+
+	["furniture_15"] = {
+		label = "Iron Bench 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Iron Bench 2",
+		client = {
+			image = "furniture_15.png",
+		}
+	},
+
+	["furniture_56"] = {
+		label = "Wood Dining Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Dining Table",
+		client = {
+			image = "furniture_56.png",
+		}
+	},
+
+	["furniture_38"] = {
+		label = "Wood Chair 4",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Chair 4",
+		client = {
+			image = "furniture_38.png",
+		}
+	},
+
+	["furniture_30"] = {
+		label = "Wicker Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wicker Armchair",
+		client = {
+			image = "furniture_30.png",
+		}
+	},
+
+	["furniture_78"] = {
+		label = "Wide Mirror Dresser",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wide Mirror Dresser",
+		client = {
+			image = "furniture_78.png",
+		}
+	},
+
+	["furniture_69"] = {
+		label = "Marriage Bed 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Marriage Bed 1",
+		client = {
+			image = "furniture_69.png",
+		}
+	},
+
+	["furniture_119"] = {
+		label = "Fireplace Fire",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Fireplace Fire",
+		client = {
+			image = "furniture_119.png",
+		}
+	},
+
+	["furniture_88"] = {
+		label = "Corner Shelf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Corner Shelf",
+		client = {
+			image = "furniture_88.png",
+		}
+	},
+
+	["furniture_09"] = {
+		label = "Red Fabric Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Red Fabric Sofa",
+		client = {
+			image = "furniture_09.png",
+		}
+	},
+
+	["furniture_10"] = {
+		label = "Leather Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Leather Sofa",
+		client = {
+			image = "furniture_10.png",
+		}
+	},
+
+	["furniture_50"] = {
+		label = "Square Wooden Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Square Wooden Table",
+		client = {
+			image = "furniture_50.png",
+		}
+	},
+
+	["furniture_28"] = {
+		label = "Iron Bench 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Iron Bench 3",
+		client = {
+			image = "furniture_28.png",
+		}
+	},
+
+	["furniture_80"] = {
+		label = "4 Drawer Dresser",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "4 Drawer Dresser",
+		client = {
+			image = "furniture_80.png",
+		}
+	},
+
+	["furniture_07"] = {
+		label = "Brown Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Brown Armchair",
+		client = {
+			image = "furniture_07.png",
+		}
+	},
+
+	["furniture_81"] = {
+		label = "Tall Nightstand",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Tall Nightstand",
+		client = {
+			image = "furniture_81.png",
+		}
+	},
+
+	["furniture_82"] = {
+		label = "1 Drawer Nightstand",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "1 Drawer Nightstand",
+		client = {
+			image = "furniture_82.png",
+		}
+	},
+
+	["furniture_76"] = {
+		label = "Single Bed 4",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Single Bed 4",
+		client = {
+			image = "furniture_76.png",
+		}
+	},
+
+	["furniture_71"] = {
+		label = "Marriage Bed 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Marriage Bed 2",
+		client = {
+			image = "furniture_71.png",
+		}
+	},
+
+	["furniture_24"] = {
+		label = "Leather Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Leather Armchair",
+		client = {
+			image = "furniture_24.png",
+		}
+	},
+
+	["furniture_55"] = {
+		label = "Rectangular Table 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rectangular Table 1",
+		client = {
+			image = "furniture_55.png",
+		}
+	},
+
+	["furniture_87"] = {
+		label = "Kitchen Shelf 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Kitchen Shelf 1",
+		client = {
+			image = "furniture_87.png",
+		}
+	},
+
+	["furniture_122"] = {
+		label = "Blanket Box",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Blanket Box",
+		client = {
+			image = "furniture_122.png",
+		}
+	},
+
+	["furniture_130"] = {
+		label = "Pheasant Taxidermy",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Pheasant Taxidermy",
+		client = {
+			image = "furniture_130.png",
+		}
+	},
+
+	["furniture_61"] = {
+		label = "Leather Coffee Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Leather Coffee Table",
+		client = {
+			image = "furniture_61.png",
+		}
+	},
+
+	["furniture_75"] = {
+		label = "Marriage Bed 4",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Marriage Bed 4",
+		client = {
+			image = "furniture_75.png",
+		}
+	},
+
+	["furniture_40"] = {
+		label = "Wood Desk Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Desk Chair",
+		client = {
+			image = "furniture_40.png",
+		}
+	},
+
+	["furniture_79"] = {
+		label = "3 Drawer Dresser",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "3 Drawer Dresser",
+		client = {
+			image = "furniture_79.png",
+		}
+	},
+
+	["furniture_74"] = {
+		label = "Marriage Bed 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Marriage Bed 3",
+		client = {
+			image = "furniture_74.png",
+		}
+	},
+
+	["furniture_111"] = {
+		label = "Candle Holder",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Candle Holder",
+		client = {
+			image = "furniture_111.png",
+		}
+	},
+
+	["furniture_62"] = {
+		label = "Office Desk 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Office Desk 1",
+		client = {
+			image = "furniture_62.png",
+		}
+	},
+
+	["furniture_109"] = {
+		label = "Lantern 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Lantern 1",
+		client = {
+			image = "furniture_109.png",
+		}
+	},
+
+	["furniture_39"] = {
+		label = "Wood Chair 5",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Chair 5",
+		client = {
+			image = "furniture_39.png",
+		}
+	},
+
+	["furniture_127"] = {
+		label = "Deer Taxidermy",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Deer Taxidermy",
+		client = {
+			image = "furniture_127.png",
+		}
+	},
+
+	["furniture_102"] = {
+		label = "Ceiling Lamp 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Ceiling Lamp 1",
+		client = {
+			image = "furniture_102.png",
+		}
+	},
+
+	["furniture_84"] = {
+		label = "Mahogany Wardrobe",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Mahogany Wardrobe",
+		client = {
+			image = "furniture_84.png",
+		}
+	},
+
+	["furniture_89"] = {
+		label = "White Shelf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "White Shelf",
+		client = {
+			image = "furniture_89.png",
+		}
+	},
+
+	["furniture_116"] = {
+		label = "Sink 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Sink 1",
+		client = {
+			image = "furniture_116.png",
+		}
+	},
+
+	["furniture_01"] = {
+		label = "Floral Fabric Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Floral Fabric Armchair",
+		client = {
+			image = "furniture_01.png",
+		}
+	},
+
+	["furniture_41"] = {
+		label = "Rocking Chair 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rocking Chair 1",
+		client = {
+			image = "furniture_41.png",
+		}
+	},
+
+	["furniture_49"] = {
+		label = "Small Side Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Small Side Table",
+		client = {
+			image = "furniture_49.png",
+		}
+	},
+
+	["furniture_25"] = {
+		label = "Yellow 3-Seater Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Yellow 3-Seater Sofa",
+		client = {
+			image = "furniture_25.png",
+		}
+	},
+
+	["furniture_134"] = {
+		label = "Water Pump",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Water Pump",
+		client = {
+			image = "furniture_134.png",
+		}
+	},
+
+	["furniture_58"] = {
+		label = "Medium Round Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Medium Round Table",
+		client = {
+			image = "furniture_58.png",
+		}
+	},
+
+	["furniture_02"] = {
+		label = "Grey Fabric Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Grey Fabric Armchair",
+		client = {
+			image = "furniture_02.png",
+		}
+	},
+
+	["furniture_46"] = {
+		label = "Wrought Iron Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wrought Iron Chair",
+		client = {
+			image = "furniture_46.png",
+		}
+	},
+
+	["furniture_93"] = {
+		label = "Doctor Cabinet Shelf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Doctor Cabinet Shelf",
+		client = {
+			image = "furniture_93.png",
+		}
+	},
+
+	["furniture_72"] = {
+		label = "Single Bed 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Single Bed 2",
+		client = {
+			image = "furniture_72.png",
+		}
+	},
+
+	["furniture_104"] = {
+		label = "Ceiling Lamp 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Ceiling Lamp 3",
+		client = {
+			image = "furniture_104.png",
+		}
+	},
+
+	["furniture_107"] = {
+		label = "Wall Lamp 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wall Lamp 3",
+		client = {
+			image = "furniture_107.png",
+		}
+	},
+
+	["furniture_33"] = {
+		label = "Barber Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Barber Chair",
+		client = {
+			image = "furniture_33.png",
+		}
+	},
+
+	["furniture_37"] = {
+		label = "Wood Chair 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Chair 3",
+		client = {
+			image = "furniture_37.png",
+		}
+	},
+
+	["furniture_125"] = {
+		label = "Coyote Taxidermy",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Coyote Taxidermy",
+		client = {
+			image = "furniture_125.png",
+		}
+	},
+
+	["furniture_96"] = {
+		label = "Bathtub 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Bathtub 2",
+		client = {
+			image = "furniture_96.png",
+		}
+	},
+
+	["furniture_106"] = {
+		label = "Wall Lamp 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wall Lamp 2",
+		client = {
+			image = "furniture_106.png",
+		}
+	},
+
+	["furniture_103"] = {
+		label = "Ceiling Lamp 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Ceiling Lamp 2",
+		client = {
+			image = "furniture_103.png",
+		}
+	},
+
+	["furniture_32"] = {
+		label = "Outdoor Chair 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Outdoor Chair 2",
+		client = {
+			image = "furniture_32.png",
+		}
+	},
+
+	["furniture_06"] = {
+		label = "Pink Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Pink Armchair",
+		client = {
+			image = "furniture_06.png",
+		}
+	},
+
+	["furniture_139"] = {
+		label = "Christmas Tree",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Christmas Tree",
+		client = {
+			image = "furniture_139.png",
+		}
+	},
+
+	["furniture_52"] = {
+		label = "Rustic Rectangular Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rustic Rectangular Table",
+		client = {
+			image = "furniture_52.png",
+		}
+	},
+
+	["furniture_65"] = {
+		label = "Work Desk",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Work Desk",
+		client = {
+			image = "furniture_65.png",
+		}
+	},
+
+	["furniture_47"] = {
+		label = "Medical Bed",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Medical Bed",
+		client = {
+			image = "furniture_47.png",
+		}
+	},
+
+	["furniture_86"] = {
+		label = "Light Wood Wardrobe",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Light Wood Wardrobe",
+		client = {
+			image = "furniture_86.png",
+		}
+	},
+
+	["furniture_43"] = {
+		label = "Piano Bench 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Piano Bench 1",
+		client = {
+			image = "furniture_43.png",
+		}
+	},
+
+	["furniture_68"] = {
+		label = "Tall Entry Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Tall Entry Table",
+		client = {
+			image = "furniture_68.png",
+		}
+	},
+
+	["furniture_51"] = {
+		label = "Rectangular Table Cloth",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rectangular Table Cloth",
+		client = {
+			image = "furniture_51.png",
+		}
+	},
+
+	["furniture_57"] = {
+		label = "Dark Rectangular Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Dark Rectangular Table",
+		client = {
+			image = "furniture_57.png",
+		}
+	},
+
+	["furniture_114"] = {
+		label = "Bathtub 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Bathtub 3",
+		client = {
+			image = "furniture_114.png",
+		}
+	},
+
+	["furniture_94"] = {
+		label = "Cabinet Nightstand 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Cabinet Nightstand 2",
+		client = {
+			image = "furniture_94.png",
+		}
+	},
+
+	["furniture_19"] = {
+		label = "Green Fabric Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Green Fabric Bench",
+		client = {
+			image = "furniture_19.png",
+		}
+	},
+
+	["furniture_45"] = {
+		label = "Stool Piano",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Stool Piano",
+		client = {
+			image = "furniture_45.png",
+		}
+	},
+
+	["furniture_128"] = {
+		label = "Flower Boxes",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Flower Boxes",
+		client = {
+			image = "furniture_128.png",
+		}
+	},
+
+	["furniture_108"] = {
+		label = "Street Lamp",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Street Lamp",
+		client = {
+			image = "furniture_108.png",
+		}
+	},
+
+	["furniture_22"] = {
+		label = "Log Bench 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Log Bench 3",
+		client = {
+			image = "furniture_22.png",
+		}
+	},
+
+	["furniture_141"] = {
+		label = "Coat Stand",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Coat Stand",
+		client = {
+			image = "furniture_141.png",
+		}
+	},
+
+	["furniture_110"] = {
+		label = "Lantern 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Lantern 2",
+		client = {
+			image = "furniture_110.png",
+		}
+	},
+
+	["furniture_90"] = {
+		label = "Postal Cabinet Shelf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Postal Cabinet Shelf",
+		client = {
+			image = "furniture_90.png",
+		}
+	},
+
+	["furniture_95"] = {
+		label = "Bathtub 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Bathtub 1",
+		client = {
+			image = "furniture_95.png",
+		}
+	},
+
+	["furniture_08"] = {
+		label = "White Fabric Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "White Fabric Sofa",
+		client = {
+			image = "furniture_08.png",
+		}
+	},
+
+	["furniture_12"] = {
+		label = "Wicker Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wicker Bench",
+		client = {
+			image = "furniture_12.png",
+		}
+	},
+
+	["furniture_70"] = {
+		label = "Single Bed 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Single Bed 1",
+		client = {
+			image = "furniture_70.png",
+		}
+	},
+
+	["furniture_112"] = {
+		label = "Burning Log",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Burning Log",
+		client = {
+			image = "furniture_112.png",
+		}
+	},
+
+	["furniture_98"] = {
+		label = "Floor Lamp 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Floor Lamp 2",
+		client = {
+			image = "furniture_98.png",
+		}
+	},
+
+	["furniture_138"] = {
+		label = "Canvas Shade",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Canvas Shade",
+		client = {
+			image = "furniture_138.png",
+		}
+	},
+
+	["furniture_126"] = {
+		label = "Deer Pelt",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Deer Pelt",
+		client = {
+			image = "furniture_126.png",
+		}
+	},
+
+	["furniture_03"] = {
+		label = "Red Pattern Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Red Pattern Armchair",
+		client = {
+			image = "furniture_03.png",
+		}
+	},
+
+	["furniture_14"] = {
+		label = "Iron Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Iron Bench",
+		client = {
+			image = "furniture_14.png",
+		}
+	},
+
+	["furniture_54"] = {
+		label = "Light Rectangular Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Light Rectangular Table",
+		client = {
+			image = "furniture_54.png",
+		}
+	},
+
+	["furniture_136"] = {
+		label = "Native Basket 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Native Basket 1",
+		client = {
+			image = "furniture_136.png",
+		}
+	},
+
+	["furniture_31"] = {
+		label = "Outdoor Chair 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Outdoor Chair 1",
+		client = {
+			image = "furniture_31.png",
+		}
+	},
+
+	["furniture_105"] = {
+		label = "Wall Lamp 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wall Lamp 1",
+		client = {
+			image = "furniture_105.png",
+		}
+	},
+
+	["furniture_133"] = {
+		label = "Wash Tub",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wash Tub",
+		client = {
+			image = "furniture_133.png",
+		}
+	},
+
+	["furniture_17"] = {
+		label = "Backless Wooden Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Backless Wooden Bench",
+		client = {
+			image = "furniture_17.png",
+		}
+	},
+
+	["furniture_26"] = {
+		label = "Yellow 2-Seater Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Yellow 2-Seater Sofa",
+		client = {
+			image = "furniture_26.png",
+		}
+	},
+
+	["furniture_123"] = {
+		label = "Cougar Taxidermy",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Cougar Taxidermy",
+		client = {
+			image = "furniture_123.png",
+		}
+	},
+
+	["furniture_29"] = {
+		label = "Wicker Cushion Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wicker Cushion Armchair",
+		client = {
+			image = "furniture_29.png",
+		}
+	},
+
+	["furniture_77"] = {
+		label = "Tall Mirror Dresser",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Tall Mirror Dresser",
+		client = {
+			image = "furniture_77.png",
+		}
+	},
+
+	["furniture_53"] = {
+		label = "Square Table Cloth",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Square Table Cloth",
+		client = {
+			image = "furniture_53.png",
+		}
+	},
+
+	["furniture_35"] = {
+		label = "Wood Chair 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Chair 2",
+		client = {
+			image = "furniture_35.png",
+		}
+	},
+
+	["furniture_118"] = {
+		label = "Ceiling Lamp 4",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Ceiling Lamp 4",
+		client = {
+			image = "furniture_118.png",
+		}
+	},
+
+	["furniture_20"] = {
+		label = "Log Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Log Bench",
+		client = {
+			image = "furniture_20.png",
+		}
+	},
+
+	["furniture_99"] = {
+		label = "Floor Lamp 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Floor Lamp 3",
+		client = {
+			image = "furniture_99.png",
+		}
+	},
+
+	["furniture_42"] = {
+		label = "Rocking Chair 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rocking Chair 2",
+		client = {
+			image = "furniture_42.png",
+		}
+	},
+
+	["furniture_101"] = {
+		label = "Table Lamp 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Table Lamp 2",
+		client = {
+			image = "furniture_101.png",
+		}
+	},
+
+	["furniture_63"] = {
+		label = "Office Desk 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Office Desk 2",
+		client = {
+			image = "furniture_63.png",
+		}
+	},
+
+	["furniture_34"] = {
+		label = "Wood Chair 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Chair 1",
+		client = {
+			image = "furniture_34.png",
+		}
+	},
+
+	["furniture_11"] = {
+		label = "Yellow Fabric Sofa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Yellow Fabric Sofa",
+		client = {
+			image = "furniture_11.png",
+		}
+	},
+
+	["furniture_04"] = {
+		label = "Red Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Red Armchair",
+		client = {
+			image = "furniture_04.png",
+		}
+	},
+
+	["furniture_91"] = {
+		label = "China Cabinet Shelf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "China Cabinet Shelf",
+		client = {
+			image = "furniture_91.png",
+		}
+	},
+
+	["furniture_73"] = {
+		label = "Single Bed 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Single Bed 3",
+		client = {
+			image = "furniture_73.png",
+		}
+	},
+
+	["furniture_115"] = {
+		label = "Bathtub 4",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Bathtub 4",
+		client = {
+			image = "furniture_115.png",
+		}
+	},
+
+	["furniture_117"] = {
+		label = "Sink 2",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Sink 2",
+		client = {
+			image = "furniture_117.png",
+		}
+	},
+
+	["furniture_97"] = {
+		label = "Floor Lamp 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Floor Lamp 1",
+		client = {
+			image = "furniture_97.png",
+		}
+	},
+
+	["furniture_66"] = {
+		label = "Marble Entry Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Marble Entry Table",
+		client = {
+			image = "furniture_66.png",
+		}
+	},
+
+	["furniture_83"] = {
+		label = "Cabinet Nightstand",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Cabinet Nightstand",
+		client = {
+			image = "furniture_83.png",
+		}
+	},
+
+	["furniture_18"] = {
+		label = "Bear Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Bear Bench",
+		client = {
+			image = "furniture_18.png",
+		}
+	},
+
+	["furniture_137"] = {
+		label = "Dreamcatcher",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Dreamcatcher",
+		client = {
+			image = "furniture_137.png",
+		}
+	},
+
+	["furniture_140"] = {
+		label = "Native Arms",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Native Arms",
+		client = {
+			image = "furniture_140.png",
+		}
+	},
+
+	["furniture_60"] = {
+		label = "Rectangular Booth Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Rectangular Booth Table",
+		client = {
+			image = "furniture_60.png",
+		}
+	},
+
+	["furniture_120"] = {
+		label = "Stove",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Stove",
+		client = {
+			image = "furniture_120.png",
+		}
+	},
+
+	["furniture_48"] = {
+		label = "Decorated Round Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Decorated Round Table",
+		client = {
+			image = "furniture_48.png",
+		}
+	},
+
+	["furniture_59"] = {
+		label = "Low Rectangular Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Low Rectangular Table",
+		client = {
+			image = "furniture_59.png",
+		}
+	},
+
+	["furniture_13"] = {
+		label = "Wood Bench",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Bench",
+		client = {
+			image = "furniture_13.png",
+		}
+	},
+
+	["furniture_05"] = {
+		label = "White Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "White Armchair",
+		client = {
+			image = "furniture_05.png",
+		}
+	},
+
+	["furniture_67"] = {
+		label = "Wood Entry Table",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Wood Entry Table",
+		client = {
+			image = "furniture_67.png",
+		}
+	},
+
+	["furniture_100"] = {
+		label = "Table Lamp 1",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Table Lamp 1",
+		client = {
+			image = "furniture_100.png",
+		}
+	},
+
+	["furniture_113"] = {
+		label = "Torch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Torch",
+		client = {
+			image = "furniture_113.png",
+		}
+	},
+
+	["furniture_64"] = {
+		label = "Office Desk 3",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Office Desk 3",
+		client = {
+			image = "furniture_64.png",
+		}
+	},
+
+	["furniture_36"] = {
+		label = "White Fabric Wooden Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "White Fabric Wooden Chair",
+		client = {
+			image = "furniture_36.png",
+		}
+	},
+
+	["furniture_121"] = {
+		label = "Campfire",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Campfire",
+		client = {
+			image = "furniture_121.png",
+		}
+	},
+
+	["furniture_23"] = {
+		label = "Eagle Armchair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Eagle Armchair",
+		client = {
+			image = "furniture_23.png",
+		}
+	},
+
+	["furniture_132"] = {
+		label = "Vulture Taxidermy",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Vulture Taxidermy",
+		client = {
+			image = "furniture_132.png",
+		}
+	},
+
+	["furniture_135"] = {
+		label = "Hitching Post",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Hitching Post",
+		client = {
+			image = "furniture_135.png",
+		}
+	},
 }

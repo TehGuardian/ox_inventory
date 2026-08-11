@@ -4,26 +4,13 @@ local shopTypes = {}
 local shops = {}
 local createBlip = require 'modules.utils.client'.CreateBlip
 
--- Should move this to utils
-local function CreatePrompt(name, group)
-    local PedPrompt = UiPromptRegisterBegin()
-    UiPromptSetControlAction(PedPrompt, 0xE3BF959B)
-    UiPromptSetText(PedPrompt, CreateVarString(10, "LITERAL_STRING", name))
-    UiPromptSetEnabled(PedPrompt, true)
-    UiPromptSetVisible(PedPrompt, true)
-    UiPromptSetStandardMode(PedPrompt, true)
-    --UiPromptSetHoldMode(PedPrompt, 1000)
-    UiPromptSetGroup(PedPrompt, group, 0)
-    UiPromptRegisterEnd(PedPrompt)
-    return PedPrompt
-end
-
-for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<string, OxShop>]]) do
+for shopType, shopData in pairs(lib.load('data.shops') --[[@as table<string, OxShop>]]) do
 	local shop = {
 		name = shopData.name,
 		groups = shopData.groups or shopData.jobs,
 		blip = shopData.blip,
 		label = shopData.label,
+        icon = shopData.icon
 	}
 
 	if shared.target then
@@ -33,22 +20,29 @@ for shopType, shopData in pairs(lib.load('data.shops') or {} --[[@as table<strin
 		shop.locations = shopData.locations
 	end
 
+	-- if shopData.pedData then
+    --     local model = shopData.pedData.model
+    --     local locs  = shopData.pedData.locations or {}
+    --     local i = 0
+
+    --     for k, v in pairs(locs) do
+    --         i = i + 1
+    --         -- 👇 build a unique name inline
+    --         local suffix = (type(v) == "table" and v.name) or (type(k) == "string" and k) or i
+    --         local pedName = ((shopData.name or shopType) .. "_" .. tostring(suffix))
+    --             :gsub("%s+", "_")
+    --             :gsub("[^%w_]", "")
+    --             :lower()
+    --         exports.gm_core:SpawnPed(pedName, v, model, 10.0, 15.0)
+    --     end
+    -- end
+
 	shopTypes[shopType] = shop
 	local blip = shop.blip
 
 	if blip then
-		blip.name = shopData.name
+		blip.name = ('ox_shop_%s'):format(shop.name)
 		AddTextEntry(blip.name, shop.name or shopType)
-	end
-end
-
----@param point CPoint
-local function nearby(point)
-	local retval, entity = GetPlayerTargetEntity(cache.playerId)
-	if retval and entity == point.entity and point.prompt then
-		if UiPromptHasStandardModeCompleted(point.prompt, 0) then
-			client.openInventory('shop', { id = point.invId, type = point.type })
-		end
 	end
 end
 
@@ -56,23 +50,31 @@ end
 local function onEnterShop(point)
 	if not point.entity then
 		local model = lib.requestModel(point.ped)
+
 		if not model then return end
 
-		local entity = CreatePed(model, point.coords.x, point.coords.y, point.coords.z, point.heading, false, false, false, false)
-		repeat Wait(0) until DoesEntityExist(entity)
+		local entity = CreatePed(0, model, point.coords.x, point.coords.y, point.coords.z, point.heading, false, true)
+
+		if point.scenario then TaskStartScenarioInPlace(entity, point.scenario, 0, true) end
+
 		SetModelAsNoLongerNeeded(model)
 		FreezeEntityPosition(entity, true)
-		SetRandomOutfitVariation(entity, true)
-		PlaceEntityOnGroundProperly(entity, true)
-		SetEntityCanBeDamaged(entity, false)
 		SetEntityInvincible(entity, true)
-		SetPedPromptName(entity, point.name)
-		SetBlockingOfNonTemporaryEvents(entity, true) -- This blocks ped from being targeted?
+		SetBlockingOfNonTemporaryEvents(entity, true)
 
-		local promptGroup = UiPromptGetGroupIdForTargetEntity(entity)
-		point.prompt = CreatePrompt(point.label, promptGroup)
+		exports.ox_target:addLocalEntity(entity, {
+            {
+                icon = point.icon or 'fas fa-shopping-basket',
+                label = point.label,
+                groups = point.groups,
+                onSelect = function()
+                    client.openInventory('shop', { id = point.invId, type = point.type })
+                end,
+                iconColor = point.iconColor,
+                distance = point.shopDistance or 2.0
+            }
+		})
 
-		if point.scenario then TaskStartScenarioInPlace(entity, point.scenario, 0, true) end -- idk the rdr native anims
 		point.entity = entity
 	end
 end
@@ -86,10 +88,6 @@ local function onExitShop(point)
 
 	exports.ox_target:removeLocalEntity(entity)
 	Utils.DeleteEntity(entity)
-
-	if point.prompt then
-		UiPromptDelete(point.prompt)
-	end
 
 	point.entity = nil
 end
@@ -129,7 +127,6 @@ local function refreshShops()
 	for type, shop in pairs(shopTypes) do
 		local blip = shop.blip
 		local label = shop.label or locale('open_label', shop.name)
-		local name = 'Shop Keeper'
 
 		if shared.target then
 			if shop.model then
@@ -156,7 +153,6 @@ local function refreshShops()
 						id += 1
 
 						shops[id] = lib.points.new({
-							name = name,
 							coords = target.loc,
 							heading = target.heading,
 							distance = target.distance or 60,
@@ -168,9 +164,10 @@ local function refreshShops()
 							scenario = target.scenario,
 							label = label,
 							groups = shop.groups,
+							icon = shop.icon,
+							iconColor = target.iconColor,
 							onEnter = onEnterShop,
 							onExit = onExitShop,
-							nearby = nearby,
 							shopDistance = target.distance,
 						})
 					else
@@ -201,10 +198,15 @@ local function refreshShops()
 			end
 		elseif shop.locations then
 			if not hasShopAccess(shop) then goto skipLoop end
-            local shopPrompt = { icon = 'fas fa-shopping-basket' }
 
 			for i = 1, #shop.locations do
 				local coords = shop.locations[i]
+				local groupName = ('shop_%s_%s'):format(type, i)
+				local promptKey = shop.promptKey or 0x5415BE48
+				local promptLabel = label
+
+				jo.prompt.create(groupName, promptLabel, promptKey, 1000)
+
 				id += 1
 
 				shops[id] = lib.points.new(coords, 16, {
@@ -213,12 +215,15 @@ local function refreshShops()
 					inv = 'shop',
 					invId = i,
 					type = type,
-                    marker = client.shopmarker,
-                    prompt = {
-                        options = shop.icon and { icon = shop.icon } or shopPrompt,
-                        message = 'Message'
-                    },
-					nearby = Utils.nearbyMarker,
+					nearby = function(self)
+						if self.currentDistance < 1.5 then
+							jo.prompt.displayGroup(groupName)
+							if jo.prompt.isCompleted(groupName, promptKey) then
+								client.openInventory('shop', { id = self.invId, type = self.type })
+							end
+						end
+					end,
+					groups = shop.groups,
 					blip = blip and createBlip(blip, coords)
 				})
 			end

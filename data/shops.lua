@@ -11,9 +11,13 @@
 return {
 	General = {
 		name = 'General Store',
+		promptKey = 0xF3830D8E,
 		blip = {
-			sprite = `blip_shop_store`, colour = `BLIP_MODIFIER_LOCAL_PLAYER_OWNED`, scale = 0.8
-		}, inventory = {
+			id = "blip_shop_store",
+			colour = "BLIP_MODIFIER_MP_COLOR_32",
+			scale = 0.2,
+		},
+		inventory = {
 			{name = "water", price = 0.05, count = 100},
 			{name = "apple", price = 0.05, count = 100},
 			{name = "canned_meat", price = 0.25, count = 100},
@@ -45,10 +49,15 @@ return {
 	},
 
 	Fishing = {
-		name = 'Fishing',
+		name = "Fish shop",
+		promptKey = 0xF3830D8E,
+		promptLabel = "Fish shop",
 		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		}, inventory = {
+			id = "blip_mg_fishing",
+			colour = "BLIP_MODIFIER_MP_COLOR_32",
+			scale = 0.2,
+		},
+		inventory = {
 			{name = "WEAPON_FISHINGROD", price = 0.5},
 			{name = "p_baitBread01x", price = 0.02},
 			{name = "p_baitCorn01x", price = 0.02},
@@ -64,16 +73,16 @@ return {
 			{name = "p_lgoc_spinner_v4", price = 0.12},
 			{name = "p_lgoc_spinner_v6", price = 0.12},
 		}, locations = {
-			-- vec3(2662.841, -1505.`BLIP_MODIFIER_MP_COLOR_32`, 45.978),  -- saint denis
-			-- vec3(-757.3929, -1360.937, 43.737)  -- black water
+			vec3(2120.57, -557.59, 42.73),
+			vec3(-1197.19, -1943.57, 43.61),
 		}
 	},
 
-	Ammunation = {
-		name = 'Gun Store',
-		blip = {
-			sprite = `blip_shop_gunsmith`, colour = `BLIP_MODIFIER_LOCAL_PLAYER_OWNED`, scale = 0.8
-		}, inventory = {
+	WeaponShop = {
+		name = "Weapon Shop",
+		promptKey = 0xF3830D8E,
+		promptLabel = "Weapon Shop",
+		inventory = {
 			{name = "weapon_melee_lantern", price = 2},
             {name = "weapon_melee_davy_lantern", price = 2},
 
@@ -102,7 +111,6 @@ return {
             {name = "ammo_arrow", price = 0.13},
 			{name = "ammo_case", price = 2.55},
 
-			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, targets = {
 			{ loc = vector3(-280.4646, 779.0331, 119.2540), ped = `S_M_M_UNIBUTCHERS_01`, heading = 2.82, distance = 10.0 },
 			{ loc = vector3(2717.75, -1286.62, 49.64), ped = `S_M_M_UNIBUTCHERS_01`, heading = 44.58, distance = 10.0 },
@@ -112,10 +120,13 @@ return {
 		}
 	},
 
-	Jornaleiro = {
-		name = 'Jornaleiro',
+	reporter = {
+		name = 'Reporter',
+		promptKey = 0xF3830D8E,
 		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			id = "blip_shop_store",
+			colour = "BLIP_MODIFIER_MP_COLOR_32",
+			scale = 0.2,
 		},
 		inventory = {
 			{name = "newspaper", price = 0.45},
@@ -131,8 +142,11 @@ return {
 
 	Stable = {
 		name = 'Stable',
+		promptKey = 0xF3830D8E,
 		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			id = "blip_shop_store",
+			colour = "BLIP_MODIFIER_MP_COLOR_32",
+			scale = 0.2,
 		},
 		inventory = {
 			{name = "tonic_horse_reviver", price = 0.50},
@@ -147,8 +161,9 @@ return {
 
 	Pharmacy = {
 		name = 'Pharmacy',
+		promptKey = 0xF3830D8E,
 		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "tonic_potent_cure", price = 3.0},
@@ -161,8 +176,9 @@ return {
 
 	blackmarket = {
 		name = 'Black Market',
+		promptKey = 0xF3830D8E,
 		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
+			id = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
 		},
 		inventory = {
 			{name = "lockpick", price = 2 },
@@ -179,23 +195,21 @@ return {
 	},
 
 	PoliceArmoury = {
-		name = 'Police Armoury',
-		groups = shared.police,
-		blip = {
-			sprite = 'blip_shop_store', colour = `BLIP_MODIFIER_MP_COLOR_32`, scale = 0.4
-		},
+		name = 'Police Armory',
+        promptKey = 0x5415BE48,
+        promptLabel = "Police Armory",
+        groups = shared.police,
 		inventory = {
-			{ name = 'badge_officer', price = 0, grade = nil },
-			{ name = 'badge_texas_ranger', price = 0, grade = nil },
-			{ name = 'badge_sheriff', price = 0, grade = nil },
-			{ name = 'badge_deputy', price = 0, grade = nil },
-			{ name = 'badge_marshal', price = 0, grade = nil },
+			{ name = 'badge_officer', price = 0},
+			{ name = 'badge_texas_ranger', price = 0 },
+			{ name = 'badge_sheriff', price = 0 },
+			{ name = 'badge_deputy', price = 0 },
+			{ name = 'badge_marshal', price = 0 },
 
 			{ name = 'handcuffs', price = 0 },
 			{ name = 'handcuffs_keys', price = 0 },
-			-- {name = "pigeon", price = 0.15},
 
-			{ name = 'weapon_kit_camera', price = 5, grade = nil },
+			{ name = 'weapon_kit_camera', price = 5},
 			{ name = "weapon_kit_binoculars", price = 0.80},
 			{ name = 'weapon_melee_knife', price = 0.30 },
 			{ name = 'weapon_lasso', price = 0.20 },
@@ -210,8 +224,6 @@ return {
 			{ name = 'weapon_revolver_navy', price = 3, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_revolver_lemat', price = 7, metadata = { registered = true, serial = 'OFICIAL' } },
 
-			-- { name = 'weapon_pistol_mauser', price = 7, metadata = { registered = true, serial = 'OFICIAL' } },
-
 			{ name = 'weapon_repeater_carbine', price = 5, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_repeater_evans', price = 14, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_repeater_winchester', price = 15, metadata = { registered = true, serial = 'OFICIAL' } },
@@ -220,14 +232,14 @@ return {
 			{ name = 'weapon_rifle_springfield', price = 20, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_rifle_boltaction', price = 28, metadata = { registered = true, serial = 'OFICIAL' } },
 		}, locations = {
-			-- vec3(2494.307, -1304.298, 48.953), -- saint dennis
-			-- vec3(1361.17, -1305.839, 77.760), -- rhodes
-			-- vec3(2906.925, 1315.27, 44.938), -- annesburg
-			-- vec3(-278.4373, 805.3104, 119.38), -- valentine
-			-- vec3(-1814.101, -354.86, 164.64), -- Strawberry
-			-- vec3(-764.753, -1272.402, 44.0413), -- blackwater
-			-- vec3(-3623.315, -2602.468, -13.342), -- armadillo
-			-- vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
+			vec3(2494.307, -1304.298, 48.953), -- saint dennis
+			vec3(1361.17, -1305.839, 77.760), -- rhodes
+			vec3(2906.925, 1315.27, 44.938), -- annesburg
+			vec3(-278.4373, 805.3104, 119.38), -- valentine
+			vec3(-1814.101, -354.86, 164.64), -- Strawberry
+			vec3(-764.753, -1272.402, 44.0413), -- blackwater
+			vec3(-3623.315, -2602.468, -13.342), -- armadillo
+			vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
 		}
 	},
 }
